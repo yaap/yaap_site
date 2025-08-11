@@ -385,4 +385,3 @@ document.addEventListener('DOMContentLoaded', function() {
 
     console.log('YAAP website loaded successfully! 🚀');
 });
-
