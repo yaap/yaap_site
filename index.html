@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YAAP - Yet Another AOSP Project</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header/Navigation -->
+    <header class="header">
+        <nav class="nav container">
+            <div class="nav__brand">
+                <h2 class="nav__logo">YAAP</h2>
+            </div>
+            <div class="nav__menu" id="nav-menu">
+                <a href="#home" class="nav__link">Home</a>
+                <a href="#features" class="nav__link">Features</a>
+                <a href="#devices" class="nav__link">Devices</a>
+                <a href="#downloads" class="nav__link">Download</a>
+                <a href="#community" class="nav__link">Community</a>
+                <a href="#contribute" class="nav__link">Contribute</a>
+            </div>
+            <button class="nav__toggle" id="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero__content container">
+                <div class="hero__text">
+                    <h1 class="hero__title">YAAP</h1>
+                    <h2 class="hero__subtitle">Yet Another AOSP Project</h2>
+                    <div class="hero__buttons">
+                        <a href="#downloads" class="btn btn--primary btn--lg">Download Now</a>
+                        <a href="#devices" class="btn btn--outline btn--lg">View Supported Devices</a>
+                    </div>
+                </div>
+                <div class="hero__stats">
+                    <div class="stat-card">
+                        <h3 class="stat-card__number">1+</h3>
+                        <p class="stat-card__label">Downloads</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3 class="stat-card__number">4920</h3>
+                        <p class="stat-card__label">Devices</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3 class="stat-card__number">10</h3>
+                        <p class="stat-card__label">Contributors</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3 class="stat-card__number">12</h3>
+                        <p class="stat-card__label">GitHub Stars</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="features">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Why Choose YAAP?</h2>
+                    <p class="section-subtitle">Experience Android as it should be - stable, clean, and optimized</p>
+                </div>
+                <div class="features__grid">
+                    <div class="feature-card">
+                        <div class="feature-card__icon">🛡️</div>
+                        <h3 class="feature-card__title">Stable AOSP Experience</h3>
+                        <p class="feature-card__description">Rock-solid stability with minimal bugs and crashes</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-card__icon">✨</div>
+                        <h3 class="feature-card__title">Clean & Minimal</h3>
+                        <p class="feature-card__description">Debloated Android without unnecessary applications</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-card__icon">🏦</div>
+                        <h3 class="feature-card__title">Banking Apps Compatible</h3>
+                        <p class="feature-card__description">All banking and payment apps work flawlessly</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-card__icon">🔋</div>
+                        <h3 class="feature-card__title">Optimized Battery</h3>
+                        <p class="feature-card__description">Advanced kernel optimization for better battery life</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-card__icon">🔒</div>
+                        <h3 class="feature-card__title">Latest Security</h3>
+                        <p class="feature-card__description">Monthly security patches and regular updates</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-card__icon">🚀</div>
+                        <h3 class="feature-card__title">Custom YAAP Launcher</h3>
+                        <p class="feature-card__description">Beautiful, customizable launcher with unique features</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Supported Devices Section -->
+        <section id="devices" class="devices">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Supported Devices</h2>
+                    <p class="section-subtitle">YAAP officially supports these devices</p>
+                </div>
+                
+                <div class="device-filters">
+                    <button class="filter-btn filter-btn--active" data-brand="all">All Brands</button>
+                    <button class="filter-btn" data-brand="OnePlus">OnePlus</button>
+                    <button class="filter-btn" data-brand="Poco">Poco</button>
+                    <button class="filter-btn" data-brand="Xiaomi">Xiaomi</button>
+                    <button class="filter-btn" data-brand="Google">Google</button>
+                    <button class="filter-btn" data-brand="Sony">Sony</button>
+                </div>
+
+                <div class="devices__grid">
+                    <div class="device-brand" data-brand="OnePlus">
+                        <h3 class="device-brand__title">OnePlus</h3>
+                        <div class="device-brand__models">
+                            <div class="device-card">
+                                <h4 class="device-card__name">OnePlus 7</h4>
+                                <a href="oneplus-7.html" class="btn btn--primary btn--sm">Download</a>
+                            </div>
+                            <div class="device-card">
+                                <h4 class="device-card__name">OnePlus 7 Pro</h4>
+                                <a href="oneplus-7-pro.html" class="btn btn--primary btn--sm">Download</a>
+                            </div>
+                            <div class="device-card">
+                                <h4 class="device-card__name">OnePlus 7 Pro 5G</h4>
+                                <a href="oneplus-7-pro-5g.html" class="btn btn--primary btn--sm">Download</a>
+                            </div>
+                            <div class="device-card">
+                                <h4 class="device-card__name">OnePlus 7T</h4>
+                                <a href="oneplus-7t.html" class="btn btn--primary btn--sm">Download</a>
+                            </div>
+                            <div class="device-card">
+                                <h4 class="device-card__name">OnePlus 7T Pro</h4>
+                                <a href="oneplus-7t-pro.html" class="btn btn--primary btn--sm">Download</a>
+                            </div>
+                            <div class="device-card">
+                                <h4 class="device-card__name">OnePlus 12</h4>
+                                <a href="oneplus-12.html" class="btn btn--primary btn--sm">Download</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="device-brand" data-brand="Poco">
+                        <h3 class="device-brand__title">Poco</h3>
+                        <div class="device-brand__models">
+                            <div class="device-card">
+                                <h4 class="device-card__name">Poco X3 Pro</h4>
+                                <a href="poco-x3-pro.html" class="btn btn--primary btn--sm">Download</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="device-brand" data-brand="Xiaomi">
+                        <h3 class="device-brand__title">Xiaomi</h3>
+                        <div class="device-brand__models">
+                            <div class="device-card">
+                                <h4 class="device-card__name">Mi 9T Pro/Redmi K20 Pro</h4>
+                                <a href="mi-9t-pro.html" class="btn btn--primary btn--sm">Download</a>
+                            </div>
+                            <div class="device-card">
+                                <h4 class="device-card__name">Redmi Note 10</h4>
+                                <a href="redmi-note-10.html" class="btn btn--primary btn--sm">Download</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="device-brand" data-brand="Sony">
+                        <h3 class="device-brand__title">Sony</h3>
+                        <div class="device-brand__models">
+                            <div class="device-card">
+                                <h4 class="device-card__name">Sony Xperia 1 II</h4>
+                                <a href="sony-xperia-1-ii.html" class="btn btn--primary btn--sm">Download</a>
+                            </div>
+                            <div class="device-card">
+                                <h4 class="device-card__name">Sony Xperia 5 II</h4>
+                                <a href="sony-xperia-5-ii.html" class="btn btn--primary btn--sm">Download</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="device-brand" data-brand="Google">
+                        <h3 class="device-brand__title">Google</h3>
+                        <div class="device-brand__models">
+                            <div class="device-card">
+                                <h4 class="device-card__name">Pixel 7</h4>
+                                <a href="pixel-7.html" class="btn btn--primary btn--sm">Download</a>
+                            </div>
+                            <div class="device-card">
+                                <h4 class="device-card__name">Pixel 7 Pro</h4>
+                                <a href="pixel-7-pro.html" class="btn btn--primary btn--sm">Download</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Download Section -->
+        <section id="downloads" class="downloads">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Download YAAP</h2>
+                    <p class="section-subtitle">Get the latest stable build of YAAP for your device</p>
+                </div>
+                
+                <div class="download-info">
+                    <div class="download-card">
+                        <h3 class="download-card__title">Latest Version</h3>
+                        <div class="download-card__version">Android 16</div>
+                        <p class="download-card__description">Based on the latest Android 16 source code with all the newest features and security updates.</p>
+                        <div class="download-card__stats">
+                            <div class="download-stat">
+                                <span class="download-stat__number">69K+</span>
+                                <span class="download-stat__label">Total Downloads</span>
+                            </div>
+                        </div>
+                        <div class="download-card__actions">
+                            <a href="https://github.com/YAAP" target="_blank" class="btn btn--primary">View on GitHub</a>
+                            <a href="#devices" class="btn btn--outline">Check Device Support</a>
+                        </div>
+                    </div>
+                    
+                    <div class="download-requirements">
+                        <h4 class="requirements__title">⚠️ Requirements</h4>
+                        <ul class="requirements__list">
+                            <li>Unlocked bootloader</li>
+                            <li>Custom recovery (TWRP/OrangeFox)</li>
+                            <li>Basic knowledge of flashing ROMs</li>
+                            <li>Backup of your current ROM</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Community Section -->
+        <section id="community" class="community">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Join Our Community</h2>
+                    <p class="section-subtitle">Connect with fellow YAAP users and contributors</p>
+                </div>
+                
+                <div class="community__grid">
+                    <div class="community-card">
+                        <div class="community-card__icon">💬</div>
+                        <h3 class="community-card__title">Telegram</h3>
+                        <p class="community-card__description">Get updates, support, and discuss YAAP with the community</p>
+                        <a href="https://t.me/yaapupdates" target="_blank" class="btn btn--primary">Join Channel</a>
+                    </div>
+                    
+                    <div class="community-card">
+                        <div class="community-card__icon">💻</div>
+                        <h3 class="community-card__title">GitHub</h3>
+                        <p class="community-card__description">Contribute to development, report bugs, and access source code</p>
+                        <a href="https://github.com/YAAP" target="_blank" class="btn btn--primary">View Repository</a>
+                    </div>
+                    
+                    <div class="community-card">
+                        <div class="community-card__icon">🌐</div>
+                        <h3 class="community-card__title">XDA Forums</h3>
+                        <p class="community-card__description">Detailed discussions, tutorials, and device-specific threads</p>
+                        <a href="https://xdaforums.com/tags/yet-another-aosp-project/" target="_blank" class="btn btn--primary">Visit Forum</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contribute Section -->
+        <section id="contribute" class="contribute">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Contribute to YAAP</h2>
+                    <p class="section-subtitle">Help us make YAAP better for everyone</p>
+                </div>
+                
+                <div class="contribute__content">
+                    <div class="contribute-ways">
+                        <div class="contribute-card">
+                            <h3 class="contribute-card__title">👨‍💻 Development</h3>
+                            <p class="contribute-card__description">Submit patches, fix bugs, or add new features to the codebase</p>
+                        </div>
+                        
+                        <div class="contribute-card">
+                            <h3 class="contribute-card__title">🧪 Testing</h3>
+                            <p class="contribute-card__description">Test builds on your device and report issues to help us improve stability</p>
+                        </div>
+                        
+                        <div class="contribute-card">
+                            <h3 class="contribute-card__title">📱 Device Maintainer</h3>
+                            <p class="contribute-card__description">Help maintain YAAP builds for your device model</p>
+                        </div>
+                        
+                        <div class="contribute-card">
+                            <h3 class="contribute-card__title">📝 Documentation</h3>
+                            <p class="contribute-card__description">Improve guides, write tutorials, or translate content</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contribute-cta">
+                        <h3>Ready to contribute?</h3>
+                        <p>Visit our GitHub organization to get started with contributing to YAAP</p>
+                        <a href="https://github.com/YAAP" target="_blank" class="btn btn--primary btn--lg">Start Contributing</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__bottom">
+                <p>&copy; 2025 YAAP Team. All rights reserved.</p>
+                <p>YAAP is not affiliated with Google or Android.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

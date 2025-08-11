@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YAAP - Poco X3 Pro</title>
+<link rel="stylesheet" href="/style.css">
+<style>
+/* Banner */
+.device-banner {
+    background: linear-gradient(135deg, #1565c0, #0d47a1);
+    color: white;
+    padding: 1.5rem 0;
+    text-align: center;
+}
+.device-banner h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.3rem;
+}
+.device-banner p {
+    opacity: 0.85;
+    margin-bottom: 0.5rem;
+}
+.badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    margin: 0.2rem;
+    font-size: 0.85rem;
+}
+
+/* Cards */
+.card {
+    background: #1e1e1e;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+.card h3 {
+    margin-bottom: 1rem;
+}
+
+/* Download builds */
+.build-card {
+    background: #111;
+    padding: 1rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+}
+.build-card h4 {
+    margin-bottom: 0.5rem;
+}
+.codebox {
+    background: #000;
+    padding: 0.5rem;
+    border-radius: 6px;
+    font-family: monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+}
+
+/* Step list */
+.step {
+    margin-bottom: 1rem;
+}
+.step-number {
+    display: inline-block;
+    background: #1565c0;
+    color: white;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 26px;
+    margin-right: 0.5rem;
+}
+
+/* Specs pills */
+.specs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+}
+.spec-pill {
+    background: #111;
+    padding: 1rem;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.spec-pill strong {
+    font-size: 0.9rem;
+    color: #aaa;
+}
+.spec-pill span {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+}
+
+/* Known issues */
+.issue-ok {
+    background: #1b5e20;
+    padding: 0.8rem;
+    border-radius: 6px;
+    color: white;
+    margin-bottom: 0.5rem;
+}
+.issue-warn {
+    background: #795548;
+    padding: 0.8rem;
+    border-radius: 6px;
+    color: white;
+}
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<header class="header">
+    <nav class="nav container">
+        <div class="nav__brand"><h2 class="nav__logo">YAAP</h2></div>
+        <div class="nav__menu" id="nav-menu">
+            <a href="index.html#home" class="nav__link">Home</a>
+            <a href="index.html#devices" class="nav__link">Devices</a>
+            <a href="index.html#community" class="nav__link">Community</a>
+        </div>
+        <button class="nav__toggle" id="nav-toggle"><span></span><span></span><span></span></button>
+    </nav>
+</header>
+
+<!-- Banner -->
+<section class="device-banner">
+    <h1>Poco X3 Pro</h1>
+    <p>YAAP ROM Downloads & Information</p>
+    <span class="badge">Status: Active</span>
+    <span class="badge">Maintainer: grepfox</span>
+    <span class="badge">Last Updated: August 11, 2025</span>
+</section>
+
+<main class="container">
+
+    <!-- Downloads -->
+    <div class="card">
+        <h3>Latest Stable Builds</h3>
+
+        <!-- Vanilla -->
+        <div class="build-card">
+            <h4>Vanilla</h4>
+            <a id="vanilla-link" href="#" class="btn btn--primary" target="_blank">⬇ Download Vanilla</a>
+            <p><strong>SHA256:</strong></p>
+            <div class="codebox" id="sha-vanilla">Loading...</div>
+        </div>
+
+        <!-- GApps -->
+        <div class="build-card">
+            <h4>GApps</h4>
+            <a id="gapps-link" href="#" class="btn btn--primary" target="_blank">⬇ Download GApps</a>
+            <p><strong>SHA256:</strong></p>
+            <div class="codebox" id="sha-gapps">Loading...</div>
+        </div>
+    </div>
+
+    <!-- Installation Instructions -->
+    <div class="card">
+        <h3>Installation Instructions</h3>
+        <div class="step"><span class="step-number">1</span>Unlock bootloader</div>
+        <div class="step"><span class="step-number">2</span>Download YAAP ROM zip file</div>
+        <div class="step"><span class="step-number">3</span>Boot into recovery mode</div>
+        <div class="step"><span class="step-number">4</span>Flash YAAP ROM zip</div>
+        <div class="step"><span class="step-number">5</span>Format data</div>
+        <div class="step"><span class="step-number">6</span>Reboot and enjoy YAAP</div>
+    </div>
+
+    <!-- Device Specifications -->
+    <div class="card">
+        <h3>Device Specifications</h3>
+        <div class="specs-grid">
+            <div class="spec-pill"><strong>Processor</strong><span>Snapdragon 860</span></div>
+            <div class="spec-pill"><strong>Platform</strong><span>msmnile</span></div>
+            <div class="spec-pill"><strong>Codename</strong><span>vayu</span></div>
+            <div class="spec-pill"><strong>Architecture</strong><span>arm64-v8a</span></div>
+            <div class="spec-pill"><strong>Launch Year</strong><span>2021</span></div>
+            <div class="spec-pill"><strong>Android Version</strong><span>16</span></div>
+        </div>
+    </div>
+
+    <!-- Known Issues -->
+    <div class="card">
+        <h3>Known Issues</h3>
+        <div class="issue-ok">✅ Everything good. If any issues, please report.</div>
+        <div class="issue-warn">⚠ PUBG Gaming 144fps</div>
+    </div>
+
+    <!-- Changelog -->
+    <div class="card" id="changelog">
+        <h3>Changelog</h3>
+        <pre id="changelog-content">Loading changelog...</pre>
+    </div>
+
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer__bottom">
+            <p>&copy; 2025 YAAP Team. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+const codename = "cancunf"; // Change per device
+
+async function fetchBuildInfo() {
+    const urls = {
+        vanilla: `https://raw.githubusercontent.com/yaap/ota-info/vanilla-signed/${codename}/${codename}.json`,
+        gapps: `https://raw.githubusercontent.com/yaap/ota-info/full-signed-1/${codename}/${codename}.json`
+    };
+
+    try {
+        const [vanillaRes, gappsRes] = await Promise.all([
+            fetch(urls.vanilla).then(r => r.json()),
+            fetch(urls.gapps).then(r => r.json())
+        ]);
+
+        // Vanilla
+        document.getElementById("sha-vanilla").textContent = vanillaRes.sha256 || "N/A";
+        document.getElementById("vanilla-link").href = vanillaRes.url || "#";
+
+        // GApps
+        document.getElementById("sha-gapps").textContent = gappsRes.sha256 || "N/A";
+        document.getElementById("gapps-link").href = gappsRes.url || "#";
+
+    } catch (err) {
+        document.getElementById("sha-vanilla").textContent = "Error fetching";
+        document.getElementById("sha-gapps").textContent = "Error fetching";
+    }
+}
+
+function fetchChangelog() {
+    fetch(`https://raw.githubusercontent.com/yaap/ota-info/refs/heads/full-signed-1/cancunf/Changelog.txt`)
+        .then(res => res.text())
+        .then(data => document.getElementById("changelog-content").textContent = data)
+        .catch(() => document.getElementById("changelog-content").textContent = "Failed to load changelog.");
+}
+
+fetchBuildInfo();
+fetchChangelog();
+</script>
+<script src="/app.js"></script>
+</body>
+</html>
