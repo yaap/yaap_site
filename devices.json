@@ -1,0 +1,21 @@
+{
+  "vayu": {
+    "name": "Poco X3 Pro",
+    "maintainer": "grepfox",
+    "status": "Active",
+    "last_updated": "2025-08-11",
+    "instructions": [
+      "Unlock bootloader",
+      "Download YAAP ROM zip file",
+      "Boot into recovery mode",
+      "Flash YAAP ROM zip",
+      "Format data",
+      "Reboot and enjoy YAAP"
+    ],
+    "downloads": {
+      "url": "https://mirror.codebucket.de/yaap/vayu/"
+    },
+    "changelog_url": "https://raw.githubusercontent.com/yaap/ota-info/full-signed/vayu/Changelog.txt",
+    "image": "https://wiki.lineageos.org/images/devices/vayu.png"
+  }
+}

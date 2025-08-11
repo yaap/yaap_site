@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YAAP - Device Info</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.device-banner {
+    background: linear-gradient(135deg, #1565c0, #0d47a1);
+    color: white;
+    padding: 100px 0 1.5rem;
+    text-align: center;
+}
+.device-banner h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.3rem;
+}
+.badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    margin: 0.2rem;
+    font-size: 0.85rem;
+}
+.device-image {
+    max-width: 200px;
+    margin-top: 1rem;
+    border-radius: 8px;
+}
+.card {
+    background: #1e1e1e;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+.issue-ok, .issue-warn {
+    padding: 0.8rem;
+    border-radius: 6px;
+    color: white;
+    margin-bottom: 0.5rem;
+}
+.issue-ok { background: #1b5e20; }
+.issue-warn { background: #795548; }
+.step { margin-bottom: 1rem; }
+.step-number {
+    display: inline-block;
+    background: #1565c0;
+    color: white;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 26px;
+    margin-right: 0.5rem;
+}
+</style>
+</head>
+<body>
+
+    <!-- Header/Navigation -->
+    <header class="header">
+        <nav class="nav container">
+            <div class="nav__brand">
+                <h2 class="nav__logo">YAAP</h2>
+            </div>
+            <div class="nav__menu" id="nav-menu">
+                <a href="/#home" class="nav__link">Home</a>
+                <a href="/#features" class="nav__link">Features</a>
+                <a href="/#devices" class="nav__link">Devices</a>
+                <a href="/#downloads" class="nav__link">Download</a>
+                <a href="/#community" class="nav__link">Community</a>
+                <a href="/#contribute" class="nav__link">Contribute</a>
+            </div>
+            <button class="nav__toggle" id="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+
+<section class="device-banner" id="device-banner"></section>
+
+<main class="container">
+
+    <div class="card">
+        <h3>Download</h3>
+        <a id="download-link" href="#" class="btn btn--primary" target="_blank">⬇ Download ROM</a>
+    </div>
+
+    <div class="card" id="install-steps">
+        <h3>Installation Instructions</h3>
+        <div id="instructions-list"></div>
+    </div>
+
+    <div class="card" id="known-issues-section" style="display:none;">
+        <h3>Known Issues</h3>
+        <div id="issues"></div>
+    </div>
+
+    <div class="card" id="changelog">
+        <h3>Changelog</h3>
+        <pre id="changelog-content">Loading changelog...</pre>
+    </div>
+
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer__bottom">
+            <p>&copy; 2025 YAAP Team. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+const codename = new URLSearchParams(window.location.search).get("codename");
+
+if (!codename) {
+    document.getElementById("device-banner").innerHTML = `<h1>No device selected</h1>`;
+} else {
+    loadDevice();
+}
+
+async function loadDevice() {
+    const data = await fetch("devices.json").then(r => r.json());
+    const device = data[codename];
+    if (!device) {
+        document.getElementById("device-banner").innerHTML = `<h1>Device Not Found</h1>`;
+        return;
+    }
+
+    let lastUpdatedText = "";
+    try {
+        const otaUrl = `https://raw.githubusercontent.com/yaap/ota-info/full-signed/${codename}/${codename}.json`;
+        const otaData = await fetch(otaUrl).then(r => {
+            if (!r.ok) throw new Error("Failed to fetch OTA JSON");
+            return r.json();
+        });
+
+        if (otaData.datetime) {
+            const date = new Date(Number(otaData.datetime) * 1000);
+            lastUpdatedText = date.toLocaleDateString("en-GB", {
+                day: "2-digit",
+                month: "short",
+                year: "numeric"
+            });
+        }
+    } catch (err) {
+        console.error("Error fetching OTA date:", err);
+        lastUpdatedText = device.last_updated || "";
+    }
+    let bannerHTML = `
+        <h1>YAAP for ${device.name}</h1>
+        <span class="badge">Status: ${device.status}</span>
+        <span class="badge">Maintainer: ${device.maintainer}</span>
+        ${lastUpdatedText ? `<span class="badge">Last Updated: ${lastUpdatedText}</span>` : ""}
+    `;
+    if (device.image) {
+        bannerHTML += `<div><img src="${device.image}" alt="${device.name}" class="device-image"></div>`;
+    }
+    document.getElementById("device-banner").innerHTML = bannerHTML;
+
+    // Known Issues
+    if (device.known_issues && device.known_issues.length) {
+        document.getElementById("known-issues-section").style.display = "block";
+        document.getElementById("issues").innerHTML = device.known_issues.map(i => `<div class="issue-warn">⚠ ${i}</div>`).join("");
+    }
+
+    // Installation Instructions
+    document.getElementById("instructions-list").innerHTML =
+        device.instructions.map((step, idx) =>
+            `<div class="step"><span class="step-number">${idx + 1}</span>${step}</div>`
+        ).join("");
+
+    // Download
+    document.getElementById("download-link").href = device.downloads.url;
+
+    // Changelog
+    try {
+        const changelog = await fetch(device.changelog_url).then(r => r.text());
+        document.getElementById("changelog-content").textContent = changelog;
+    } catch {
+        document.getElementById("changelog-content").textContent = "Failed to load changelog.";
+    }
+}
+</script>
+</body>
+</html>
