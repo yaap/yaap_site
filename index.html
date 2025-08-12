@@ -113,10 +113,9 @@
                 background: var(--color-primary);
                 color: var(--color-white);
                 border: none;
-                border-radius: var(--radius-full);
+                border-radius: var(--radius-lg);
                 width: 48px;
                 height: 48px;
-                font-size: 2rem;
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -213,7 +212,11 @@
                     <div class="container">
                 <center><h2 class="section-title">Screenshots</h2></center>
                 <div class="screenshot-carousel">
-                    <button class="carousel-arrow left" aria-label="Previous Screenshot">&lt;</button>
+                    <button class="carousel-arrow left" aria-label="Previous Screenshot">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M12 5L7 10L12 15" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
                     <div class="screenshot-track">
                         <div class="screenshot-slide active">
                             <img src="ss/photo_1_2025-08-12_08-38-06.jpg" alt="Screenshot 1">
@@ -255,7 +258,11 @@
                             <img src="ss/photo_8_2025-08-12_08-38-06.jpg" alt="Screenshot 16">
                         </div>
                     </div>
-                    <button class="carousel-arrow right" aria-label="Next Screenshot">&gt;</button>
+                    <button class="carousel-arrow right" aria-label="Next Screenshot">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M8 5L13 10L8 15" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
 
                 </div>
                 </div>
