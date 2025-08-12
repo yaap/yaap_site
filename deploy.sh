@@ -1,1 +1,1 @@
-python -m http.server 8000
+cp -r ~/web/* /srv/http/

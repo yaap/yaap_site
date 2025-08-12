@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="/style.css">
         <style>
             .device-banner {
                 background: linear-gradient(135deg, #1565c0, #0d47a1);
@@ -61,6 +61,49 @@
                 line-height: 26px;
                 margin-right: 0.5rem;
             }
+
+
+        div[style*="background"] *,
+        div[class*="install"] *,
+        div[class*="instruction"] *,
+        div[class*="changelog"] *,
+        section[class*="install"] *,
+        section[class*="instruction"] *,
+        .container > div:not(.hero):not(.nav):not(.footer) * {
+        color: #f5f5f5 !important;
+        }
+
+        div[style*="background"] h1,
+        div[style*="background"] h2,  
+        div[style*="background"] h3,
+        div[style*="background"] h4,
+        div[class*="install"] h1,
+        div[class*="install"] h2,
+        div[class*="install"] h3,
+        div[class*="install"] h4,
+        div[class*="instruction"] h1,
+        div[class*="instruction"] h2,
+        div[class*="instruction"] h3,
+        div[class*="instruction"] h4 {
+        color: #32b8c5 !important;
+        border-bottom: 2px solid #32b8c5 !important;
+        }
+
+        div[style*="background"] a,
+        div[class*="install"] a,
+        div[class*="instruction"] a {
+        color: #32b8c5 !important;
+        text-decoration: underline !important;
+        }
+
+        [style*="background: rgb(38, 40, 40)"] *,
+        [style*="background: rgba(38, 40, 40"] *,
+        [style*="background: #262828"] *,
+        [style*="background-color: rgb(38, 40, 40)"] *,
+        [style*="background-color: rgba(38, 40, 40"] *,
+        [style*="background-color: #262828"] * {
+        color: #f5f5f5 !important;
+        }
         </style>
         <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     </head>
@@ -75,7 +118,6 @@
                 <div class="nav__menu" id="nav-menu">
                     <a href="/#home" class="nav__link">Home</a>
                     <a href="/#screenshots" class="nav__link">Screenshots</a>
-                    <a href="/#devices" class="nav__link">Devices</a>
                     <a href="/#downloads" class="nav__link">Download</a>
                     <a href="/#community" class="nav__link">Community</a>
                     <a href="/#contribute" class="nav__link">Contribute</a>
@@ -226,7 +268,9 @@
                     document.getElementById("changelog-content").textContent = changelog;
                 } catch {
                     document.getElementById("changelog-content").textContent = "Failed to load changelog.";
-                }}</script>
+                }}
+                </script>
+                <script src="/app.js"></script>
             </body>
         </body>
     </body>

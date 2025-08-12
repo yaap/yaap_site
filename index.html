@@ -36,26 +36,26 @@
             });
 
             document.addEventListener('DOMContentLoaded', function () {
-  const starsEl = document.getElementById('github-stars');
-  if (!starsEl) return;
+                const starsEl = document.getElementById('github-stars');
+                if (! starsEl) 
+                    return;
+                
 
-  fetch('https://api.github.com/repos/yaap/manifest')
-    .then(response => {
-      if (!response.ok) throw new Error('Network response was not ok');
-      return response.json();
-    })
-    .then(data => {
-      if (data && typeof data.stargazers_count === 'number') {
-        starsEl.textContent = data.stargazers_count;
-      } else {
-        starsEl.textContent = '—';
-      }
-    })
-    .catch(() => {
-      starsEl.textContent = '—';
-    });
-});
-
+                fetch('https://api.github.com/repos/yaap/manifest').then(response => {
+                    if (!response.ok) 
+                        throw new Error('Network response was not ok');
+                    
+                    return response.json();
+                }).then(data => {
+                    if (data && typeof data.stargazers_count === 'number') {
+                        starsEl.textContent = data.stargazers_count;
+                    } else {
+                        starsEl.textContent = '—';
+                    }
+                }).catch(() => {
+                    starsEl.textContent = '—';
+                });
+            });
         </script>
         <style>
             .screenshots {
@@ -159,12 +159,11 @@
         <header class="header">
             <nav class="nav container">
                 <div class="nav__brand">
-                    <h2 class="nav__logo">YAAP</h2>
+                    <h2 class="nav__logo" href="/">YAAP</h2>
                 </div>
                 <div class="nav__menu" id="nav-menu">
                     <a href="#home" class="nav__link">Home</a>
                     <a href="#screenshots" class="nav__link">Screenshots</a>
-                    <a href="#devices" class="nav__link">Devices</a>
                     <a href="#downloads" class="nav__link">Download</a>
                     <a href="#community" class="nav__link">Community</a>
                     <a href="#contribute" class="nav__link">Contribute</a>
@@ -186,10 +185,10 @@
                         <h2 class="hero__subtitle">Yet Another AOSP Project</h2>
                         <div class="hero__buttons">
                             <a href="#downloads" class="btn btn--primary btn--lg">Download Now</a>
-                            <a href="#devices" class="btn btn--outline btn--lg">View Supported Devices</a>
+                            <a href="#downloads" class="btn btn--outline btn--lg">View Supported Devices</a>
                         </div>
                     </div>
-                    <div class="hero__stats">
+                    <!-- <div class="hero__stats">
                         <div class="stat-card">
                             <h3 class="stat-card__number">1+</h3>
                             <p class="stat-card__label">Downloads</p>
@@ -203,15 +202,17 @@
                             <p class="stat-card__label">Contributors</p>
                         </div>
                         <div class="stat-card">
-<span id="github-stars" class="stat-card__number"></span>
-<span class="stat-card__label">GitHub Stars</span>
+                            <span class="stat-card__number" data-stat="github-stars">27</span>
+                            <span class="stat-card__label">GitHub Stars</span>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </section>
 
             <!-- SS Section -->
             <section class="screenshots" id="screenshots">
+                    <div class="container">
+                <h2 class="section-title">Screenshots</h2>
                 <div class="screenshot-carousel">
                     <button class="carousel-arrow left" aria-label="Previous Screenshot">&lt;</button>
                     <div class="screenshot-track">
@@ -256,146 +257,24 @@
                         </div>
                     </div>
                     <button class="carousel-arrow right" aria-label="Next Screenshot">&gt;</button>
+
+                </div>
                 </div>
             </section>
 
             <!-- Supported Devices Section -->
-            <section id="devices" class="devices">
-                <div class="container">
-                    <div class="section-header">
-                        <h2 class="section-title">Supported Devices</h2>
-                        <p class="section-subtitle">YAAP officially supports these devices</p>
-                    </div>
+<section id="downloads" class="downloads">
+    <div class="container">
+        <h2 class="section-title">Supported Devices</h2>
+        <!-- Brand filter buttons will go here -->
+        <div id="brand-filters" class="filter-buttons"></div>
 
-                    <div class="device-filters">
-                        <button class="filter-btn filter-btn--active" data-brand="all">All Brands</button>
-                        <button class="filter-btn" data-brand="OnePlus">OnePlus</button>
-                        <button class="filter-btn" data-brand="Poco">Poco</button>
-                        <button class="filter-btn" data-brand="Xiaomi">Xiaomi</button>
-                        <button class="filter-btn" data-brand="Google">Google</button>
-                        <button class="filter-btn" data-brand="Sony">Sony</button>
-                    </div>
-
-                    <div class="devices__grid">
-                        <div class="device-brand" data-brand="OnePlus">
-                            <h3 class="device-brand__title">OnePlus</h3>
-                            <div class="device-brand__models">
-                                <div class="device-card">
-                                    <h4 class="device-card__name">OnePlus 7</h4>
-                                    <a href="oneplus-7.html" class="btn btn--primary btn--sm">Download</a>
-                                </div>
-                                <div class="device-card">
-                                    <h4 class="device-card__name">OnePlus 7 Pro</h4>
-                                    <a href="oneplus-7-pro.html" class="btn btn--primary btn--sm">Download</a>
-                                </div>
-                                <div class="device-card">
-                                    <h4 class="device-card__name">OnePlus 7 Pro 5G</h4>
-                                    <a href="oneplus-7-pro-5g.html" class="btn btn--primary btn--sm">Download</a>
-                                </div>
-                                <div class="device-card">
-                                    <h4 class="device-card__name">OnePlus 7T</h4>
-                                    <a href="oneplus-7t.html" class="btn btn--primary btn--sm">Download</a>
-                                </div>
-                                <div class="device-card">
-                                    <h4 class="device-card__name">OnePlus 7T Pro</h4>
-                                    <a href="oneplus-7t-pro.html" class="btn btn--primary btn--sm">Download</a>
-                                </div>
-                                <div class="device-card">
-                                    <h4 class="device-card__name">OnePlus 12</h4>
-                                    <a href="oneplus-12.html" class="btn btn--primary btn--sm">Download</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="device-brand" data-brand="Poco">
-                            <h3 class="device-brand__title">Poco</h3>
-                            <div class="device-brand__models">
-                                <div class="device-card">
-                                    <h4 class="device-card__name">Poco X3 Pro</h4>
-                                    <a href="/device.html?codename=vayu" class="btn btn--primary btn--sm">Download</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="device-brand" data-brand="Xiaomi">
-                            <h3 class="device-brand__title">Xiaomi</h3>
-                            <div class="device-brand__models">
-                                <div class="device-card">
-                                    <h4 class="device-card__name">Mi 9T Pro/Redmi K20 Pro</h4>
-                                    <a href="mi-9t-pro.html" class="btn btn--primary btn--sm">Download</a>
-                                </div>
-                                <div class="device-card">
-                                    <h4 class="device-card__name">Redmi Note 10</h4>
-                                    <a href="redmi-note-10.html" class="btn btn--primary btn--sm">Download</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="device-brand" data-brand="Sony">
-                            <h3 class="device-brand__title">Sony</h3>
-                            <div class="device-brand__models">
-                                <div class="device-card">
-                                    <h4 class="device-card__name">Sony Xperia 1 II</h4>
-                                    <a href="sony-xperia-1-ii.html" class="btn btn--primary btn--sm">Download</a>
-                                </div>
-                                <div class="device-card">
-                                    <h4 class="device-card__name">Sony Xperia 5 II</h4>
-                                    <a href="sony-xperia-5-ii.html" class="btn btn--primary btn--sm">Download</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="device-brand" data-brand="Google">
-                            <h3 class="device-brand__title">Google</h3>
-                            <div class="device-brand__models">
-                                <div class="device-card">
-                                    <h4 class="device-card__name">Pixel 7</h4>
-                                    <a href="pixel-7.html" class="btn btn--primary btn--sm">Download</a>
-                                </div>
-                                <div class="device-card">
-                                    <h4 class="device-card__name">Pixel 7 Pro</h4>
-                                    <a href="pixel-7-pro.html" class="btn btn--primary btn--sm">Download</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Download Section -->
-            <section id="downloads" class="downloads">
-                <div class="container">
-                    <div class="section-header">
-                        <h2 class="section-title">Downloads</h2>
-                        <p class="section-subtitle">Get the latest builds of YAAP</p>
-                    </div>
-
-                    <div class="download-info">
-                        <div class="download-card">
-                            <h3 class="download-card__title">Latest Version</h3>
-                            <div class="download-card__version">Android 16</div>
-                            <p class="download-card__description">Based on the latest Android 16 source code with all the goodies and security updates.</p>
-                            <div class="download-card__stats">
-                                <div class="download-stat">
-                                    <span class="download-stat__number">69K+</span>
-                                    <span class="download-stat__label">Total Downloads</span>
-                                </div>
-                            </div>
-                            <div class="download-card__actions">
-                                <a href="https://mirror.codebucket.de/yaap/" class="btn btn--outline">See Download mirrors</a>
-                                <a href="https://github.com/YAAP" target="_blank" class="btn btn--primary">View on GitHub</a>
-                            </div>
-                        </div>
-
-                        <div class="download-requirements">
-                            <h4 class="requirements__title">⚠️ Requirements</h4>
-                            <ul class="requirements__list">
-                                <li>Unlocked bootloader</li>
-                                <li>A working brain with ability to follow device specific instructions</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </section>
+        <!-- Device cards will go here -->
+        <div id="devices-list" class="devices-grid">
+            Loading devices...
+        </div>
+    </div>
+</section>
 
             <!-- Community Section -->
             <section id="community" class="community">
@@ -480,6 +359,95 @@
                 </div>
             </div>
         </footer>
+
+<script>
+    async function loadDevices() {
+    const container = document.getElementById("devices-list");
+    const filterContainer = document.getElementById("brand-filters");
+
+    container.innerHTML = "Loading devices...";
+
+    try {
+        const repoContents = await fetch("https://api.github.com/repos/yaap/device-info/contents").then(r => r.json());
+        const deviceFolders = repoContents.filter(item => item.type === "dir");
+
+        const devicesData = await Promise.all(deviceFolders.map(async folder => {
+            try {
+                const infoUrl = `https://raw.githubusercontent.com/yaap/device-info/master/${folder.name}/${folder.name}.json`;
+                console.log(`https://raw.githubusercontent.com/yaap/device-info/master/${folder.name}/${folder.name}.json`);
+                const info = await fetch(infoUrl).then(r => r.json());
+
+                // Auto-derive brand from first word of name
+                const brandName = info.name ? info.name.split(" ")[0] : "Unknown";
+
+                return { codename: folder.name, brand: brandName, ...info };
+            } catch {
+                return null;
+            }
+        }));
+
+        const devices = devicesData.filter(Boolean);
+
+        // Get unique brands sorted alphabetically
+        const brands = [...new Set(devices.map(d => d.brand))].sort();
+
+        // Render filter buttons
+        filterContainer.innerHTML = `
+            <button data-brand="All" class="filter-btn active">All</button>
+            ${brands.map(b => `<button data-brand="${b}" class="filter-btn">${b}</button>`).join("")}
+        `;
+
+        // Render device cards
+        function renderCards(brand = "All") {
+            const filtered = brand === "All" ? devices : devices.filter(d => d.brand === brand);
+            container.innerHTML = filtered.map(device => `
+                <div class="device-card">
+                    <h3>${device.name}</h3>
+                    <p class="maintainer">Maintainer: ${device.maintainer || "Unknown"}</p>
+                    <a href="device.html?codename=${device.codename}" class="btn btn--primary">Download</a>
+                </div>
+            `).join("");
+            if (!filtered.length) container.innerHTML = "<p>No devices found.</p>";
+        }
+
+        renderCards();
+
+        // Filter button click handling
+        filterContainer.addEventListener("click", e => {
+            if (e.target.classList.contains("filter-btn")) {
+                document.querySelectorAll(".filter-btn").forEach(btn => btn.classList.remove("active"));
+                e.target.classList.add("active");
+                renderCards(e.target.dataset.brand);
+            }
+        });
+
+    } catch (err) {
+        console.error(err);
+        container.innerHTML = "<p>Failed to load devices.</p>";
+    }
+}
+
+document.addEventListener("DOMContentLoaded", loadDevices);
+
+</script>
+
+<style>
+.filter-buttons {
+    margin-bottom: 1rem;
+}
+.filter-btn {
+    background: #444;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    margin: 2px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+.filter-btn.active {
+    background: #64b5f6;
+}
+</style>
 
         <script src="app.js"></script>
     </body>
