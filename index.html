@@ -162,11 +162,11 @@
                     <h2 class="nav__logo" href="/">YAAP</h2>
                 </div>
                 <div class="nav__menu" id="nav-menu">
-                    <a href="#home" class="nav__link">Home</a>
-                    <a href="#screenshots" class="nav__link">Screenshots</a>
-                    <a href="#downloads" class="nav__link">Download</a>
-                    <a href="#community" class="nav__link">Community</a>
-                    <a href="#contribute" class="nav__link">Contribute</a>
+                    <a href="/#home" class="nav__link">Home</a>
+                    <a href="/#screenshots" class="nav__link">Screenshots</a>
+                    <a href="/#downloads" class="nav__link">Download</a>
+                    <a href="/#community" class="nav__link">Community</a>
+                    <a href="/#contribute" class="nav__link">Contribute</a>
                 </div>
                 <button class="nav__toggle" id="nav-toggle">
                     <span></span>
@@ -185,7 +185,6 @@
                         <h2 class="hero__subtitle">Yet Another AOSP Project</h2>
                         <div class="hero__buttons">
                             <a href="#downloads" class="btn btn--primary btn--lg">Download Now</a>
-                            <a href="#downloads" class="btn btn--outline btn--lg">View Supported Devices</a>
                         </div>
                     </div>
                     <!-- <div class="hero__stats">
@@ -263,18 +262,13 @@
             </section>
 
             <!-- Supported Devices Section -->
-<section id="downloads" class="downloads">
-    <div class="container">
-        <h2 class="section-title">Supported Devices</h2>
-        <!-- Brand filter buttons will go here -->
-        <div id="brand-filters" class="filter-buttons"></div>
-
-        <!-- Device cards will go here -->
-        <div id="devices-list" class="devices-grid">
-            Loading devices...
-        </div>
-    </div>
-</section>
+        <section id="downloads" class="downloads">
+            <div class="container">
+                <h2 class="section-title">Supported Devices</h2>
+                <div class="device-filters"></div>
+                <div class="devices__grid"></div>
+            </div>
+        </section>
 
             <!-- Community Section -->
             <section id="community" class="community">
@@ -284,26 +278,26 @@
                         <p class="section-subtitle">Connect with fellow YAAP users and contributors</p>
                     </div>
 
+                    <div class="community-card">
+                            <div class="community-card__icon">💬</div>
+                            <h3 class="community-card__title">Telegram Channel</h3>
+                            <p class="community-card__description">Get notifications about new releases.</p>
+                            <a href="https://t.me/yaapupdates" target="_blank" class="btn btn--primary">Join Channel</a>
+                        </div>
+
                     <div class="community__grid">
                         <div class="community-card">
                             <div class="community-card__icon">💬</div>
-                            <h3 class="community-card__title">Telegram</h3>
-                            <p class="community-card__description">Get updates, support, and discuss YAAP with the community</p>
-                            <a href="https://t.me/yaapupdates" target="_blank" class="btn btn--primary">Join Channel</a>
+                            <h3 class="community-card__title">Telegram Group</h3>
+                            <p class="community-card__description">Get support and discuss about YAAP with users and devs.</p>
+                            <a href="https://t.me/yaapcommon" target="_blank" class="btn btn--primary">Join Chat</a>
                         </div>
 
                         <div class="community-card">
                             <div class="community-card__icon">💻</div>
                             <h3 class="community-card__title">GitHub</h3>
-                            <p class="community-card__description">Contribute to development, report bugs, and access source code</p>
+                            <p class="community-card__description">Contribute to development and access source code</p>
                             <a href="https://github.com/YAAP" target="_blank" class="btn btn--primary">View Repository</a>
-                        </div>
-
-                        <div class="community-card">
-                            <div class="community-card__icon">🌐</div>
-                            <h3 class="community-card__title">XDA Forums</h3>
-                            <p class="community-card__description">Detailed discussions, tutorials, and device-specific threads</p>
-                            <a href="https://xdaforums.com/tags/yet-another-aosp-project/" target="_blank" class="btn btn--primary">Visit Forum</a>
                         </div>
                     </div>
                 </div>
@@ -321,7 +315,7 @@
                         <div class="contribute-ways">
                             <div class="contribute-card">
                                 <h3 class="contribute-card__title">👨‍💻 Development</h3>
-                                <p class="contribute-card__description">Submit patches, fix bugs, or add new features to the codebase</p>
+                                <p class="contribute-card__description">Submit patches, fix bugs or help improve our things further</p>
                             </div>
 
                             <div class="contribute-card">
@@ -330,14 +324,10 @@
                             </div>
 
                             <div class="contribute-card">
-                                <h3 class="contribute-card__title">📱 Device Maintainer</h3>
-                                <p class="contribute-card__description">Help maintain YAAP builds for your device model</p>
+                                <h3 class="contribute-card__title">📱 Translate</h3>
+                                <p class="contribute-card__description">Help translate YAAP to your native language</p>
                             </div>
 
-                            <div class="contribute-card">
-                                <h3 class="contribute-card__title">📝 Documentation</h3>
-                                <p class="contribute-card__description">Improve guides, write tutorials, or translate content</p>
-                            </div>
                         </div>
 
                         <div class="contribute-cta">
@@ -361,63 +351,77 @@
         </footer>
 
 <script>
-    async function loadDevices() {
-    const container = document.getElementById("devices-list");
-    const filterContainer = document.getElementById("brand-filters");
+async function loadDevices() {
+    const container = document.querySelector(".devices__grid");
+    const filterContainer = document.querySelector(".device-filters");
 
     container.innerHTML = "Loading devices...";
 
     try {
+        // Get folder list from GitHub repo
         const repoContents = await fetch("https://api.github.com/repos/yaap/device-info/contents").then(r => r.json());
         const deviceFolders = repoContents.filter(item => item.type === "dir");
 
+        // Fetch each device JSON
         const devicesData = await Promise.all(deviceFolders.map(async folder => {
             try {
                 const infoUrl = `https://raw.githubusercontent.com/yaap/device-info/master/${folder.name}/${folder.name}.json`;
-                console.log(`https://raw.githubusercontent.com/yaap/device-info/master/${folder.name}/${folder.name}.json`);
                 const info = await fetch(infoUrl).then(r => r.json());
-
-                // Auto-derive brand from first word of name
-                const brandName = info.name ? info.name.split(" ")[0] : "Unknown";
-
-                return { codename: folder.name, brand: brandName, ...info };
-            } catch {
+                const brand = info.name ? info.name.split(" ")[0] : "Unknown";
+                return { codename: folder.name, brand, ...info };
+            } catch (err) {
+                console.error("Failed to load device", folder.name, err);
                 return null;
             }
         }));
 
         const devices = devicesData.filter(Boolean);
 
-        // Get unique brands sorted alphabetically
-        const brands = [...new Set(devices.map(d => d.brand))].sort();
+        // Group by brand
+        const brandMap = {};
+        devices.forEach(device => {
+            if (!brandMap[device.brand]) {
+                brandMap[device.brand] = [];
+            }
+            brandMap[device.brand].push(device);
+        });
+
+        // Sort brands alphabetically
+        const sortedBrands = Object.keys(brandMap).sort();
 
         // Render filter buttons
-        filterContainer.innerHTML = `
-            <button data-brand="All" class="filter-btn active">All</button>
-            ${brands.map(b => `<button data-brand="${b}" class="filter-btn">${b}</button>`).join("")}
-        `;
+        filterContainer.innerHTML = `<button class="filter-btn filter-btn--active" data-brand="all">All Brands</button>` +
+            sortedBrands.map(b => `<button class="filter-btn" data-brand="${b}">${b}</button>`).join("");
 
-        // Render device cards
-        function renderCards(brand = "All") {
-            const filtered = brand === "All" ? devices : devices.filter(d => d.brand === brand);
-            container.innerHTML = filtered.map(device => `
-                <div class="device-card">
-                    <h3>${device.name}</h3>
-                    <p class="maintainer">Maintainer: ${device.maintainer || "Unknown"}</p>
-                    <a href="device.html?codename=${device.codename}" class="btn btn--primary">Download</a>
-                </div>
-            `).join("");
-            if (!filtered.length) container.innerHTML = "<p>No devices found.</p>";
+        // Render all devices grouped by brand
+        function renderDevices(brand = "all") {
+            let html = "";
+            sortedBrands.forEach(b => {
+                if (brand === "all" || brand === b) {
+                    html += `<div class="device-brand" data-brand="${b}">
+                                <h3 class="device-brand__title">${b}</h3>
+                                <div class="device-brand__models">
+                                    ${brandMap[b].map(d => `
+                                        <div class="device-card">
+                                            <h4 class="device-card__name">${d.name}</h4>
+                                            <a href="downloads/${d.codename}" class="btn btn--primary btn--sm">Download</a>
+                                        </div>
+                                    `).join("")}
+                                </div>
+                             </div>`;
+                }
+            });
+            container.innerHTML = html || "<p>No devices found.</p>";
         }
 
-        renderCards();
+        renderDevices();
 
-        // Filter button click handling
+        // Filter handling
         filterContainer.addEventListener("click", e => {
             if (e.target.classList.contains("filter-btn")) {
-                document.querySelectorAll(".filter-btn").forEach(btn => btn.classList.remove("active"));
-                e.target.classList.add("active");
-                renderCards(e.target.dataset.brand);
+                document.querySelectorAll(".filter-btn").forEach(btn => btn.classList.remove("filter-btn--active"));
+                e.target.classList.add("filter-btn--active");
+                renderDevices(e.target.dataset.brand);
             }
         });
 

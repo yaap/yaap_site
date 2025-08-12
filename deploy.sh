@@ -1,1 +1,1 @@
-cp -r ~/web/* /srv/http/
+clear && cp -r ~/web/* /srv/http/

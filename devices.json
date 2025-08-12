@@ -1,9 +1,0 @@
-{
-  "vayu": {
-    "name": "Poco X3 Pro",
-    "maintainer": "grepfox",
-    "status": "Active",
-    "instructions_url": "/instructions/vayu.md",
-    "image": "https://wiki.lineageos.org/images/devices/vayu.png"
-  }
-}

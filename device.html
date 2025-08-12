@@ -1,119 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="/style.css">
-        <style>
-            .device-banner {
-                background: linear-gradient(135deg, #1565c0, #0d47a1);
-                color: white;
-                padding: 100px 0 1.5rem;
-                text-align: center;
-            }
-            .device-banner h1 {
-                font-size: 1.8rem;
-                margin-bottom: 0.3rem;
-            }
-            .badge {
-                display: inline-block;
-                background: rgba(255, 255, 255, 0.15);
-                padding: 0.4rem 0.8rem;
-                border-radius: 6px;
-                margin: 0.2rem;
-                font-size: 0.85rem;
-            }
-            .device-image {
-                max-width: 200px;
-                margin-top: 1rem;
-                border-radius: 8px;
-            }
-            .card {
-                background: #1e1e1e;
-                border-radius: 8px;
-                padding: 1.5rem;
-                margin-bottom: 2rem;
-            }
-            .issue-ok,
-            .issue-warn {
-                padding: 0.8rem;
-                border-radius: 6px;
-                color: white;
-                margin-bottom: 0.5rem;
-            }
-            .issue-ok {
-                background: #1b5e20;
-            }
-            .issue-warn {
-                background: #795548;
-            }
-            .step {
-                margin-bottom: 1rem;
-            }
-            .step-number {
-                display: inline-block;
-                background: #1565c0;
-                color: white;
-                width: 26px;
-                height: 26px;
-                border-radius: 50%;
-                text-align: center;
-                line-height: 26px;
-                margin-right: 0.5rem;
-            }
-
-
-        div[style*="background"] *,
-        div[class*="install"] *,
-        div[class*="instruction"] *,
-        div[class*="changelog"] *,
-        section[class*="install"] *,
-        section[class*="instruction"] *,
-        .container > div:not(.hero):not(.nav):not(.footer) * {
-        color: #f5f5f5 !important;
-        }
-
-        div[style*="background"] h1,
-        div[style*="background"] h2,  
-        div[style*="background"] h3,
-        div[style*="background"] h4,
-        div[class*="install"] h1,
-        div[class*="install"] h2,
-        div[class*="install"] h3,
-        div[class*="install"] h4,
-        div[class*="instruction"] h1,
-        div[class*="instruction"] h2,
-        div[class*="instruction"] h3,
-        div[class*="instruction"] h4 {
-        color: #32b8c5 !important;
-        border-bottom: 2px solid #32b8c5 !important;
-        }
-
-        div[style*="background"] a,
-        div[class*="install"] a,
-        div[class*="instruction"] a {
-        color: #32b8c5 !important;
-        text-decoration: underline !important;
-        }
-
-        [style*="background: rgb(38, 40, 40)"] *,
-        [style*="background: rgba(38, 40, 40"] *,
-        [style*="background: #262828"] *,
-        [style*="background-color: rgb(38, 40, 40)"] *,
-        [style*="background-color: rgba(38, 40, 40"] *,
-        [style*="background-color: #262828"] * {
-        color: #f5f5f5 !important;
-        }
-        </style>
-        <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    </head>
-    <body>
-
-        <!-- Header/Navigation -->
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="/style.css" />
+  <style>
+    .device-page {
+      max-width: 1100px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    .device-card {
+      display: flex;
+      gap: 2rem;
+      margin-top: 50px;
+      align-items: center;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      padding: 1.5rem;
+    }
+    .device-card img {
+      width: 260px;
+      border-radius: 8px;
+      object-fit: contain;
+      background: #f9f9f9;
+      padding: 0.5rem;
+    }
+    .device-info {
+      flex: 1;
+    }
+    .device-info h2 {
+      margin: 0;
+      font-size: 1.6rem;
+    }
+    .device-meta {
+      color: #666;
+      font-size: 0.95rem;
+      margin: 0.3rem 0 1rem;
+    }
+    .download-btn {
+      display: inline-block;
+      padding: 0.6rem 1.2rem;
+      background: #009688;
+      color: #fff;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .download-btn:hover {
+      background: #00796b;
+    }
+    .changelog-card {
+      background: #f4f4f4;
+      padding: 1rem;
+      margin-top: 2rem;
+      border-radius: 8px;
+      font-family: monospace;
+      white-space: pre-wrap;
+      overflow-x: auto;
+      border: 1px solid #ddd;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
         <header class="header">
             <nav class="nav container">
                 <div class="nav__brand">
-                    <h2 class="nav__logo">YAAP</h2>
+                    <h2 class="nav__logo" href="/">YAAP</h2>
                 </div>
                 <div class="nav__menu" id="nav-menu">
                     <a href="/#home" class="nav__link">Home</a>
@@ -130,148 +86,76 @@
             </nav>
         </header>
 
-        <section class="device-banner" id="device-banner"></section>
+  <main class="device-page">
+    <div id="device-container">Loading device info...</div>
+  </main>
 
-        <main class="container">
-
-            <div class="card">
-                <h3>Download</h3>
-                <a id="download-link" href="#" class="btn btn--primary" target="_blank">⬇ Download ROM</a>
-            </div>
-
-            <div class="card" id="install-steps">
-                <h3>Installation Instructions</h3>
-                <div id="instructions-list"></div>
-            </div>
-
-            <div class="card" id="known-issues-section" style="display:none;">
-                <h3>Known Issues</h3>
-                <div id="issues"></div>
-            </div>
-
-            <div class="card" id="changelog">
-                <h3>Changelog</h3>
-                <pre id="changelog-content">Loading changelog...</pre>
-            </div>
-
-        </main>
-
-        <footer class="footer">
-            <div class="container">
-                <div class="footer__bottom">
-                    <p>&copy; 2025 YAAP Team. All rights reserved.</p>
-                </div>
-            </div>
-        </footer>
-
-        <script>
-            const codename = new URLSearchParams(window.location.search).get("codename");
-
-            if (! codename) {
-                document.getElementById("device-banner").innerHTML = `<h1>No device selected</h1>`;
-            } else {
-                loadDevice();
-            }
-
-            async function loadDevice() {
-                const data = await fetch("devices.json").then(r => r.json());
-                const device = data[codename];
-                if (! device) {
-                    document.getElementById("device-banner").innerHTML = `<h1>Device Not Found</h1>`;
-                    return;
-                }
-
-                let lastUpdatedText = "";
-                try {
-                    const otaUrl = `https://raw.githubusercontent.com/yaap/ota-info/full-signed/${codename}/${codename}.json`;
-                    const otaData = await fetch(otaUrl).then(r => {
-                        if (!r.ok) 
-                            throw new Error("Failed to fetch OTA JSON");
-                        
-                        return r.json();
-                    });
-
-                    if (otaData.datetime) {
-                        const date = new Date(Number(otaData.datetime) * 1000);
-                        lastUpdatedText = date.toLocaleDateString("en-US", {
-                            day: "numeric",
-                            month: "long",
-                            year: "numeric"
-                        });
-                    }
-                } catch (err) {
-                    console.error("Error fetching OTA date:", err);
-                    lastUpdatedText = device.last_updated || "";
-                }
-
-                let bannerHTML = `
+  <footer class="footer">
     <div class="container">
-        <div class="flex items-center justify-center gap-8">
-            <div>
-                <title>YAAP | ${
-                    device.name
-                }</title>
-                <h1>YAAP for ${
-                    device.name
-                }</h1>
-                <span class="badge">Status: ${
-                    device.status
-                }</span>
-                <span class="badge">Maintainer: ${
-                    device.maintainer
-                }</span>
-                ${
-                    lastUpdatedText ? `<span class="badge">Last Updated: ${lastUpdatedText}</span>` : ""
-                }
-            </div>
-            ${
-                    device.image ? `<div><img src="${
-                        device.image
-                    }" alt="${
-                        device.name
-                    }" class="device-image"></div>` : ""
-                }
-        </div>
+      <p>&copy; YAAP - Yet Another AOSP Project</p>
     </div>
-`;
-                document.getElementById("device-banner").innerHTML = bannerHTML;
+  </footer>
 
-                // Known Issues
-                if (device.known_issues && device.known_issues.length) {
-                    document.getElementById("known-issues-section").style.display = "block";
-                    document.getElementById("issues").innerHTML = device.known_issues.map(i => `<div class="issue-warn">⚠ ${i}</div>`).join("");
-                }
+  <script>
+    async function loadDevice() {
+      const params = new URLSearchParams(window.location.search);
+      const codename = window.location.pathname.split("/").pop() || params.get("codename");
+      const deviceContainer = document.getElementById("device-container");
 
-                // Instructions
-                if (device.instructions_url) {
-                    try {
-                        const rawText = await fetch(device.instructions_url + `?t=${
-                            Date.now()
-                        }`).then(r => r.text());
-                        document.getElementById("instructions-list").innerHTML = marked.parse(rawText);
-                    } catch (err) {
-                        console.error("Error fetching instructions:", err);
-                        document.getElementById("instructions-list").innerHTML = "<p>Failed to load instructions.</p>";
-                    }
-                } else {
-                    document.getElementById("instructions-list").innerHTML = "<p>No installation instructions provided.</p>";
-                }
+      try {
+        const deviceInfo = await fetch(`https://raw.githubusercontent.com/yaap/device-info/master/${codename}/${codename}.json`).then(r => r.json());
+        const otaInfo = await fetch(`https://raw.githubusercontent.com/yaap/ota-info/full-signed/${codename}/${codename}.json`).then(r => r.json());
 
-                // Download
-                downloadsurl = `https://mirror.codebucket.de/yaap/${codename}/`;
-                document.getElementById("download-link").href = downloadsurl;
+        const lastUpdated = otaInfo.datetime
+          ? new Date(otaInfo.datetime * 1000).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })
+          : "Unknown";
 
-                // Changelog
-                changelog_url = `https://raw.githubusercontent.com/yaap/ota-info/full-signed/${codename}/Changelog.txt`;
-                try {
-                    const changelog = await fetch(changelog_url).then(r => r.text());
-                    document.getElementById("changelog-content").textContent = changelog;
-                } catch {
-                    document.getElementById("changelog-content").textContent = "Failed to load changelog.";
-                }}
-                </script>
-                <script src="/app.js"></script>
-            </body>
-        </body>
-    </body>
+        const changelog = await fetch(`https://raw.githubusercontent.com/yaap/ota-info/full-signed/${codename}/Changelog.txt`).then(r => r.text());
+
+
+        deviceContainer.innerHTML = `
+          <div class="device-card">
+            <img src="${deviceInfo.image || 'placeholder.jpg'}" alt="${deviceInfo.name}">
+            <div class="device-info">
+              <h2>${deviceInfo.name}</h2>
+                <title>YAAP for ${deviceInfo.name}</title>
+              <p class="device-meta">Maintainer: ${deviceInfo.maintainer || "Unknown"} | Last Updated: ${lastUpdated}</p>
+              <a class="download-btn" href="https://mirror.codebucket.de/yaap/${codename}/">Download</a>
+            </div>
+          </div>
+          <div class="changelog-card">
+            <h4>Changelog</h4>
+${changelog}
+          </div>
+            <div class="changelog-card">
+            <h3>Flashing Instructions</h3>
+                <div id="instructions-list"></div>
+          </div>
+        `;
+        
+
+      } catch (err) {
+        console.error(err);
+        deviceContainer.innerHTML = "<p>Failed to load device info.</p>";
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", loadDevice);
+  </script>
+  <script>
+        const codename = window.location.pathname.split("/").pop() || params.get("codename");
+        const flashinginst = await fetch(`https://raw.githubusercontent.com/yaap/device-info/master/${codename}/${codename}.md`).then(r => r.text());
+        if (flashinginst) {
+            try {
+                const rawText = await fetch(flashinginst + `?t=${Date.now()}`).then(r => r.text());
+                document.getElementById("instructions-list").innerHTML = marked.parse(rawText);
+            } catch (err) {
+                console.error("Error fetching instructions:", err);
+                document.getElementById("instructions-list").innerHTML = "<p>Failed to load instructions.</p>";
+            }
+        } else {
+            document.getElementById("instructions-list").innerHTML = "<p>No installation instructions provided.</p>";
+        }
+  </script>
+</body>
 </html>
