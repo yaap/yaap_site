@@ -1209,6 +1209,7 @@ html {
   border: 1px solid var(--color-card-border);
   border-radius: var(--radius-lg);
   padding: var(--space-24);
+  margin: var(--space-16);
   text-align: center;
   transition: all var(--duration-normal) var(--ease-standard);
 }
