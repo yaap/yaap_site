@@ -34,28 +34,6 @@
                     }
                 });
             });
-
-            document.addEventListener('DOMContentLoaded', function () {
-                const starsEl = document.getElementById('github-stars');
-                if (! starsEl) 
-                    return;
-                
-
-                fetch('https://api.github.com/repos/yaap/manifest').then(response => {
-                    if (!response.ok) 
-                        throw new Error('Network response was not ok');
-                    
-                    return response.json();
-                }).then(data => {
-                    if (data && typeof data.stargazers_count === 'number') {
-                        starsEl.textContent = data.stargazers_count;
-                    } else {
-                        starsEl.textContent = '—';
-                    }
-                }).catch(() => {
-                    starsEl.textContent = '—';
-                });
-            });
         </script>
         <style>
             .screenshots {
