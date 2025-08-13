@@ -459,6 +459,15 @@ async function loadDevices() {
             brandMap[device.brand].push(device);
         });
 
+        // sort each brand by device name
+        Object.keys(brandMap).forEach(b => {
+            brandMap[b].sort((a, b) => {
+                const nameA = a.name || "";
+                const nameB = b.name || "";
+                return nameA.localeCompare(nameB);
+            });
+        });
+
         // Sort brands alphabetically
         const sortedBrands = Object.keys(brandMap).sort();
 
