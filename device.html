@@ -98,8 +98,10 @@
 
   <script>
     async function loadDevice() {
+      // const params = new URLSearchParams(window.location.search);
+      // const codename = window.location.pathname.split("/").pop() || params.get("codename");
       const params = new URLSearchParams(window.location.search);
-      const codename = window.location.pathname.split("/").pop() || params.get("codename");
+      const codename = params.get("codename");
       const deviceContainer = document.getElementById("device-container");
 
       try {
