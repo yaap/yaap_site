@@ -106,7 +106,7 @@
             }
 
             @media(max-width: 480px) {
-                .device-brand {
+                  .device-brand {
                     padding: var(--space-8);
                     font-size: var(--font-size-md);
                 }
@@ -193,7 +193,7 @@
                     const changelog = await fetch(`https://raw.githubusercontent.com/yaap/ota-info/full-signed/${codename}/Changelog.txt`).then(r => r.text());
 
                     deviceContainer.innerHTML = `
-          <div class="device-card">
+          <div class="device-card" style="padding-top: 30px;">
             <img src="${
                         deviceInfo.image || 'placeholder.jpg'
                     }" alt="${
