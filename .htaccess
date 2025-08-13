@@ -1,5 +1,0 @@
-RewriteEngine On
-RewriteBase /
-
-DirectoryIndex index.html
-RewriteRule ^downloads/([^/]+)/?$ device.html?codename=$1 [L,QSA]
