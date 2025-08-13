@@ -878,8 +878,8 @@ html {
 }
 
 .hero__subtitle {
-  font-size: clamp(1.5rem, 4vw, 2.5rem);
-  font-weight: var(--font-weight-semibold);
+  font-size: clamp(1.00rem, 2vw, 1.25rem);
+  font-weight: 300;
   color: var(--color-gray-200);
   margin-bottom: var(--space-16);
   letter-spacing: -0.02em;
@@ -1553,4 +1553,10 @@ html {
     font-size: 1rem;
     font-weight: 600;
     color: var(--color-text);
+}
+
+.logo-yaap {
+  display: block;
+  height: 40px;
+  width: auto;
 }
