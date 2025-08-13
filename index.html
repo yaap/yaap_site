@@ -148,13 +148,12 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>YAAP - Yet Another AOSP Project</title>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="/style.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     </head>
     <body>
-        <!-- Header/Navigation -->
         <header class="header">
             <nav class="nav container">
                 <div class="nav__brand">
@@ -176,7 +175,6 @@
         </header>
 
         <main>
-            <!-- Hero Section -->
             <section id="home" class="hero">
                 <div class="hero__content container">
                     <div class="hero__text">
@@ -186,28 +184,9 @@
                             <a href="#downloads" class="btn btn--primary btn--lg">Download Now</a>
                         </div>
                     </div>
-                    <!-- <div class="hero__stats">
-                        <div class="stat-card">
-                            <h3 class="stat-card__number">1+</h3>
-                            <p class="stat-card__label">Downloads</p>
-                        </div>
-                        <div class="stat-card">
-                            <h3 class="stat-card__number">4920</h3>
-                            <p class="stat-card__label">Devices</p>
-                        </div>
-                        <div class="stat-card">
-                            <h3 class="stat-card__number">10</h3>
-                            <p class="stat-card__label">Contributors</p>
-                        </div>
-                        <div class="stat-card">
-                            <span class="stat-card__number" data-stat="github-stars">27</span>
-                            <span class="stat-card__label">GitHub Stars</span>
-                        </div>
-                    </div> -->
-                </div>
+                    </div>
             </section>
 
-            <!-- SS Section -->
             <section class="screenshots" id="screenshots">
                     <div class="container">
                 <center><h2 class="section-title">Screenshots</h2></center>
@@ -268,8 +247,7 @@
                 </div>
             </section>
 
-            <!-- Supported Devices Section -->
-        <section id="downloads" class="downloads">
+            <section id="downloads" class="downloads">
             <div class="container">
                 <center><h2 class="section-title">Supported Devices</h2></center>
                 <div class="device-filters"></div>
@@ -277,7 +255,6 @@
             </div>
         </section>
 
-            <!-- Community Section -->
             <section id="community" class="community">
                 <div class="container">
                     <div class="section-header">
@@ -310,7 +287,6 @@
                 </div>
             </section>
 
-            <!-- Contribute Section -->
             <section id="contribute" class="contribute">
                 <div class="container">
                     <div class="section-header">
@@ -347,7 +323,6 @@
             </section>
         </main>
 
-        <!-- Footer -->
         <footer class="footer">
             <div class="container">
                 <div class="footer__bottom">
@@ -441,34 +416,6 @@ async function loadDevices() {
 document.addEventListener("DOMContentLoaded", loadDevices);
 
 </script>
-
-<style>
-.filter-buttons {
-    margin-bottom: 1rem;
-}
-.filter-btn {
-    background: #444;
-    color: white;
-    border: none;
-    padding: 6px 12px;
-    margin: 2px;
-    cursor: pointer;
-    border-radius: 4px;
-}
-.filter-btn.active {
-    background: #64b5f6;
-}
-</style>
-          <script>
-                    document.addEventListener('DOMContentLoaded', () => {
-        const path = window.location.pathname;
-        const match = path.match(/^\/downloads\/([^\/]+)\/?$/);
-        if (match) {
-            const codename = match[1];
-            window.location.replace(`device.html?codename=${encodeURIComponent(codename)}`);
-        }
-        });
-        </script>
-        <script src="app.js"></script>
+<script src="/app.js"></script>
     </body>
 </html>

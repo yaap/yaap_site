@@ -32,6 +32,7 @@
   --color-red-400-rgb: 255, 84, 89;
   --color-orange-500-rgb: 168, 75, 47;
   --color-orange-400-rgb: 230, 129, 97;
+  --color-teal-300-rgb: 50, 184, 198;
 
   /* Background color tokens (Light Mode) */
   --color-bg-1: rgba(59, 130, 246, 0.08); /* Light blue */
@@ -65,6 +66,10 @@
   --color-focus-ring: rgba(var(--color-teal-500-rgb), 0.4);
   --color-select-caret: rgba(var(--color-slate-900-rgb), 0.8);
 
+  /* Mobile Nav Specific Variables */
+  --mobile-nav-bg: var(--color-surface);
+  --mobile-nav-border: var(--color-border);
+  
   /* Common style patterns */
   --focus-ring: 0 0 0 3px var(--color-focus-ring);
   --focus-outline: 2px solid var(--color-primary);
@@ -144,8 +149,8 @@
   --container-xl: 1280px;
 }
 
-/* Dark mode colors */
-@media (prefers-color-scheme: dark) {
+/* Dark mode colors - ONLY applies on screens wider than 768px */
+@media (prefers-color-scheme: dark) and (min-width: 769px) {
   :root {
     /* RGB versions for opacity control (Dark Mode) */
     --color-gray-400-rgb: 119, 124, 124;
@@ -188,6 +193,10 @@
     --button-border-secondary: rgba(var(--color-gray-400-rgb), 0.2);
     --color-border-secondary: rgba(var(--color-gray-400-rgb), 0.2);
     --color-select-caret: rgba(var(--color-gray-200-rgb), 0.8);
+
+    /* Mobile Nav Specific Variables */
+    --mobile-nav-bg: rgba(var(--color-slate-900-rgb), 0.98);
+    --mobile-nav-border: rgba(var(--color-teal-300-rgb), 0.2);
 
     /* Common style patterns - updated for dark mode */
     --focus-ring: 0 0 0 3px var(--color-focus-ring);
@@ -247,6 +256,10 @@
     inset 0 -1px 0 rgba(0, 0, 0, 0.15);
   --color-border-secondary: rgba(var(--color-gray-400-rgb), 0.2);
   --color-select-caret: rgba(var(--color-gray-200-rgb), 0.8);
+  
+  /* Mobile Nav Specific Variables */
+  --mobile-nav-bg: rgba(var(--color-slate-900-rgb), 0.98);
+  --mobile-nav-border: rgba(var(--color-teal-300-rgb), 0.2);
 
   /* Common style patterns - updated for dark mode */
   --focus-ring: 0 0 0 3px var(--color-focus-ring);
@@ -289,6 +302,10 @@
   --color-warning: var(--color-orange-500);
   --color-info: var(--color-slate-500);
   --color-focus-ring: rgba(var(--color-teal-500-rgb), 0.4);
+
+  /* Mobile Nav Specific Variables */
+  --mobile-nav-bg: var(--color-surface);
+  --mobile-nav-border: var(--color-border);
 
   /* RGB versions for light mode */
   --color-success-rgb: var(--color-teal-500-rgb);
@@ -363,7 +380,7 @@ a {
 }
 
 a:hover {
-  color: white;
+  color: var(--color-primary-hover);
 }
 
 code,
@@ -419,6 +436,7 @@ pre code {
 
 .btn--primary:hover {
   background: var(--color-primary-hover);
+  color: var(--color-btn-primary-text);
 }
 
 .btn--primary:active {
@@ -1374,25 +1392,34 @@ html {
 @media (max-width: 768px) {
   .nav__menu {
     position: fixed;
-    top: 100%;
+    top: 60px; /* Adjusted to be below the header */
     left: 0;
     width: 100%;
-    background: rgba(var(--color-slate-900-rgb), 0.98);
+    background: var(--mobile-nav-bg);
     backdrop-filter: blur(10px);
     flex-direction: column;
     gap: var(--space-16);
     padding: var(--space-24);
-    border-top: 1px solid rgba(var(--color-teal-300-rgb), 0.2);
-    transform: translateY(-100%);
+    border-top: 1px solid var(--mobile-nav-border);
+    transform: translateY(-150%); /* Start off-screen */
     opacity: 0;
     visibility: hidden;
     transition: all var(--duration-normal) var(--ease-standard);
+    height: calc(100vh - 60px);
   }
 
   .nav__menu--active {
     transform: translateY(0);
     opacity: 1;
     visibility: visible;
+  }
+  
+  /* Mobile menu links need to adapt to theme */
+  .nav__menu .nav__link {
+    color: var(--color-text);
+  }
+  .nav__menu .nav__link:hover {
+    color: var(--color-primary);
   }
 
   .nav__toggle {
@@ -1509,9 +1536,9 @@ html {
     gap: 1rem;
 }
 .spec-pill {
-    background: #111;
+    background: var(--color-secondary);
     padding: 1rem;
-    border-radius: 8px;
+    border-radius: var(--radius-base);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1520,10 +1547,10 @@ html {
 
 .spec-pill strong {
     font-size: 0.9rem;
-    color: #aaa;
+    color: var(--color-text-secondary);
 }
 .spec-pill span {
     font-size: 1rem;
     font-weight: 600;
-    color: #fff;
+    color: var(--color-text);
 }
