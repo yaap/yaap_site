@@ -124,10 +124,11 @@
           <div class="device-card">
             <img src="${deviceInfo.image || 'placeholder.jpg'}" alt="${deviceInfo.name}">
             <div class="device-info">
-              <h2>${deviceInfo.name}</h2>
+              <h2>${deviceInfo.name} (${codename})</h2>
                 <title>YAAP for ${deviceInfo.name}</title>
               <p class="device-meta">Maintainer: ${deviceInfo.maintainer || "Unknown"} | Last Updated: ${lastUpdated}</p>
               <a class="download-btn" href="https://mirror.codebucket.de/yaap/${codename}/">Download</a>
+              <a class="download-btn" href="${deviceInfo.group}">Support Group</a>
             </div>
           </div>
           <div class="changelog-card">
