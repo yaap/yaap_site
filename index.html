@@ -339,7 +339,7 @@
 
                         <div class="contribute-cta">
                             <h3>Ready to contribute?</h3>
-                            <p>Visit our GitHub organization to get started with contributing to YAAP</p>
+                            <p>Visit our GitHub organization to get started</p>
                             <a href="https://github.com/YAAP" target="_blank" class="btn btn--primary btn--lg">Start Contributing</a>
                         </div>
                     </div>
@@ -459,7 +459,16 @@ document.addEventListener("DOMContentLoaded", loadDevices);
     background: #64b5f6;
 }
 </style>
-
+          <script>
+                    document.addEventListener('DOMContentLoaded', () => {
+        const path = window.location.pathname;
+        const match = path.match(/^\/downloads\/([^\/]+)\/?$/);
+        if (match) {
+            const codename = match[1];
+            window.location.replace(`device.html?codename=${encodeURIComponent(codename)}`);
+        }
+        });
+        </script>
         <script src="app.js"></script>
     </body>
 </html>

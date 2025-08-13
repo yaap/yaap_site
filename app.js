@@ -355,28 +355,27 @@ opacity: 0;
 
     window.addEventListener('scroll', debouncedScrollHandler);
 
-    // GitHub Stars Live Counter - NEW ADDITION
-    const githubStarsElement = document.querySelector('.stat-card__number[data-stat="github-stars"]');
+    // // GitHub Stars Live Counter
+    // const githubStarsElement = document.querySelector('.stat-card__number[data-stat="github-stars"]');
 
-    if (githubStarsElement) { // Show loading state
-        githubStarsElement.textContent = '...';
+    // if (githubStarsElement) { // Show loading state
+    //     githubStarsElement.textContent = '...';
 
-        fetch('https://api.github.com/repos/yaap/manifest').then(response => response.json()).then(data => {
-            if (data && data.stargazers_count !== undefined) {
-                githubStarsElement.textContent = data.stargazers_count;
-            } else {
-                githubStarsElement.textContent = '23'; // fallback
-            }
-        }).catch(() => {
-            githubStarsElement.textContent = '23'; // fallback
-        });
-    }
+    //     fetch('https://api.github.com/repos/yaap/manifest').then(response => response.json()).then(data => {
+    //         if (data && data.stargazers_count !== undefined) {
+    //             githubStarsElement.textContent = data.stargazers_count;
+    //         } else {
+    //             githubStarsElement.textContent = '23'; // fallback
+    //         }
+    //     }).catch(() => {
+    //         githubStarsElement.textContent = '23'; // fallback
+    //     });
+    // }
 
-    console.log('YAAP website loaded successfully! 🚀');
+    console.log('Yay! YAAP website loaded successfully!');
 
 });
 
-// ULTIMATE text color fix - runs every 100ms to catch dynamic content
 document.addEventListener('DOMContentLoaded', function() {
   
   function forceReadableText() {
@@ -412,7 +411,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
   
-  // Run immediately and then every 100ms to catch any dynamic content
   forceReadableText();
   setInterval(forceReadableText, 100);
 });
