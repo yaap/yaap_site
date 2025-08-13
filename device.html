@@ -106,12 +106,14 @@
         const deviceInfo = await fetch(`https://raw.githubusercontent.com/yaap/device-info/master/${codename}/${codename}.json`).then(r => r.json());
         const otaInfo = await fetch(`https://raw.githubusercontent.com/yaap/ota-info/full-signed/${codename}/${codename}.json`).then(r => r.json());
 
-        const lastUpdated = otaInfo.datetime
-          ? new Date(otaInfo.datetime * 1000).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })
-          : "Unknown";
+      let ts = otaInfo.datetime ?? otaInfo.response?.[0]?.datetime;
+      if (typeof ts === "string") ts = parseInt(ts, 10);
+
+      const lastUpdated = ts
+        ? new Date(ts * (ts < 1e12 ? 1000 : 1)).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })
+        : "Unknown";
 
         const changelog = await fetch(`https://raw.githubusercontent.com/yaap/ota-info/full-signed/${codename}/Changelog.txt`).then(r => r.text());
-
 
         deviceContainer.innerHTML = `
           <div class="device-card">
