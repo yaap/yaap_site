@@ -175,10 +175,11 @@
 
                 try {
                     const deviceInfo = await fetch(`https://raw.githubusercontent.com/yaap/device-info/master/${codename}/${codename}.json`).then(r => r.json());
-                    const otaInfo = await fetch(`https://raw.githubusercontent.com/yaap/ota-info/full-signed/${codename}/${codename}.json`).then(r => r.json());
+                    const otaBranch = deviceInfo["ota-branch"]
+                    const otaInfo = await fetch(`https://raw.githubusercontent.com/yaap/ota-info/${otaBranch}/${codename}/${codename}.json`).then(r => r.json());
 
                     let ts = otaInfo.datetime ?? otaInfo.response ?. [0] ?. datetime;
-                    if (typeof ts === "string") 
+                    if (typeof ts === "string")
                         ts = parseInt(ts, 10);
                     
 
@@ -189,7 +190,7 @@
                         day: 'numeric'
                     }) : "Unknown";
 
-                    const changelog = await fetch(`https://raw.githubusercontent.com/yaap/ota-info/full-signed/${codename}/Changelog.txt`).then(r => r.text());
+                    const changelog = await fetch(`https://raw.githubusercontent.com/yaap/ota-info/${otaBranch}/${codename}/Changelog.txt`).then(r => r.text());
 
                     deviceContainer.innerHTML = `
           <div class="device-card" style="padding-top: 30px;">
