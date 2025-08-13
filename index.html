@@ -94,15 +94,10 @@
                 align-items: center;
                 justify-content: center;
                 opacity: 0;
-                transform: scale(0.96) translateX(80px);
-                transition: opacity 0.7s cubic-bezier(0.45,0.45,0.28,1), transform 0.7s cubic-bezier(0.45,0.45,0.28,1);
-                pointer-events: none;
+                transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
             }
             .screenshot-slide.active {
                 opacity: 1;
-                transform: scale(1) translateX(0px);
-                pointer-events: auto;
-                z-index: 10;
             }
             .screenshot-slide img {
                 max-width: 95%;
