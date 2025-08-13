@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/markdown-it@13.0.1/dist/markdown-it.min.js"></script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel="stylesheet" href="/style.css" />
@@ -128,11 +128,32 @@
 ${changelog}
           </div>
             <div class="changelog-card">
-            <h3>Flashing Instructions</h3>
-                <div id="instructions-list"></div>
+<h2>Flashing Instructions</h2>
+<div id="instructions-list">Loading instructions...</div>
+
+                </div>
           </div>
         `;
         
+fetch(`https://raw.githubusercontent.com/yaap/device-info/master/${codename}/${codename}.md`)
+  .then(res => res.text())
+  .then(md => {
+    const container = document.getElementById('instructions-list');
+    if (!container) return;
+
+    const parsed = window.markdownit({
+      html: true,
+      linkify: true,
+      typographer: true,
+      breaks: true
+    }).render(md);
+
+    container.innerHTML = parsed;
+  })
+  .catch(err => {
+    const container = document.getElementById('instructions-list');
+    if (container) container.innerHTML = "<p>Failed to load instructions.</p>";
+  });
 
       } catch (err) {
         console.error(err);
@@ -141,21 +162,6 @@ ${changelog}
     }
 
     document.addEventListener("DOMContentLoaded", loadDevice);
-  </script>
-  <script>
-        const codename = window.location.pathname.split("/").pop() || params.get("codename");
-        const flashinginst = await fetch(`https://raw.githubusercontent.com/yaap/device-info/master/${codename}/${codename}.md`).then(r => r.text());
-        if (flashinginst) {
-            try {
-                const rawText = await fetch(flashinginst + `?t=${Date.now()}`).then(r => r.text());
-                document.getElementById("instructions-list").innerHTML = marked.parse(rawText);
-            } catch (err) {
-                console.error("Error fetching instructions:", err);
-                document.getElementById("instructions-list").innerHTML = "<p>Failed to load instructions.</p>";
-            }
-        } else {
-            document.getElementById("instructions-list").innerHTML = "<p>No installation instructions provided.</p>";
-        }
   </script>
 </body>
 </html>
