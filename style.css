@@ -407,6 +407,10 @@ pre code {
   padding: 0;
 }
 
+.tinted_logo {
+  fill: var(--color-primary);
+}
+
 /* Buttons */
 .btn {
   display: inline-flex;
