@@ -158,12 +158,12 @@
     --color-gray-200-rgb: 245, 245, 245;
 
     /* Background color tokens (Dark Mode) */
-    --color-bg-1: rgba(29, 78, 216, 0.15); /* Dark blue */
+    --color-bg-1: rgba(59, 59, 59, 0.15); /* Dark gray */
     --color-bg-2: rgba(180, 83, 9, 0.15); /* Dark yellow */
     --color-bg-3: rgba(21, 128, 61, 0.15); /* Dark green */
-    --color-bg-4: rgba(0, 85, 90, 0.15); /* Dark teal */
+    --color-bg-4: rgba(0, 35, 110, 0.15); /* Dark blue */
     --color-bg-5: rgba(107, 33, 168, 0.15); /* Dark purple */
-    --color-bg-6: rgba(194, 65, 12, 0.15); /* Dark orange */
+    --color-bg-6: rgba(8, 145, 178, 0.15); /* Dark cyan */
     --color-bg-7: rgba(190, 24, 93, 0.15); /* Dark pink */
     --color-bg-8: rgba(8, 145, 178, 0.15); /* Dark cyan */
     
