@@ -149,8 +149,8 @@
   --container-xl: 1280px;
 }
 
-/* Dark mode colors - ONLY applies on screens wider than 768px */
-@media (prefers-color-scheme: dark) and (min-width: 769px) {
+/* Dark mode colors */
+@media (prefers-color-scheme: dark) {
   :root {
     /* RGB versions for opacity control (Dark Mode) */
     --color-gray-400-rgb: 119, 124, 124;
