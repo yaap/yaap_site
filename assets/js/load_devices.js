@@ -60,7 +60,7 @@ async function loadDevices() {
                                     ${brandMap[b].map(d => `
                                         <div class="device-card">
                                             <h4 class="device-card__name">${d.name}</h4>
-                                            <a href="/devices/${d.codename}" class="btn btn--primary btn--sm">Download</a>
+                                            <a href="/device.html?codename=${d.codename}" class="btn btn--primary btn--sm">Download</a>
                                         </div>
                                     `).join("")}
                                 </div>
