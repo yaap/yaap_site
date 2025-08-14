@@ -1,495 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Our Team | YAAP</title>
-  <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
-  <link rel="stylesheet" href="/style.css" />
-  
-  <style>
-    .team, .maintainers {
-      padding: 60px 0;
-      text-align: center;
-    }
-    .team__title, .maintainers__title {
-      font-size: 2.5rem;
-      margin-bottom: 40px;
-      color: var(--color-primary);
-    }
-    .team__grid, .maintainers__grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 32px;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-    .team-card, .maintainer-card {
-      background: #F1F3F4;
-      border-radius: 24px;
-      border: 1px solid rgba(31,27,24,0.12);
-      box-shadow: 0 2px 4px rgba(31,27,24,0.12);
-      padding: 24px;
-      transition: all 200ms cubic-bezier(0.4,0,0.2,1);
-    }
-    .team-card:hover, .maintainer-card:hover {
-      background: #E0E0E0;
-      box-shadow: 0 4px 8px rgba(31,27,24,0.16);
-      transform: translateY(-4px);
-    }
-    
-    /* Dark mode cards */
-    @media (prefers-color-scheme: dark) {
-      .team-card, .maintainer-card {
-        background: var(--color-charcoal-800, #262829);
-        border-color: rgba(255,255,255,0.12);
-      }
-      .team-card:hover, .maintainer-card:hover {
-        background: var(--color-charcoal-700, #1f2123);
-      }
-      .team-card__name, .maintainer-card__name {
-        color: var(--color-gray-200, #f5f5f5) !important;
-      }
-      .team-card__bio, .maintainer-card__bio {
-        color: rgba(245,245,245,0.7) !important;
-      }
-    }
-    
-    .team-card:hover .team-card__name,
-    .team-card:hover .team-card__role,
-    .team-card:hover .team-card__bio,
-    .maintainer-card:hover .maintainer-card__name,
-    .maintainer-card:hover .maintainer-card__role,
-    .maintainer-card:hover .maintainer-card__bio {
-      color: inherit;
-    }
-    .team-card__photo, .maintainer-card__photo {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 16px;
-      box-shadow: 0 1px 3px rgba(31,27,24,0.08);
-    }
-    .team-card__name, .maintainer-card__name {
-      font-size: 1.125rem;
-      font-weight: 600;
-      margin-bottom: 4px;
-      color: #1F1B18;
-    }
-    .team-card__role, .maintainer-card__role {
-      font-size: 0.875rem;
-      font-weight: 500;
-      margin-bottom: 12px;
-      color: var(--color-primary);
-    }
-    .team-card__bio, .maintainer-card__bio {
-      font-size: 0.875rem;
-      line-height: 1.5;
-      margin-bottom: 16px;
-      color: rgba(31,27,24,0.7);
-    }
-    .team-card__links, .maintainer-card__links {
-      display: flex;
-      gap: 12px;
-      justify-content: center;
-    }
-    
-    /* Device info styling for maintainer cards */
-    .maintainer-card__devices {
-      margin-bottom: 16px;
-    }
-    .device-badge {
-      display: inline-block;
-      background: var(--color-primary);
-      color: white;
-      padding: 4px 8px;
-      border-radius: 12px;
-      font-size: 0.75rem;
-      margin: 2px;
-    }
-    .device-count {
-      font-size: 0.875rem;
-      color: var(--color-primary);
-      font-weight: 500;
-    }
-    
-    /* Original brand colors for social links */
-    .social-link {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      color: white;
-      text-decoration: none;
-      transition: all 0.2s ease;
-    }
-    
-    .social-link.github {
-      background: #333;
-    }
-    .social-link.github:hover {
-      background: #24292e;
-      transform: scale(1.1);
-    }
-    
-    .social-link.telegram {
-      background: #0088cc;
-    }
-    .social-link.telegram:hover {
-      background: #006ba6;
-      transform: scale(1.1);
-    }
-    
-    @media (prefers-color-scheme: dark) {
-      .social-link.github {
-        background: #f5f5f5;
-        color: #333;
-      }
-      .social-link.github:hover {
-        background: #e0e0e0;
-        color: #24292e;
-      }
-      .social-link.github svg {
-        fill: #333;
-      }
-    }
-    
-    .social-link svg {
-      width: 20px;
-      height: 20px;
-      fill: currentColor;
-    }
-    
-    /* Loading state */
-    .team-card.loading, .maintainer-card.loading {
-      opacity: 0.7;
-      position: relative;
-    }
-    .team-card.loading::after, .maintainer-card.loading::after {
-      content: "Loading...";
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 0.875rem;
-      color: var(--color-primary);
-    }
-    
-    @media (max-width: 480px) {
-      .team-card, .maintainer-card {
-        padding: 16px;
-      }
-      .team-card__photo, .maintainer-card__photo {
-        width: 80px;
-        height: 80px;
-      }
-    }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Team | YAAP</title>
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="/assets/css/team.css">
 </head>
 <body>
-        <!-- Navbar -->
-        <header class="header">
-            <nav class="nav container">
-                <div class="nav__brand">
-                    <h2 class="nav__logo">
-                        <a href="/"><img src="/assets/yaaplogo.svg" alt="YAAP" class="logo-yaap" width="220" height="auto"></a>
-                    </h2>
-                </div>
-                <div class="nav__menu" id="nav-menu">
-                    <a href="/#home" class="nav__link">Home</a>
-                    <a href="/team.html" class="nav__link">Our team</a>
-                    <a href="/#screenshots" class="nav__link">Screenshots</a>
-                    <a href="/#downloads" class="nav__link">Download</a>
-                    <a href="/#community" class="nav__link">Community</a>
-                    <a href="/#contribute" class="nav__link">Contribute</a>
-                </div>
-                <button class="nav__toggle" id="nav-toggle">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </nav>
-        </header>
-
-  <!-- Core Developers -->
-  <section class="team">
-    <div class="container">
-      <h2 class="team__title" style="padding-top: 30px;">Core Developers</h2>
-      <div class="team__grid" id="team-grid">
-      </div>
-    </div>
-  </section>
-
-  <!-- Device Maintainers -->
-  <section class="maintainers">
-    <div class="container">
-      <h2 class="maintainers__title">Device Maintainers</h2>
-      <div class="maintainers__grid" id="maintainers-grid">
-      </div>
-    </div>
-  </section>
-
-        <footer class="footer">
-            <div class="container">
-                <div class="footer__bottom">
-                    <p>&copy; 2025 YAAP Team. All rights reserved.</p>
-                    <p>YAAP is not affiliated with Google or Android.</p>
-                    <a href="https://github.com/yaap/yaap_site">Site source code</a>
-                </div>
+    <!-- Navbar -->
+    <header class="header">
+        <nav class="nav container">
+            <div class="nav__brand">
+            <h2 class="nav__logo">
+                <a href="/"><img src="/assets/yaaplogo.svg" alt="YAAP" class="logo-yaap" width="220" height="auto"></a>
+            </h2>
             </div>
+            <div class="nav__menu" id="nav-menu">
+                <a href="/#home" class="nav__link">Home</a>
+                <a href="/team.html" class="nav__link">Our team</a>
+                <a href="/#screenshots" class="nav__link">Screenshots</a>
+                <a href="/#downloads" class="nav__link">Download</a>
+                <a href="/#community" class="nav__link">Community</a>
+                <a href="/#contribute" class="nav__link">Contribute</a>
+            </div>
+            <button class="nav__toggle" id="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
 
-  <script src="/app.js"></script>
-  <script>
-    // Team data with GitHub usernames and additional info
-    const teamMembers = [
-      {
-        github: 'idoybh',
-        telegram: 'idoybh',
-        role: 'Lead Developer & Co-Founder',
-        fallbackBio: 'CS student, hobbyist programmer, and lead developer at YAAP. Passionate about clean AOSP experiences.'
-      },
-      {
-        github: 'RealJohnGalt', 
-        telegram: 'jgop7t',
-        role: 'Lead Developer & Kernel Expert',
-        fallbackBio: ''
-      },
-      {
-        github: 'poad42',
-        telegram: 'poad42', 
-        role: 'Lead Developer & Co-Founder',
-        fallbackBio: 'Embedded Software Developer at trinamiX GmbH and co-founder of YAAP. Building stable, feature-rich AOSP ROMs.'
-      }
-    ];
-
-    // GitHub and Telegram SVG icons
-    const icons = {
-      github: `<svg viewBox="0 0 24 24">
-        <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-      </svg>`,
-      telegram: `<svg viewBox="0 0 24 24">
-        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.568 8.16c-.169 1.858-1.135 6.392-1.604 8.48-.199.879-.589 1.172-0.966 1.201-.819.075-1.439-.54-2.232-1.061-1.239-.812-1.928-1.316-3.127-2.107-1.383-.912-.487-1.414.302-2.235.206-.214 3.789-3.473 3.858-3.771.009-.037.017-.175-.066-.248s-.174-.041-.249-.024c-.106.024-1.793 1.139-5.062 3.345-.479.329-.913.489-1.302.481-.428-.009-1.252-.242-1.865-.44-.751-.244-1.349-.374-1.297-.789.027-.216.324-.437.893-.663 3.498-1.524 5.831-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635.099-.002.321.023.465.141.121.098.154.228.170.32.016.092.036.301.020.465z"/>
-      </svg>`
-    };
-
-    async function fetchGitHubUser(username) {
-      try {
-        const response = await fetch(`https://api.github.com/users/${username}`);
-        if (!response.ok) throw new Error('GitHub API error');
-        return await response.json();
-      } catch (error) {
-        console.error(`Error fetching GitHub data for ${username}:`, error);
-        return null;
-      }
-    }
-
-    // Function to parse multiple maintainers from a string
-    function parseMaintainers(maintainerString) {
-      if (!maintainerString) return [];
-      
-      // Split by common delimiters: &, and, ,, +
-      const delimiters = /\s*(?:&|and|,|\+)\s*/i;
-      return maintainerString
-        .split(delimiters)
-        .map(m => m.trim())
-        .filter(m => m.length > 0);
-    }
-
-    async function fetchDeviceInfo() {
-      try {
-        // Get the list of device folders
-        const response = await fetch('https://api.github.com/repos/yaap/device-info/contents/');
-        if (!response.ok) throw new Error('Failed to fetch device list');
-        const folders = await response.json();
-        
-        const deviceData = [];
-        
-        // Fetch device info for each folder
-        for (const folder of folders) {
-          if (folder.type === 'dir') {
-            try {
-              // Get all files in the folder
-              const folderResponse = await fetch(`https://api.github.com/repos/yaap/device-info/contents/${folder.name}`);
-              if (folderResponse.ok) {
-                const folderContents = await folderResponse.json();
-                
-                // Find JSON files
-                const jsonFiles = folderContents.filter(file => 
-                  file.type === 'file' && file.name.endsWith('.json')
-                );
-                
-                // Fetch each JSON file
-                for (const jsonFile of jsonFiles) {
-                  try {
-                    const fileResponse = await fetch(jsonFile.download_url);
-                    if (fileResponse.ok) {
-                      const deviceInfo = await fileResponse.json();
-                      deviceData.push({
-                        codename: folder.name,
-                        filename: jsonFile.name,
-                        ...deviceInfo
-                      });
-                    }
-                  } catch (error) {
-                    console.error(`Error fetching ${jsonFile.name} for ${folder.name}:`, error);
-                  }
-                }
-              }
-            } catch (error) {
-              console.error(`Error fetching device info for ${folder.name}:`, error);
-            }
-          }
-        }
-        
-        return deviceData;
-      } catch (error) {
-        console.error('Error fetching device info:', error);
-        return [];
-      }
-    }
-
-    function createTeamCard(member, githubData) {
-      const name = githubData?.name || githubData?.login || member.github;
-      const bio = githubData?.bio || member.fallbackBio;
-      const avatar = githubData?.avatar_url || `https://github.com/${member.github}.png`;
-
-      return `
-        <div class="team-card">
-          <img src="${avatar}" alt="${name}" class="team-card__photo" />
-          <h3 class="team-card__name">${name}</h3>
-          <p class="team-card__role">${member.role}</p>
-          <p class="team-card__bio">${bio}</p>
-          <div class="team-card__links">
-            <a href="https://github.com/${member.github}" class="social-link github" target="_blank" aria-label="GitHub">
-              ${icons.github}
-            </a>
-            <a href="https://t.me/${member.telegram}" class="social-link telegram" target="_blank" aria-label="Telegram">
-              ${icons.telegram}
-            </a>
-          </div>
+    <!-- Core Developers -->
+    <section class="team">
+    <div class="container">
+        <h2 class="team__title" style="padding-top: 30px;">Core Developers</h2>
+        <div class="team__grid" id="team-grid">
         </div>
-      `;
-    }
+    </div>
+    </section>
 
-    function createMaintainerCard(maintainer, githubData, devices) {
-      const name = githubData?.name || githubData?.login || maintainer;
-      const bio = githubData?.bio || `Maintains ${devices.length} device${devices.length > 1 ? 's' : ''} for YAAP`;
-      const avatar = githubData?.avatar_url || `https://github.com/${maintainer}.png`;
-      
-      // Get telegram ID from device data - use tg_id if available, fallback to maintainer (github username)
-      const telegramId = devices.find(d => d.tg_id)?.tg_id || maintainer;
-      
-      const deviceBadges = devices.slice(0, 3).map(device => 
-        `<span class="device-badge" title="${device.name}">${device.codename}</span>`
-      ).join('');
-      
-      const moreDevices = devices.length > 3 ? `<span class="device-count">+${devices.length - 3} more</span>` : '';
-
-      const telegramLink = telegramId ? 
-        `<a href="https://t.me/${telegramId}" class="social-link telegram" target="_blank" aria-label="Telegram">
-          ${icons.telegram}
-        </a>` : '';
-
-      return `
-        <div class="maintainer-card">
-          <img src="${avatar}" alt="${name}" class="maintainer-card__photo" />
-          <h3 class="maintainer-card__name">${name}</h3>
-          <p class="maintainer-card__role">Device Maintainer</p>
-          <div class="maintainer-card__devices">
-            ${deviceBadges}
-            ${moreDevices}
-          </div>
-          <p class="maintainer-card__bio">${bio}</p>
-          <div class="maintainer-card__links">
-            <a href="https://github.com/${maintainer}" class="social-link github" target="_blank" aria-label="GitHub">
-              ${icons.github}
-            </a>
-            ${telegramLink}
-          </div>
+    <!-- Device Maintainers -->
+    <section class="maintainers">
+        <div class="container">
+            <h2 class="maintainers__title">Device Maintainers</h2>
+            <div class="maintainers__grid" id="maintainers-grid">
+            </div>
         </div>
-      `;
-    }
+    </section>
 
-    async function loadTeamMembers() {
-      const teamGrid = document.getElementById('team-grid');
-      
-      teamGrid.innerHTML = teamMembers.map(() => '<div class="team-card loading"></div>').join('');
-      
-      const teamCards = await Promise.all(
-        teamMembers.map(async (member) => {
-          const githubData = await fetchGitHubUser(member.github);
-          return createTeamCard(member, githubData);
-        })
-      );
-      
-      teamGrid.innerHTML = teamCards.join('');
-    }
-
-    async function loadMaintainers() {
-      const maintainersGrid = document.getElementById('maintainers-grid');
-      
-      maintainersGrid.innerHTML = '<div class="maintainer-card loading"></div><div class="maintainer-card loading"></div>';
-      
-      const deviceData = await fetchDeviceInfo();
-      
-      if (deviceData.length === 0) {
-        maintainersGrid.innerHTML = `
-          <div class="maintainer-card">
-            <img src="https://via.placeholder.com/100" alt="No Data" class="maintainer-card__photo" />
-            <h3 class="maintainer-card__name">No Maintainers Found</h3>
-            <p class="maintainer-card__role">Device Maintainer</p>
-            <p class="maintainer-card__bio">Unable to load maintainer data at this time.</p>
-            <div class="maintainer-card__links"></div>
-          </div>
-        `;
-        return;
-      }
-      
-      // Group devices by maintainer, handling multiple maintainers per device
-      const maintainerDevices = {};
-      
-      deviceData.forEach(device => {
-        if (device.maintainer) {
-          // Parse multiple maintainers
-          const maintainers = parseMaintainers(device.maintainer);
-          
-          maintainers.forEach(maintainer => {
-            if (!maintainerDevices[maintainer]) {
-              maintainerDevices[maintainer] = [];
-            }
-            
-            // Add device info with telegram ID
-            maintainerDevices[maintainer].push({
-              ...device,
-              // Keep tg_id from the device if it exists
-              tg_id: device.tg_id || maintainer
-            });
-          });
-        }
-      });
-      
-      console.log('Maintainer devices:', maintainerDevices); // Debug log
-      
-      // Create maintainer cards
-      const maintainerCards = await Promise.all(
-        Object.entries(maintainerDevices).map(async ([maintainer, devices]) => {
-          const githubData = await fetchGitHubUser(maintainer);
-          return createMaintainerCard(maintainer, githubData, devices);
-        })
-      );
-      
-      maintainersGrid.innerHTML = maintainerCards.join('');
-    }
-
-    // Load data when page loads
-    document.addEventListener('DOMContentLoaded', () => {
-      loadTeamMembers();
-      loadMaintainers();
-    });
-  </script>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__bottom">
+                <p>&copy; 2025 YAAP Team. All rights reserved.</p>
+                <p>YAAP is not affiliated with Google or Android.</p>
+                <a href="https://github.com/yaap/yaap_site">Site source code</a>
+            </div>
+        </div>
+    </footer>
+    <script src="/assets/js/app.js"></script>
+    <script src="/assets/js/team.js"></script>
 </body>
 </html>

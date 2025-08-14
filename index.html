@@ -1,388 +1,275 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                const slides = document.querySelectorAll('.screenshot-slide');
-                const leftBtn = document.querySelector('.carousel-arrow.left');
-                const rightBtn = document.querySelector('.carousel-arrow.right');
-                let current = 0;
+<head>
+    <script src="/assets/js/index.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YAAP - Yet Another AOSP Project</title>
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav container">
+            <div class="nav__brand">
+                <h2 class="nav__logo">
+                    <a href="/"><img src="/assets/yaaplogo.svg" alt="YAAP" class="logo-yaap" width="220" height="auto"></a>
+                </h2>
+            </div>
+            <div class="nav__menu" id="nav-menu">
+                <a href="/#home" class="nav__link">Home</a>
+                <a href="/team.html" class="nav__link">Our team</a>
+                <a href="/#screenshots" class="nav__link">Screenshots</a>
+                <a href="/#downloads" class="nav__link">Download</a>
+                <a href="/#community" class="nav__link">Community</a>
+                <a href="/#contribute" class="nav__link">Contribute</a>
+            </div>
+            <button class="nav__toggle" id="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
 
-                function showSlide(idx) {
-                    slides.forEach((slide, i) => {
-                        slide.classList.toggle('active', i === idx);
-                    });
-                }
-
-                showSlide(current);
-
-                rightBtn.addEventListener('click', () => {
-                    current = (current + 1) % slides.length;
-                    showSlide(current);
-                });
-
-                leftBtn.addEventListener('click', () => {
-                    current = (current - 1 + slides.length) % slides.length;
-                    showSlide(current);
-                });
-
-                document.addEventListener('keydown', (e) => {
-                    if (e.key === 'ArrowLeft') {
-                        leftBtn.click();
-                    } else if (e.key === 'ArrowRight') {
-                        rightBtn.click();
-                    }
-                });
-            });
-        </script>
-        <style>
-            .screenshots {
-                padding: 120px 0;
-                background: var(--color-bg-1);
-                min-height: 100vh
-            }
-            .screenshot-carousel {
-                position: relative;
-                max-width: 100vw;
-                margin: 0 auto;
-                height: 70vh;
-                overflow: hidden;
-                border-radius: var(--radius-lg);
-                box-shadow: var(--shadow-lg);
-                background: var(--color-surface);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-            .screenshot-track {
-                position: relative;
-                width: 100%;
-                height: 100%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-            .screenshot-slide {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                opacity: 0;
-                transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            }
-            .screenshot-slide.active {
-                opacity: 1;
-            }
-            .screenshot-slide img {
-                max-width: 95%;
-                max-height: 95%;
-                border-radius: var(--radius-md);
-                box-shadow: 0 5px 40px rgba(0, 0, 0, 0.12);
-            }
-            .carousel-arrow {
-                background: var(--color-primary);
-                color: var(--color-white);
-                border: none;
-                border-radius: var(--radius-lg);
-                width: 48px;
-                height: 48px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                position: relative;
-                z-index: 20;
-                cursor: pointer;
-                transition: background 0.2s;
-                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
-            }
-            .carousel-arrow:hover {
-                background: var(--color-primary-hover);
-            }
-            .carousel-arrow.left {
-                margin-right: 16px;
-            }
-            .carousel-arrow.right {
-                margin-left: 16px;
-            }
-            @media(max-width: 768px) {
-                .carousel-arrow {
-                    width: 38px;
-                    height: 38px;
-                    font-size: 1.5rem;
-                }
-            }
-        </style>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>YAAP - Yet Another AOSP Project</title>
-        <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
-        <link rel="stylesheet" href="/style.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    </head>
-    <body>
-        <header class="header">
-            <nav class="nav container">
-                <div class="nav__brand">
-                    <h2 class="nav__logo">
-                        <a href="/"><img src="/assets/yaaplogo.svg" alt="YAAP" class="logo-yaap" width="220" height="auto"></a>
-                    </h2>
-                </div>
-                <div class="nav__menu" id="nav-menu">
-                    <a href="/#home" class="nav__link">Home</a>
-                    <a href="/team.html" class="nav__link">Our team</a>
-                    <a href="/#screenshots" class="nav__link">Screenshots</a>
-                    <a href="/#downloads" class="nav__link">Download</a>
-                    <a href="/#community" class="nav__link">Community</a>
-                    <a href="/#contribute" class="nav__link">Contribute</a>
-                </div>
-                <button class="nav__toggle" id="nav-toggle">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </nav>
-        </header>
-
-        <main>
-            <section id="home" class="hero">
-                <div class="hero__content container">
-                    <div class="hero__text">
-                        <h1 class="hero__title">
-                            <center>
-                                <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 549.70121 172.21381" alt="YAAP" width="280px" class="header-yaap" height="auto">
-                                    <defs>
-                                        <style>
-                                        .cls-1 {
-                                            fill: var(--color-white);
-                                        }
-                                        </style>
-                                    </defs>
-                                    <g id="Letters">
-                                        <g id="Y">
-                                        <path class="cls-1" d="M93.667,482.31543a15.00012,15.00012,0,0,1-15-15V391.74756L33.19336,334.98535a14.99993,14.99993,0,1,1,23.41309-18.75683l48.76709,60.873A14.99986,14.99986,0,0,1,108.667,386.48v80.83545A15.00012,15.00012,0,0,1,93.667,482.31543Z" transform="translate(-29.89938 -310.10162)"/>
-                                        <path class="cls-1" d="M118.70215,371.19287a15.00192,15.00192,0,0,1-12.2832-23.59228l21.562-30.86329A15.00011,15.00011,0,0,1,152.57373,333.919l-21.562,30.86328A14.98433,14.98433,0,0,1,118.70215,371.19287Z" transform="translate(-29.89938 -310.10162)"/>
-                                        </g>
-                                        <g id="A">
-                                        <path class="cls-1" d="M170.27881,480.82422a15.01052,15.01052,0,0,1-14.21045-19.81055l47.6001-140.71875a15.00008,15.00008,0,0,1,28.21386-.5664l33.9795,88.56738A15,15,0,1,1,237.85254,419.042l-19.0874-49.75146L184.48633,470.627A15.00589,15.00589,0,0,1,170.27881,480.82422Z" transform="translate(-29.89938 -310.10162)"/>
-                                        <g>
-                                            <line x1="235.11467" y1="137.22455" x2="243.02868" y2="156.71893"/>
-                                            <path class="cls-1" d="M272.93359,481.82422a15.00431,15.00431,0,0,1-13.9038-9.36133l-7.91407-19.49414a15.00018,15.00018,0,1,1,27.79688-11.28516l7.91406,19.49414a15.00849,15.00849,0,0,1-13.89307,20.64649Z" transform="translate(-29.89938 -310.10162)"/>
-                                        </g>
-                                        </g>
-                                        <g id="A-2" data-name="A">
-                                        <path class="cls-1" d="M323.2793,480.82422a15.01052,15.01052,0,0,1-14.21094-19.81055L356.668,320.29492a15.00009,15.00009,0,0,1,28.21387-.5664L418.8623,408.2959A15.00021,15.00021,0,1,1,390.85254,419.042L371.76465,369.29,337.48633,470.627A15.00574,15.00574,0,0,1,323.2793,480.82422Z" transform="translate(-29.89938 -310.10162)"/>
-                                        <g>
-                                            <line x1="388.11467" y1="137.22455" x2="396.02868" y2="156.71893"/>
-                                            <path class="cls-1" d="M425.93262,481.82422a15.00415,15.00415,0,0,1-13.90332-9.36133l-7.91407-19.49414a15.00018,15.00018,0,1,1,27.79688-11.28516l7.91406,19.49414a15.00849,15.00849,0,0,1-13.89355,20.64649Z" transform="translate(-29.89938 -310.10162)"/>
-                                        </g>
-                                        </g>
-                                        <g id="P">
-                                        <g>
-                                            <line x1="445.67948" y1="15.30433" x2="445.67948" y2="100.5747"/>
-                                            <path class="cls-1" d="M475.5791,425.67676a15.00012,15.00012,0,0,1-15-15v-85.271a15,15,0,0,1,30,0v85.271A15.00012,15.00012,0,0,1,475.5791,425.67676Z" transform="translate(-29.89938 -310.10162)"/>
-                                        </g>
-                                        <path class="cls-1" d="M537.12109,404.21H511.51758a12.5,12.5,0,0,1,0-25h25.60351c9.63868,0,17.4795-9.42627,17.4795-21.01269s-7.84082-21.0127-17.4795-21.0127H511.51758a12.5,12.5,0,0,1,0-25h25.60351c23.42286,0,42.4795,20.64111,42.4795,46.0127S560.544,404.21,537.12109,404.21Z" transform="translate(-29.89938 -310.10162)"/>
-                                        <g>
-                                            <line x1="445.86104" y1="137.35216" x2="445.86104" y2="156.84655"/>
-                                            <path class="cls-1" d="M475.76074,481.94824a15.00012,15.00012,0,0,1-15-15V447.4541a15,15,0,0,1,30,0v19.49414A15.00012,15.00012,0,0,1,475.76074,481.94824Z" transform="translate(-29.89938 -310.10162)"/>
-                                        </g>
-                                        </g>
+    <main>
+        <section id="home" class="hero">
+            <div class="hero__content container">
+                <div class="hero__text">
+                    <h1 class="hero__title">
+                        <center>
+                            <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 549.70121 172.21381" alt="YAAP" width="280px" class="header-yaap" height="auto">
+                                <defs>
+                                    <style>
+                                    .cls-1 {
+                                        fill: var(--color-white);
+                                    }
+                                    </style>
+                                </defs>
+                                <g id="Letters">
+                                    <g id="Y">
+                                    <path class="cls-1" d="M93.667,482.31543a15.00012,15.00012,0,0,1-15-15V391.74756L33.19336,334.98535a14.99993,14.99993,0,1,1,23.41309-18.75683l48.76709,60.873A14.99986,14.99986,0,0,1,108.667,386.48v80.83545A15.00012,15.00012,0,0,1,93.667,482.31543Z" transform="translate(-29.89938 -310.10162)"/>
+                                    <path class="cls-1" d="M118.70215,371.19287a15.00192,15.00192,0,0,1-12.2832-23.59228l21.562-30.86329A15.00011,15.00011,0,0,1,152.57373,333.919l-21.562,30.86328A14.98433,14.98433,0,0,1,118.70215,371.19287Z" transform="translate(-29.89938 -310.10162)"/>
                                     </g>
-                                </svg>
-                            </center>
-                        </h1>
-                        <h2 class="hero__subtitle">Yet Another AOSP Project</h2>
-                        <div class="hero__buttons">
-                            <a href="/#downloads" class="btn btn--primary btn--lg">Download Now</a>
-                        </div>
+                                    <g id="A">
+                                    <path class="cls-1" d="M170.27881,480.82422a15.01052,15.01052,0,0,1-14.21045-19.81055l47.6001-140.71875a15.00008,15.00008,0,0,1,28.21386-.5664l33.9795,88.56738A15,15,0,1,1,237.85254,419.042l-19.0874-49.75146L184.48633,470.627A15.00589,15.00589,0,0,1,170.27881,480.82422Z" transform="translate(-29.89938 -310.10162)"/>
+                                    <g>
+                                        <line x1="235.11467" y1="137.22455" x2="243.02868" y2="156.71893"/>
+                                        <path class="cls-1" d="M272.93359,481.82422a15.00431,15.00431,0,0,1-13.9038-9.36133l-7.91407-19.49414a15.00018,15.00018,0,1,1,27.79688-11.28516l7.91406,19.49414a15.00849,15.00849,0,0,1-13.89307,20.64649Z" transform="translate(-29.89938 -310.10162)"/>
+                                    </g>
+                                    </g>
+                                    <g id="A-2" data-name="A">
+                                    <path class="cls-1" d="M323.2793,480.82422a15.01052,15.01052,0,0,1-14.21094-19.81055L356.668,320.29492a15.00009,15.00009,0,0,1,28.21387-.5664L418.8623,408.2959A15.00021,15.00021,0,1,1,390.85254,419.042L371.76465,369.29,337.48633,470.627A15.00574,15.00574,0,0,1,323.2793,480.82422Z" transform="translate(-29.89938 -310.10162)"/>
+                                    <g>
+                                        <line x1="388.11467" y1="137.22455" x2="396.02868" y2="156.71893"/>
+                                        <path class="cls-1" d="M425.93262,481.82422a15.00415,15.00415,0,0,1-13.90332-9.36133l-7.91407-19.49414a15.00018,15.00018,0,1,1,27.79688-11.28516l7.91406,19.49414a15.00849,15.00849,0,0,1-13.89355,20.64649Z" transform="translate(-29.89938 -310.10162)"/>
+                                    </g>
+                                    </g>
+                                    <g id="P">
+                                    <g>
+                                        <line x1="445.67948" y1="15.30433" x2="445.67948" y2="100.5747"/>
+                                        <path class="cls-1" d="M475.5791,425.67676a15.00012,15.00012,0,0,1-15-15v-85.271a15,15,0,0,1,30,0v85.271A15.00012,15.00012,0,0,1,475.5791,425.67676Z" transform="translate(-29.89938 -310.10162)"/>
+                                    </g>
+                                    <path class="cls-1" d="M537.12109,404.21H511.51758a12.5,12.5,0,0,1,0-25h25.60351c9.63868,0,17.4795-9.42627,17.4795-21.01269s-7.84082-21.0127-17.4795-21.0127H511.51758a12.5,12.5,0,0,1,0-25h25.60351c23.42286,0,42.4795,20.64111,42.4795,46.0127S560.544,404.21,537.12109,404.21Z" transform="translate(-29.89938 -310.10162)"/>
+                                    <g>
+                                        <line x1="445.86104" y1="137.35216" x2="445.86104" y2="156.84655"/>
+                                        <path class="cls-1" d="M475.76074,481.94824a15.00012,15.00012,0,0,1-15-15V447.4541a15,15,0,0,1,30,0v19.49414A15.00012,15.00012,0,0,1,475.76074,481.94824Z" transform="translate(-29.89938 -310.10162)"/>
+                                    </g>
+                                    </g>
+                                </g>
+                            </svg>
+                        </center>
+                    </h1>
+                    <h2 class="hero__subtitle">Yet Another AOSP Project</h2>
+                    <div class="hero__buttons">
+                        <a href="/#downloads" class="btn btn--primary btn--lg">Download Now</a>
                     </div>
-                    </div>
-            </section>
-
-            <section class="screenshots" id="screenshots">
-                    <div class="container">
-                <center><h2 class="section-title">Screenshots</h2></center>
-                <div class="screenshot-carousel">
-                    <button class="carousel-arrow left" aria-label="Previous Screenshot">
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                            <path d="M12 5L7 10L12 15" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </button>
-                    <div class="screenshot-track">
-                        <div class="screenshot-slide active">
-                            <img src="ss/about.webp">
-                        </div>
-                        <div class="screenshot-slide active">
-                            <img src="ss/updater_1.webp">
-                        </div>
-                        <div class="screenshot-slide active">
-                            <img src="ss/updater_2.webp">
-                        </div>
-                        <div class="screenshot-slide active">
-                            <img src="ss/updater_3.webp">
-                        </div>
-                        <div class="screenshot-slide active">
-                            <img src="ss/updater_settings.webp">
-                        </div>
-                        <div class="screenshot-slide active">
-                            <img src="ss/about_phone_1.webp">
-                        </div>
-                        <div class="screenshot-slide active">
-                            <img src="ss/about_phone_2.webp">
-                        </div>
-                        <div class="screenshot-slide active">
-                            <img src="ss/about_phone_3.webp">
-                        </div>
-                        <div class="screenshot-slide active">
-                            <img src="ss/0.webp">
-                        </div>
-                        <div class="screenshot-slide active">
-                            <img src="ss/1.webp">
-                        </div>
-                        <div class="screenshot-slide">
-                            <img src="ss/2.webp">
-                        </div>
-                        <div class="screenshot-slide">
-                            <img src="ss/3.webp">
-                        </div>
-                        <div class="screenshot-slide">
-                            <img src="ss/4.webp">
-                        </div>
-                        <div class="screenshot-slide">
-                            <img src="ss/5.webp">
-                        </div>
-                        <div class="screenshot-slide">
-                            <img src="ss/6.webp">
-                        </div>
-                        <div class="screenshot-slide">
-                            <img src="ss/7.webp">
-                        </div>
-                        <div class="screenshot-slide">
-                            <img src="ss/8.webp">
-                        </div>
-                        <div class="screenshot-slide">
-                            <img src="ss/9.webp">
-                        </div>
-                        <div class="screenshot-slide">
-                            <img src="ss/10.webp">
-                        </div>
-                        <div class="screenshot-slide">
-                            <img src="ss/11.webp">
-                        </div>
-                        <div class="screenshot-slide">
-                            <img src="ss/12.webp">
-                        </div>
-                        <div class="screenshot-slide">
-                            <img src="ss/13.webp">
-                        </div>
-                        <div class="screenshot-slide">
-                            <img src="ss/14.webp">
-                        </div>
-                        <div class="screenshot-slide">
-                            <img src="ss/15.webp">
-                        </div>
-                        <div class="screenshot-slide">
-                            <img src="ss/16.webp">
-                        </div>
-                        <div class="screenshot-slide">
-                            <img src="ss/17.webp">
-                        </div>
-                        <div class="screenshot-slide">
-                            <img src="ss/18.webp">
-                        </div>
-                        <div class="screenshot-slide">
-                            <img src="ss/19.webp">
-                        </div>
-                        <div class="screenshot-slide">
-                            <img src="ss/20.webp">
-                        </div>
-                        <div class="screenshot-slide">
-                            <img src="ss/21.webp">
-                        </div>
-                        <div class="screenshot-slide">
-                            <img src="ss/22.webp">
-                        </div>
-                        <div class="screenshot-slide">
-                            <img src="ss/nav_1.webp">
-                        </div>
-                        <div class="screenshot-slide">
-                            <img src="ss/nav_2.webp">
-                        </div>
-                        <div class="screenshot-slide">
-                            <img src="ss/23.webp">
-                        </div>
-                        <div class="screenshot-slide">
-                            <img src="ss/24.webp">
-                        </div>
-                        <div class="screenshot-slide">
-                            <img src="ss/25.webp">
-                        </div>
-                        <div class="screenshot-slide">
-                            <img src="ss/26.webp">
-                        </div>
-                        <div class="screenshot-slide">
-                            <img src="ss/27.webp">
-                        </div>
-                        <div class="screenshot-slide">
-                            <img src="ss/28.webp">
-                        </div>
-                        <div class="screenshot-slide">
-                            <img src="ss/29.webp">
-                        </div>
-                        <div class="screenshot-slide">
-                            <img src="ss/30.webp">
-                        </div>
-                        <div class="screenshot-slide">
-                            <img src="ss/31.webp">
-                        </div>
-                        <div class="screenshot-slide">
-                            <img src="ss/32.webp">
-                        </div>
-                        <div class="screenshot-slide">
-                            <img src="ss/33.webp">
-                        </div>
-                        <div class="screenshot-slide">
-                            <img src="ss/34.webp">
-                        </div>
-                        <div class="screenshot-slide">
-                            <img src="ss/35.webp">
-                        </div>
-                        <div class="screenshot-slide">
-                            <img src="ss/36.webp">
-                        </div>
-                        <div class="screenshot-slide">
-                            <img src="ss/37.webp">
-                        </div>
-                        <div class="screenshot-slide">
-                            <img src="ss/38.webp">
-                        </div>
-                        <div class="screenshot-slide">
-                            <img src="ss/39.webp">
-                        </div>
-                        <div class="screenshot-slide">
-                            <img src="ss/40.webp">
-                        </div>
-                        <div class="screenshot-slide">
-                            <img src="ss/41.webp">
-                        </div>
-                    </div>
-                    <button class="carousel-arrow right" aria-label="Next Screenshot">
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                            <path d="M8 5L13 10L8 15" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </button>
-
                 </div>
                 </div>
-            </section>
+        </section>
 
-            <section id="downloads" class="downloads">
+        <section class="screenshots" id="screenshots">
+                <div class="container">
+            <center><h2 class="section-title">Screenshots</h2></center>
+            <div class="screenshot-carousel">
+                <button class="carousel-arrow left" aria-label="Previous Screenshot">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M12 5L7 10L12 15" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                <div class="screenshot-track">
+                    <div class="screenshot-slide active">
+                        <img src="ss/about.webp">
+                    </div>
+                    <div class="screenshot-slide active">
+                        <img src="ss/updater_1.webp">
+                    </div>
+                    <div class="screenshot-slide active">
+                        <img src="ss/updater_2.webp">
+                    </div>
+                    <div class="screenshot-slide active">
+                        <img src="ss/updater_3.webp">
+                    </div>
+                    <div class="screenshot-slide active">
+                        <img src="ss/updater_settings.webp">
+                    </div>
+                    <div class="screenshot-slide active">
+                        <img src="ss/about_phone_1.webp">
+                    </div>
+                    <div class="screenshot-slide active">
+                        <img src="ss/about_phone_2.webp">
+                    </div>
+                    <div class="screenshot-slide active">
+                        <img src="ss/about_phone_3.webp">
+                    </div>
+                    <div class="screenshot-slide active">
+                        <img src="ss/0.webp">
+                    </div>
+                    <div class="screenshot-slide active">
+                        <img src="ss/1.webp">
+                    </div>
+                    <div class="screenshot-slide">
+                        <img src="ss/2.webp">
+                    </div>
+                    <div class="screenshot-slide">
+                        <img src="ss/3.webp">
+                    </div>
+                    <div class="screenshot-slide">
+                        <img src="ss/4.webp">
+                    </div>
+                    <div class="screenshot-slide">
+                        <img src="ss/5.webp">
+                    </div>
+                    <div class="screenshot-slide">
+                        <img src="ss/6.webp">
+                    </div>
+                    <div class="screenshot-slide">
+                        <img src="ss/7.webp">
+                    </div>
+                    <div class="screenshot-slide">
+                        <img src="ss/8.webp">
+                    </div>
+                    <div class="screenshot-slide">
+                        <img src="ss/9.webp">
+                    </div>
+                    <div class="screenshot-slide">
+                        <img src="ss/10.webp">
+                    </div>
+                    <div class="screenshot-slide">
+                        <img src="ss/11.webp">
+                    </div>
+                    <div class="screenshot-slide">
+                        <img src="ss/12.webp">
+                    </div>
+                    <div class="screenshot-slide">
+                        <img src="ss/13.webp">
+                    </div>
+                    <div class="screenshot-slide">
+                        <img src="ss/14.webp">
+                    </div>
+                    <div class="screenshot-slide">
+                        <img src="ss/15.webp">
+                    </div>
+                    <div class="screenshot-slide">
+                        <img src="ss/16.webp">
+                    </div>
+                    <div class="screenshot-slide">
+                        <img src="ss/17.webp">
+                    </div>
+                    <div class="screenshot-slide">
+                        <img src="ss/18.webp">
+                    </div>
+                    <div class="screenshot-slide">
+                        <img src="ss/19.webp">
+                    </div>
+                    <div class="screenshot-slide">
+                        <img src="ss/20.webp">
+                    </div>
+                    <div class="screenshot-slide">
+                        <img src="ss/21.webp">
+                    </div>
+                    <div class="screenshot-slide">
+                        <img src="ss/22.webp">
+                    </div>
+                    <div class="screenshot-slide">
+                        <img src="ss/nav_1.webp">
+                    </div>
+                    <div class="screenshot-slide">
+                        <img src="ss/nav_2.webp">
+                    </div>
+                    <div class="screenshot-slide">
+                        <img src="ss/23.webp">
+                    </div>
+                    <div class="screenshot-slide">
+                        <img src="ss/24.webp">
+                    </div>
+                    <div class="screenshot-slide">
+                        <img src="ss/25.webp">
+                    </div>
+                    <div class="screenshot-slide">
+                        <img src="ss/26.webp">
+                    </div>
+                    <div class="screenshot-slide">
+                        <img src="ss/27.webp">
+                    </div>
+                    <div class="screenshot-slide">
+                        <img src="ss/28.webp">
+                    </div>
+                    <div class="screenshot-slide">
+                        <img src="ss/29.webp">
+                    </div>
+                    <div class="screenshot-slide">
+                        <img src="ss/30.webp">
+                    </div>
+                    <div class="screenshot-slide">
+                        <img src="ss/31.webp">
+                    </div>
+                    <div class="screenshot-slide">
+                        <img src="ss/32.webp">
+                    </div>
+                    <div class="screenshot-slide">
+                        <img src="ss/33.webp">
+                    </div>
+                    <div class="screenshot-slide">
+                        <img src="ss/34.webp">
+                    </div>
+                    <div class="screenshot-slide">
+                        <img src="ss/35.webp">
+                    </div>
+                    <div class="screenshot-slide">
+                        <img src="ss/36.webp">
+                    </div>
+                    <div class="screenshot-slide">
+                        <img src="ss/37.webp">
+                    </div>
+                    <div class="screenshot-slide">
+                        <img src="ss/38.webp">
+                    </div>
+                    <div class="screenshot-slide">
+                        <img src="ss/39.webp">
+                    </div>
+                    <div class="screenshot-slide">
+                        <img src="ss/40.webp">
+                    </div>
+                    <div class="screenshot-slide">
+                        <img src="ss/41.webp">
+                    </div>
+                </div>
+                <button class="carousel-arrow right" aria-label="Next Screenshot">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M8 5L13 10L8 15" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+
+            </div>
+            </div>
+        </section>
+
+        <section id="downloads" class="downloads">
             <div class="container">
                 <center><h2 class="section-title">Supported Devices</h2></center>
                 <div class="device-filters"></div>
@@ -390,185 +277,90 @@
             </div>
         </section>
 
-            <section id="community" class="community">
-                <div class="container">
-                    <div class="section-header">
-                        <h2 class="section-title">Join Our Community</h2>
-                        <p class="section-subtitle">Connect with fellow YAAP users and contributors</p>
+        <section id="community" class="community">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Join Our Community</h2>
+                    <p class="section-subtitle">Connect with fellow YAAP users and contributors</p>
+                </div>
+
+                <div class="community-card">
+                        <div class="community-card__icon">💬</div>
+                        <h3 class="community-card__title">Telegram Channel</h3>
+                        <p class="community-card__description">Get notifications about new releases.</p>
+                        <a href="https://t.me/yaapupdates" target="_blank" class="btn btn--primary">Join Channel</a>
+                    </div>
+
+                <div class="community__grid">
+                    <div class="community-card">
+                        <div class="community-card__icon">💬</div>
+                        <h3 class="community-card__title">Telegram Group</h3>
+                        <p class="community-card__description">Get support and discuss about YAAP with users and devs.</p>
+                        <a href="https://t.me/yaapcommon" target="_blank" class="btn btn--primary">Join Chat</a>
                     </div>
 
                     <div class="community-card">
-                            <div class="community-card__icon">💬</div>
-                            <h3 class="community-card__title">Telegram Channel</h3>
-                            <p class="community-card__description">Get notifications about new releases.</p>
-                            <a href="https://t.me/yaapupdates" target="_blank" class="btn btn--primary">Join Channel</a>
-                        </div>
-
-                    <div class="community__grid">
-                        <div class="community-card">
-                            <div class="community-card__icon">💬</div>
-                            <h3 class="community-card__title">Telegram Group</h3>
-                            <p class="community-card__description">Get support and discuss about YAAP with users and devs.</p>
-                            <a href="https://t.me/yaapcommon" target="_blank" class="btn btn--primary">Join Chat</a>
-                        </div>
-
-                        <div class="community-card">
-                            <div class="community-card__icon">💻</div>
-                            <h3 class="community-card__title">GitHub</h3>
-                            <p class="community-card__description">Contribute to development and access source code</p>
-                            <a href="https://github.com/YAAP" target="_blank" class="btn btn--primary">View Repository</a>
-                        </div>
+                        <div class="community-card__icon">💻</div>
+                        <h3 class="community-card__title">GitHub</h3>
+                        <p class="community-card__description">Contribute to development and access source code</p>
+                        <a href="https://github.com/YAAP" target="_blank" class="btn btn--primary">View Repository</a>
                     </div>
-                </div>
-            </section>
-
-            <section id="contribute" class="contribute">
-                <div class="container">
-                    <div class="section-header">
-                        <h2 class="section-title">Contribute to YAAP</h2>
-                        <p class="section-subtitle">Help us make YAAP better for everyone</p>
-                    </div>
-
-                    <div class="contribute__content">
-                        <div class="contribute-ways">
-                            <div class="contribute-card">
-                                <h3 class="contribute-card__title">👨‍💻 Development</h3>
-                                <p class="contribute-card__description">Submit patches, fix bugs or help improve our things further</p>
-                            </div>
-
-                            <div class="contribute-card">
-                                <h3 class="contribute-card__title">🧪 Testing</h3>
-                                <p class="contribute-card__description">Test builds on your device and report issues to help us improve stability</p>
-                            </div>
-
-                            <div class="contribute-card">
-                                <h3 class="contribute-card__title">📱 Translate</h3>
-                                <p class="contribute-card__description">Help translate YAAP to your native language</p>
-                            </div>
-
-                            
-                            <div class="contribute-card">
-                                <a href="https://github.com/sponsors/yaap" target="_blank" rel="noopener noreferrer">
-                                    <h3 class="contribute-card__title">💵 Donate</h3>
-                                    <p class="contribute-card__description">We do not require nor ask for it. Only do if you feel like it</p>
-                                </a>
-                            </div>
-                            </a>
-                        </div>
-
-                        <div class="contribute-cta">
-                            <h3>Ready to contribute?</h3>
-                            <p>Visit our GitHub organization to get started</p>
-                            <a href="https://github.com/YAAP" target="_blank" class="btn btn--primary btn--lg">Start Contributing</a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </main>
-
-        <footer class="footer">
-            <div class="container">
-                <div class="footer__bottom">
-                    <p>&copy; 2025 YAAP Team. All rights reserved.</p>
-                    <p>YAAP is not affiliated with Google or Android.</p>
-                    <a href="https://github.com/yaap/yaap_site">Site source code</a>
                 </div>
             </div>
-        </footer>
+        </section>
 
-<script>
-async function loadDevices() {
-    const container = document.querySelector(".devices__grid");
-    const filterContainer = document.querySelector(".device-filters");
+        <section id="contribute" class="contribute">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Contribute to YAAP</h2>
+                    <p class="section-subtitle">Help us make YAAP better for everyone</p>
+                </div>
 
-    container.innerHTML = "Loading devices...";
+                <div class="contribute__content">
+                    <div class="contribute-ways">
+                        <div class="contribute-card">
+                            <h3 class="contribute-card__title">👨‍💻 Development</h3>
+                            <p class="contribute-card__description">Submit patches, fix bugs or help improve our things further</p>
+                        </div>
 
-    try {
-        // Get folder list from GitHub repo
-        const repoContents = await fetch("https://api.github.com/repos/yaap/device-info/contents").then(r => r.json());
-        const deviceFolders = repoContents.filter(item => item.type === "dir");
+                        <div class="contribute-card">
+                            <h3 class="contribute-card__title">🧪 Testing</h3>
+                            <p class="contribute-card__description">Test builds on your device and report issues to help us improve stability</p>
+                        </div>
 
-        // Fetch each device JSON
-        const devicesData = await Promise.all(deviceFolders.map(async folder => {
-            try {
-                const infoUrl = `https://raw.githubusercontent.com/yaap/device-info/master/${folder.name}/${folder.name}.json`;
-                const info = await fetch(infoUrl).then(r => r.json());
-                const brand = info.name ? info.name.split(" ")[0] : "Unknown";
-                return { codename: folder.name, brand, ...info };
-            } catch (err) {
-                console.error("Failed to load device", folder.name, err);
-                return null;
-            }
-        }));
+                        <div class="contribute-card">
+                            <h3 class="contribute-card__title">📱 Translate</h3>
+                            <p class="contribute-card__description">Help translate YAAP to your native language</p>
+                        </div>
+                        <div class="contribute-card">
+                            <a href="https://github.com/sponsors/yaap" target="_blank" rel="noopener noreferrer">
+                                <h3 class="contribute-card__title">💵 Donate</h3>
+                                <p class="contribute-card__description">We do not require nor ask for it. Only do if you feel like it</p>
+                            </a>
+                        </div>
+                        </a>
+                    </div>
 
-        const devices = devicesData.filter(Boolean);
+                    <div class="contribute-cta">
+                        <h3>Ready to contribute?</h3>
+                        <p>Visit our GitHub organization to get started</p>
+                        <a href="https://github.com/YAAP" target="_blank" class="btn btn--primary btn--lg">Start Contributing</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
-        // Group by brand
-        const brandMap = {};
-        devices.forEach(device => {
-            if (!brandMap[device.brand]) {
-                brandMap[device.brand] = [];
-            }
-            brandMap[device.brand].push(device);
-        });
-
-        // sort each brand by device name
-        Object.keys(brandMap).forEach(b => {
-            brandMap[b].sort((a, b) => {
-                const nameA = a.name || "";
-                const nameB = b.name || "";
-                return nameA.localeCompare(nameB);
-            });
-        });
-
-        // Sort brands alphabetically
-        const sortedBrands = Object.keys(brandMap).sort();
-
-        // Render filter buttons
-        filterContainer.innerHTML = `<button class="filter-btn filter-btn--active" data-brand="all">All Brands</button>` +
-            sortedBrands.map(b => `<button class="filter-btn" data-brand="${b}">${b}</button>`).join("");
-
-        // Render all devices grouped by brand
-        function renderDevices(brand = "all") {
-            let html = "";
-            sortedBrands.forEach(b => {
-                if (brand === "all" || brand === b) {
-                    html += `<div class="device-brand" data-brand="${b}">
-                                <h3 class="device-brand__title">${b}</h3>
-                                <div class="device-brand__models">
-                                    ${brandMap[b].map(d => `
-                                        <div class="device-card">
-                                            <h4 class="device-card__name">${d.name}</h4>
-                                            <a href="devices/${d.codename}" class="btn btn--primary btn--sm">Download</a>
-                                        </div>
-                                    `).join("")}
-                                </div>
-                             </div>`;
-                }
-            });
-            container.innerHTML = html || "<p>No devices found.</p>";
-        }
-
-        renderDevices();
-
-        // Filter handling
-        filterContainer.addEventListener("click", e => {
-            if (e.target.classList.contains("filter-btn")) {
-                document.querySelectorAll(".filter-btn").forEach(btn => btn.classList.remove("filter-btn--active"));
-                e.target.classList.add("filter-btn--active");
-                renderDevices(e.target.dataset.brand);
-            }
-        });
-
-    } catch (err) {
-        console.error(err);
-        container.innerHTML = "<p>Failed to load devices.</p>";
-    }
-}
-
-document.addEventListener("DOMContentLoaded", loadDevices);
-
-</script>
-<script src="/app.js"></script>
-    </body>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__bottom">
+                <p>&copy; 2025 YAAP Team. All rights reserved.</p>
+                <p>YAAP is not affiliated with Google or Android.</p>
+                <a href="https://github.com/yaap/yaap_site">Site source code</a>
+            </div>
+        </div>
+    </footer>
+    <script src="/assets/js/app.js"></script>
+    <script src="/assets/js/load_devices.js"></script>
+</body>
 </html>

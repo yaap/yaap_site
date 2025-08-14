@@ -1,270 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <script src="https://cdn.jsdelivr.net/npm/markdown-it@13.0.1/dist/markdown-it.min.js"></script>
-        <meta charset="UTF-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
-        <link rel="stylesheet" href="/style.css"/>
-        <style>
-            .device-page {
-                max-width: 1100px;
-                margin: 2rem auto;
-                padding: 0 1rem;
-            }
-            .device-card {
-                display: flex;
-                gap: 2rem;
-                margin-top: 50px;
-                align-items: center;
-                background: var(--color-surface);
-                border-radius: 12px;
-                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-                padding: 1.5rem;
-            }
-            .device-card img {
-                width: 260px;
-                border-radius: 8px;
-                object-fit: contain;
-                background: var(--color-surface);
-                padding: 0.5rem;
-            }
-            .device-info {
-                flex: 1;
-            }
-            .device-info h2 {
-                margin: 0;
-                font-size: 1.6rem;
-            }
-            .device-meta {
-                color: #666;
-                font-size: 0.95rem;
-                margin: 0.3rem 0 1rem;
-            }
-            .download-btn {
-                display: inline-block;
-                padding: 0.6rem 1.2rem;
-                background: var(--color-primary);
-                color: var(--color-surface);
-                border-radius: 6px;
-                text-decoration: none;
-                font-weight: 500;
-            }
-            .download-btn:hover {
-                background: var(--color-primary-hover);
-                color: var(--color-surface);
-            }
-            .changelog-card {
-                background: var(--color-surface);
-                padding: 1rem;
-                margin-top: 2rem;
-                border-radius: 8px;
-                font-family: monospace;
-                white-space: pre-wrap;
-                overflow-x: auto;
-                border: 1px solid var(--color-surface);
-            }
-
-            @media(max-width: 768px) {
-                .devices {
-                    padding: 40px 0;
-                }
-                .devices__grid {
-                    grid-template-columns: 1fr;
-                    gap: var(--space-16);
-                }
-                .device-brand {
-                    padding: var(--space-12);
-                }
-            }
-            @media(max-width: 480px) {
-                .devices {
-                    padding: 20px 0;
-                }
-                .devices__grid {
-                    gap: var(--space-8);
-                }
-                .device-brand {
-                    padding: var(--space-8);
-                }
-            }
-
-            @media(max-width: 768px) {
-                .device-filters {
-                    overflow-x: auto;
-                    flex-wrap: nowrap;
-                    gap: var(--space-8);
-                    margin-bottom: var(--space-16);
-                    padding-bottom: var(--space-8);
-                }
-                .filter-btn {
-                    white-space: nowrap;
-                    flex-shrink: 0;
-                    font-size: var(--font-size-sm);
-                    padding: var(--space-4) var(--space-8);
-                }
-            }
-
-            @media(max-width: 480px) {
-                  .device-brand {
-                    padding: var(--space-8);
-                    font-size: var(--font-size-md);
-                }
-                .device-card {
-                    padding: var(--space-8);
-                    flex-direction: column;
-                    gap: var(--space-4);
-                }
-                .device-card__name {
-                    font-size: var(--font-size-base);
-                }
-            }
-
-            @media(max-width: 480px) {
-                .device-card .btn {
-                    font-size: var(--font-size-xs);
-                    padding: var(--space-4) var(--space-8);
-                }
-            }
-        </style>
-    </head>
-    <body>
-        <!-- Navbar -->
-        <header class="header">
-            <nav class="nav container">
-                <div class="nav__brand">
-                    <h2 class="nav__logo">
-                        <a href="/"><img src="/assets/yaaplogo.svg" alt="YAAP" class="logo-yaap" width="220" height="auto"></a>
-                    </h2>
-                </div>
-                <div class="nav__menu" id="nav-menu">
-                    <a href="/#home" class="nav__link">Home</a>
-                    <a href="/team.html" class="nav__link">Our team</a>
-                    <a href="/#screenshots" class="nav__link">Screenshots</a>
-                    <a href="/#downloads" class="nav__link">Download</a>
-                    <a href="/#community" class="nav__link">Community</a>
-                    <a href="/#contribute" class="nav__link">Contribute</a>
-                </div>
-                <button class="nav__toggle" id="nav-toggle">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </nav>
-        </header>
-
-        <main class="device-page">
-            <div id="device-container">Loading device info...</div>
-        </main>
-
-        <footer class="footer">
-            <div class="container">
-                <div class="footer__bottom">
-                    <p>&copy; 2025 YAAP Team. All rights reserved.</p>
-                    <p>YAAP is not affiliated with Google or Android.</p>
-                    <a href="https://github.com/yaap/yaap_site">Site source code</a>
-                </div>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/markdown-it@13.0.1/dist/markdown-it.min.js"></script>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    <link rel="stylesheet" href="/assets/css/style.css"/>
+    <link rel="stylesheet" href="/assets/css/device.css"/>
+</head>
+<body>
+    <!-- Navbar -->
+    <header class="header">
+        <nav class="nav container">
+            <div class="nav__brand">
+                <h2 class="nav__logo">
+                    <a href="/"><img src="/assets/yaaplogo.svg" alt="YAAP" class="logo-yaap" width="220" height="auto"></a>
+                </h2>
             </div>
-        </footer>
-
-        <script>
-            async function loadDevice() {
-                const params = new URLSearchParams(window.location.search);
-                const codename = params.get("codename");
-                const deviceContainer = document.getElementById("device-container");
-
-                try {
-                    const deviceInfo = await fetch(`https://raw.githubusercontent.com/yaap/device-info/master/${codename}/${codename}.json`).then(r => r.json());
-                    const otaBranch = deviceInfo["ota-branch"]
-                    const otaInfo = await fetch(`https://raw.githubusercontent.com/yaap/ota-info/${otaBranch}/${codename}/${codename}.json`).then(r => r.json());
-                    const vanillaOtaBranch = deviceInfo["ota-branch-vanilla"]
-                    const vanillaOtaInfo = await fetch(`https://raw.githubusercontent.com/yaap/ota-info/${vanillaOtaBranch}/${codename}/${codename}.json`).then(r => r.json());
-
-                    let ts = otaInfo.datetime ?? otaInfo.response ?. [0] ?. datetime;
-                    let vanillaTs = otaInfo.datetime ?? otaInfo.response ?. [0] ?. datetime;
-                    if (vanillaTs > ts) {
-                        ts = vanillaTs;
-                    }
-                    if (typeof ts === "string") {
-                        ts = parseInt(ts, 10);
-                    }
-
-                    const lastUpdated = ts ? new Date(ts * (ts < 1e12 ? 1000 : 1)).toLocaleDateString(undefined, {
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric'
-                    }) : "Unknown";
-
-                    const latestGapps = otaInfo.filename ?? otaInfo.response ?. [0] ?. filename
-                    const latestVanilla = vanillaOtaInfo.filename ?? vanillaOtaInfo.response ?. [0] ?. filename
-
-                    const changelog = await fetch(`https://raw.githubusercontent.com/yaap/ota-info/${otaBranch}/${codename}/Changelog.txt`).then(r => r.text());
-
-                    deviceContainer.innerHTML = `
-          <div class="device-card" style="padding-top: 30px;">
-            <img src="${
-                        deviceInfo.image || 'placeholder.jpg'
-                    }" alt="${
-                        deviceInfo.name
-                    }">
-            <div class="device-info">
-              <h2>${
-                        deviceInfo.name
-                    } (${codename})</h2>
-                <title>YAAP for ${
-                        deviceInfo.name
-                    }</title>
-                    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
-              <p class="device-meta">Maintainer: ${
-                        deviceInfo.maintainer || "Unknown"
-                    } | Last Updated: ${lastUpdated}</p>
-              <a class="download-btn" href="https://mirror.codebucket.de/yaap/${codename}/">Download</a>
-              <a class="download-btn" href="${
-                        deviceInfo.group
-                    }">Support Group</a>
+            <div class="nav__menu" id="nav-menu">
+                <a href="/#home" class="nav__link">Home</a>
+                <a href="/team.html" class="nav__link">Our team</a>
+                <a href="/#screenshots" class="nav__link">Screenshots</a>
+                <a href="/#downloads" class="nav__link">Download</a>
+                <a href="/#community" class="nav__link">Community</a>
+                <a href="/#contribute" class="nav__link">Contribute</a>
             </div>
-          </div>
-          <div class="changelog-card">
-            <h4>Latest Changelog</h4>
-${changelog}
+            <button class="nav__toggle" id="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
 
-Latest GApps build: <code>${latestGapps}</code>
-Latest Vanilla build: <code>${latestVanilla}</code>
-          </div>
-            <div class="changelog-card">
-<h2>Flashing Instructions</h2>
-<div id="instructions-list">Loading instructions...</div>
+    <main class="device-page">
+        <div id="device-container">Loading device info...</div>
+    </main>
 
-                </div>
-          </div>
-        `;
-
-                    fetch(`https://raw.githubusercontent.com/yaap/device-info/master/${codename}/${codename}.md`).then(res => res.text()).then(md => {
-                        const container = document.getElementById('instructions-list');
-                        if (! container) 
-                            return;
-                        
-
-
-                        const parsed = window.markdownit({html: true, linkify: true, typographer: true, breaks: true}).render(md);
-
-                        container.innerHTML = parsed;
-                    }).catch(err => {
-                        const container = document.getElementById('instructions-list');
-                        if (container) 
-                            container.innerHTML = "<p>Failed to load instructions.</p>";
-                        
-
-                    });
-
-                } catch (err) {
-                    console.error(err);
-                    deviceContainer.innerHTML = "<p>Failed to load device info.</p>";
-                }
-            }
-
-            document.addEventListener("DOMContentLoaded", loadDevice);
-        </script>
-        <script src="/app.js"></script>
-    </body>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__bottom">
+                <p>&copy; 2025 YAAP Team. All rights reserved.</p>
+                <p>YAAP is not affiliated with Google or Android.</p>
+                <a href="https://github.com/yaap/yaap_site">Site source code</a>
+            </div>
+        </div>
+    </footer>
+    <script src="/assets/js/app.js"></script>
+    <script src="/assets/js/device.js"></script>
+</body>
 </html>
