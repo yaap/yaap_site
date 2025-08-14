@@ -67,7 +67,6 @@
   --color-select-caret: rgba(var(--color-slate-900-rgb), 0.8);
 
   /* Mobile Nav Specific Variables */
-  --mobile-nav-bg: var(--color-surface);
   --mobile-nav-border: var(--color-border);
   
   /* Common style patterns */
@@ -195,7 +194,6 @@
     --color-select-caret: rgba(var(--color-gray-200-rgb), 0.8);
 
     /* Mobile Nav Specific Variables */
-    --mobile-nav-bg: rgba(var(--color-slate-900-rgb), 0.98);
     --mobile-nav-border: rgba(var(--color-teal-300-rgb), 0.2);
 
     /* Common style patterns - updated for dark mode */
@@ -258,7 +256,6 @@
   --color-select-caret: rgba(var(--color-gray-200-rgb), 0.8);
   
   /* Mobile Nav Specific Variables */
-  --mobile-nav-bg: rgba(var(--color-slate-900-rgb), 0.98);
   --mobile-nav-border: rgba(var(--color-teal-300-rgb), 0.2);
 
   /* Common style patterns - updated for dark mode */
@@ -304,7 +301,6 @@
   --color-focus-ring: rgba(var(--color-teal-500-rgb), 0.4);
 
   /* Mobile Nav Specific Variables */
-  --mobile-nav-bg: var(--color-surface);
   --mobile-nav-border: var(--color-border);
 
   /* RGB versions for light mode */
@@ -1399,7 +1395,7 @@ html {
     top: 60px; /* Adjusted to be below the header */
     left: 0;
     width: 100%;
-    background: var(--mobile-nav-bg);
+    background: var(--color-background);
     backdrop-filter: blur(10px);
     flex-direction: column;
     gap: var(--space-16);
