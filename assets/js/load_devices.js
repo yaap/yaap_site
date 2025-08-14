@@ -6,7 +6,7 @@ async function loadDevices() {
 
     try {
         // Get folder list from GitHub repo
-        const repoContents = await fetch("https://api.github.com/repos/yaap/device-info/contents").then(r => r.json());
+        const repoContents = await fetch("https://yaaprom-device-info.idoybh2.workers.dev/repos/yaap/device-info/contents").then(r => r.json());
         const deviceFolders = repoContents.filter(item => item.type === "dir");
 
         // Fetch each device JSON

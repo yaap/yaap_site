@@ -32,7 +32,7 @@ const icons = {
 
 async function fetchGitHubUser(username) {
   try {
-    const response = await fetch(`https://api.github.com/users/${username}`);
+    const response = await fetch(`https://yaaprom-device-info.idoybh2.workers.dev/users/${username}`);
     if (!response.ok) throw new Error('GitHub API error');
     return await response.json();
   } catch (error) {
@@ -55,7 +55,7 @@ function parseMaintainers(maintainerString) {
 async function fetchDeviceInfo() {
   try {
     // Get the list of device folders
-    const response = await fetch('https://api.github.com/repos/yaap/device-info/contents/');
+    const response = await fetch('https://yaaprom-device-info.idoybh2.workers.dev/repos/yaap/device-info/contents/');
     if (!response.ok) throw new Error('Failed to fetch device list');
     const folders = await response.json();
     const deviceData = [];
@@ -65,7 +65,7 @@ async function fetchDeviceInfo() {
       if (folder.type === 'dir') {
         try {
           // Get all files in the folder
-          const folderResponse = await fetch(`https://api.github.com/repos/yaap/device-info/contents/${folder.name}`);
+          const folderResponse = await fetch(`https://yaaprom-device-info.idoybh2.workers.dev/repos/yaap/device-info/contents/${folder.name}`);
           if (folderResponse.ok) {
             const folderContents = await folderResponse.json();
             // Find JSON files
