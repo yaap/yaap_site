@@ -70,6 +70,9 @@
 .carousel-arrow.right {
     margin-left: 16px;
 }
+.carousel-arrow.svg {
+    stroke: var(--color-btn-primary-text);
+}
 @media(max-width: 768px) {
     .carousel-arrow {
         width: 38px;
