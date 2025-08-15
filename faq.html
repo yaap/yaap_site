@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YAAP FAQ - Yet Another AOSP Project</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/faq.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav container">
+            <div class="nav__brand">
+                <h2 class="nav__logo">
+                    <a href="/"><img src="/assets/yaaplogo.svg" alt="YAAP" class="logo-yaap" width="220" height="auto"></a>
+                </h2>
+            </div>
+            <div class="nav__menu" id="nav-menu">
+                <a href="/#home" class="nav__link">Home</a>
+                <a href="/team.html" class="nav__link">Our team</a>
+                <a href="/#screenshots" class="nav__link">Screenshots</a>
+                <a href="/#downloads" class="nav__link">Download</a>
+                <a href="/#community" class="nav__link">Community</a>
+                <a href="/#contribute" class="nav__link">Contribute</a>
+            </div>
+            <button class="nav__toggle" id="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main class="faq-container">
+        <div class="container">
+            <div class="faq-header">
+                <h1 class="faq-title">Frequently Asked Questions</h1>
+                <p class="faq-subtitle">Commonly asked questions and info about YAAP</p>
+            </div>
+
+            <div class="faq-search-section">
+                <div class="search-box">
+                    <input type="text" id="faq-search" placeholder="Search for answers..." class="search-input">
+                    <button id="search-clear" class="search-clear">×</button>
+                </div>
+                <div class="search-results"></div>
+            </div>
+
+            <div class="faq-controls">
+                <button id="expand-all" class="btn btn--secondary btn--sm">Expand All</button>
+                <button id="collapse-all" class="btn btn--secondary btn--sm">Collapse All</button>
+            </div>
+
+            <div class="faq-content">
+                <section class="faq-section">
+                    <h2 class="section-title">Build errors</h2>
+                    <div class="faq-items">
+                        <div class="faq-item">
+                            <button class="faq-question" aria-expanded="false">
+                                <span>How to Fix Github LFS error</span>
+                                <span class="faq-icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                <div class="answer-content">
+                                    <p>Git LFS error</p>
+                                    <div class="code-block-container">
+                                        <div class="code-block-header">
+                                            <button class="copy-button" aria-label="Copy code">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                    <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
+                                                </svg>
+                                                Copy
+                                            </button>
+                                        </div>
+                                        <code>
+repo init -u https://github.com/YAAP/manifest -b fourteen --git-lfs
+rm -rf prebuilts/clang/host/linux-x86
+rm -rf .repo/projects/prebuilts/clang/host/linux-x86.git
+rm -rf vendor/google/gms
+rm -rf .repo/projects/vendor/google/gms.git
+repo sync -j$(nproc --all) --no-tags --no-clone-bundle --current-branch
+                                        </code>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question" aria-expanded="false">
+                                <span>I am getting error related to telephony-ext what to do?</span>
+                                <span class="faq-icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                <div class="answer-content">
+                                        Just drop telephony packages from your device.mk or common.mk . See <a href="https://github.com/yaap/vendor_yaap/commit/4f44cd82453af2eccebd9db9444f635a14626d0b">here</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question" aria-expanded="false">
+                                <span>I got a error like cannot find/depends on undefined xyz lineage module</span>
+                                <span class="faq-icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                <div class="answer-content">
+                                    <p>This is not Lineage while building drop lineage specific stuff</p>
+                                    <p>For FPS info, HBM , CABC and DC dimming related features use our <a href="https://github.com/yaap/packages_apps_DisplayFeatures">DisplayFeatures package</a>.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question" aria-expanded="false">
+                                <span>I got a  weird error</span>
+                                <span class="faq-icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                <div class="answer-content">
+                                   <p>Fight it alone, google, search in telegram and so on and if you have no clue whatsoever (completely stuck). Share out/error.log on our <a href="t.me/yaapcommon">telegram group</a>.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="faq-section">
+                    <h2 class="section-title">General info for unofficial builders</h2>
+                    <div class="faq-items">
+                        <div class="faq-item">
+                            <button class="faq-question" aria-expanded="false">
+                                <span>Build Doesn't boot on my A/B device</span>
+                                <span class="faq-icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                Revert back to intree gps-utils and bootctrl. Refer to <a href="https://gist.github.com/grepfox/bde143f7db60af7e0a46a25dc280d2c8">this</a>.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question" aria-expanded="false">
+                                <span>Signing the build</span>
+                                <span class="faq-icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                <div class="answer-content">
+                                    generate keys using:<br>
+                                    <div class="code-block-container">
+                                        <div class="code-block-header">
+                                            <button class="copy-button" aria-label="Copy code">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                    <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
+                                                </svg>
+                                                Copy
+                                            </button>
+                                        </div>
+                                        <code>
+subject='/C=US/ST=State/L=City/O=Android/OU=Android/CN=Android/emailAddress=email@example.com' 
+for x in releasekey platform shared media networkstack verity otakey testkey sdk_sandbox bluetooth nfc; do
+    ./development/tools/make_key vendor/yaap/signing/keys/$x "$subject";
+done
+                                        </code>
+                                    </div>
+                                    <strong>obviously replace info in subject with whatever.</strong>
+                                    run everything in the root build dir, after source envsetup and lunch target<br>
+                                    no need to change anything else - if you build a user variant and the files are there it'll sign for you.<br>
+
+                                    If you want to allow bootloader re-locking implement a change similar to: <a href="https://github.com/yaap/device_oneplus_sm8150-common/commit/1793ae3d8ac48c98325759bbfdd9f446465f718e">this commit</a>
+                                    and gen the key using:<br>
+                                    <div class="code-block-container">
+                                        <div class="code-block-header">
+                                            <button class="copy-button" aria-label="Copy code">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                    <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
+                                                </svg>
+                                                Copy
+                                            </button>
+                                        </div>
+                                        <code>openssl pkcs8 -in vendor/yaap/signing/keys/releasekey.pk8 -inform DER -out vendor/yaap/signing/keys/releasekey.key -nocrypt</code>
+                                    </div>
+                                    build and verify vbmeta using (unpack a whole fastboot zip there):<br>
+                                    <div class="code-block-container">
+                                        <div class="code-block-header">
+                                            <button class="copy-button" aria-label="Copy code">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                    <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
+                                                </svg>
+                                                Copy
+                                            </button>
+                                        </div>
+                                        <code>avbtool verify_image --image /path/to/vbmeta.img</code>
+                                    </div>
+                                    afterwards you can generate pkmd-signed.bin for users to flash using:<br>
+                                    <div class="code-block-container">
+                                        <div class="code-block-header">
+                                            <button class="copy-button" aria-label="Copy code">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                    <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
+                                                </svg>
+                                                Copy
+                                            </button>
+                                        </div>
+                                        <code>avbtool extract_public_key --key vendor/yaap/signing/keys/releasekey.key --output pkmd-signed.bin</code>
+                                    </div>
+                                    which is typically flashed as such: <code>fastboot flash avb_custom_key pkmd-signed.bin</code><br>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question" aria-expanded="false">
+                                <span>Why do I sign my build</span>
+                                <span class="faq-icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                <div class="answer-content">
+                                            <ol>
+                                            <li>
+                                                <strong>Can't flash OTA updates not signed by us:</strong> No one can trick the updater into flashing a malicious zip via MITM attacks or other methods. Installing anything signed differently requires a clean flash.
+                                            </li>
+                                            <li>
+                                                <strong>Flash files authenticity assured:</strong> You can be sure the files you receive come from a trusted source (your maintainer or us).
+                                            </li>
+                                            <li>
+                                                <strong>Dangers of test-signed ROMs:</strong> Anyone can sign malicious apps with public test keys and more easily gain privileges that regular apps cannot obtain.
+                                            </li>
+                                            <li>
+                                                <strong>Banking apps verify environment signatures:</strong> While some checks can be spoofed, nothing compares to the security of actual platform signing.
+                                            </li>
+                                            <li>
+                                                <strong>System apps can’t be replaced by malicious versions:</strong> Keys will never match unless compromised, preventing unauthorized update of system apps.
+                                            </li>
+                                            <li>
+                                                <strong>Unauthorized apps can’t run as system user:</strong> Even apps in priv-app using Magisk cannot run as system user unless signed with platform keys and requesting it in their manifest. (Note: This can be compromised by Xposed, which is risky.)
+                                            </li>
+                                            </ol>
+                                            <p>There are many more advantages, but these are the main ones.</p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__bottom">
+                <p>&copy; 2025 YAAP Team. All rights reserved.</p>
+                <p>YAAP is not affiliated with Google or Android.</p>
+                <a href="https://github.com/yaap/yaap_site">Site source code</a>
+            </div>
+        </div>
+    </footer>
+    <script src="/assets/js/app.js"></script>
+    <script src="/assets/js/faq.js"></script>
+</body>
+</html>
