@@ -196,3 +196,68 @@
         height: 80px;
     }
 }
+
+.hidden-devices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.device-toggle-btn {
+  background: transparent;
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  margin-top: 8px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.device-toggle-btn:hover {
+  background: var(--color-primary);
+  color: white;
+}
+
+.device-toggle-btn.expanded {
+  background: var(--color-primary);
+  color: white;
+}
+
+.device-toggle-btn:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Error message styling */
+.error-message {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--color-red-400);
+  font-style: italic;
+}
+
+/* Responsive adjustments for toggle */
+@media(max-width: 480px) {
+  .device-toggle-btn {
+    font-size: 0.7rem;
+    padding: 3px 8px;
+    margin-top: 6px;
+  }
+  
+  .hidden-devices {
+    margin-top: 6px;
+    gap: 1px;
+    align-items: center;
+    justify-content: center;
+  }
+}
