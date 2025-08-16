@@ -128,14 +128,18 @@ function createDeviceBadges(devices, maintainerIndex) {
   const hiddenDevices = devices.slice(3);
   
   let html = visibleDevices.map(device => 
-    `<span class="device-badge" title="${device.name || device.device || device.codename}">${device.codename}</span>`
+    `<a href="/device.html?codename=${device.codename}" class="device-badge" title="${device.name || device.device || device.codename}">
+      ${device.codename}
+    </a>`
   ).join('');
   
   if (hiddenDevices.length > 0) {
     html += `
       <div class="hidden-devices" id="hidden-devices-${maintainerIndex}" style="display: none;">
         ${hiddenDevices.map(device => 
-          `<span class="device-badge" title="${device.name || device.device || device.codename}">${device.codename}</span>`
+          `<a href="/device.html?codename=${device.codename}" class="device-badge" title="${device.name || device.device || device.codename}">
+            ${device.codename}
+          </a>`
         ).join('')}
       </div>
       <button class="device-toggle-btn" onclick="toggleDevices(${maintainerIndex}, ${hiddenDevices.length})">
