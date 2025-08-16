@@ -260,8 +260,13 @@ async function loadMaintainers() {
 
     maintainersGrid.innerHTML = '';
 
+    // sort alphabetically by maintainer name
+    const sortedMaintainers = Object.entries(maintainerDevices).sort(([maintainerA], [maintainerB]) => 
+      maintainerA.localeCompare(maintainerB)
+    );
+
     let index = 0;
-    for (const [maintainer, devices] of Object.entries(maintainerDevices)) {
+    for (const [maintainer, devices] of sortedMaintainers) {
       try {
         const githubData = await fetchGitHubUser(maintainer);
         const card = createMaintainerCard(maintainer, githubData, devices, index);
