@@ -112,7 +112,17 @@
     border-radius: 12px;
     font-size: 0.75rem;
     margin: 2px;
+    border: 1px solid transparent;
+    transition: all 0.2s ease;
 }
+
+.device-badge:hover {
+    background-color: var(--color-surface);
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+    transform: scale(1.1);
+}
+
 .device-count {
     font-size: 0.875rem;
     color: var(--color-primary);
@@ -228,11 +238,11 @@
 }
 
 .device-toggle-btn.expanded {
-  background: var(--color-primary);
-  color: white;
+  background: transparent;
+  color: var(--color-primary);
 }
 
-.device-toggle-btn:focus {
+.device-toggle-btn:focus-visible {
   outline: 2px solid var(--color-primary);
   outline-offset: 2px;
 }
