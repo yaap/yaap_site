@@ -20,6 +20,30 @@ const teamMembers = [
   }
 ];
 
+const websiteTeam = [
+  {
+    github: 'grepfox',
+    telegram: 'grepfox',
+    role: 'Website Developer',
+    fallbackBio: ''
+  },
+  {
+    github: 'idoybh',
+    telegram: 'idoybh',
+    role: 'Website Maintainer',
+    fallbackBio: 'CS student, hobbyist programmer, lead developer at YAAP'
+  }
+];
+
+const designTeam = [
+  {
+    github: 'Lacentix', 
+    telegram: '',
+    role: 'UI/UX Designer',
+    fallbackBio: ''
+  }
+];
+
 // GitHub and Telegram SVG icons
 const icons = {
   github: `<svg viewBox="0 0 24 24">
@@ -239,6 +263,39 @@ async function loadTeamMembers() {
   teamGrid.innerHTML = teamCards.join('');
 }
 
+async function loadWebsiteTeam() {
+  const websiteGrid = document.getElementById('website-grid');
+  if (!websiteGrid) return;
+
+  websiteGrid.innerHTML = websiteTeam.map(() => '<div class="team-card loading"></div>').join('');
+
+  const websiteCards = await Promise.all(
+    websiteTeam.map(async (member) => {
+      const githubData = await fetchGitHubUser(member.github);
+      return createTeamCard(member, githubData);
+    })
+  );
+
+  websiteGrid.innerHTML = websiteCards.join('');
+}
+
+async function loadDesignTeam() {
+  const designGrid = document.getElementById('design-grid');
+  if (!designGrid) return;
+
+  designGrid.innerHTML = designTeam.map(() => '<div class="team-card loading"></div>').join('');
+
+  const designCards = await Promise.all(
+    designTeam.map(async (member) => {
+      const githubData = await fetchGitHubUser(member.github);
+      return createTeamCard(member, githubData);
+    })
+  );
+
+  designGrid.innerHTML = designCards.join('');
+}
+
+
 async function loadMaintainers() {
   const maintainersGrid = document.getElementById('maintainers-grid');
   if (!maintainersGrid) return;
@@ -288,11 +345,15 @@ async function loadMaintainers() {
 
 document.addEventListener('DOMContentLoaded', () => {
   loadTeamMembers();
+  loadWebsiteTeam();
+  loadDesignTeam();
   loadMaintainers();
 });
 
 window.YAAP_Team = {
   loadTeamMembers,
+  loadWebsiteTeam,
+  loadDesignTeam,
   loadMaintainers,
   toggleDevices,
   buildMaintainerDeviceMap
