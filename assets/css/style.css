@@ -1101,6 +1101,7 @@ html {
 .downloads {
   padding: 120px 0;
   background: var(--color-bg-4);
+  min-height: 100vh;
 }
 
 .download-info {
@@ -1210,6 +1211,7 @@ html {
 .community {
   padding: 120px 0;
   background: var(--color-bg-5);
+  min-height: 100vh;
 }
 
 .community__grid {
@@ -1257,6 +1259,7 @@ html {
 .contribute {
   padding: 120px 0;
   background: var(--color-bg-6);
+  min-height: 100vh;
 }
 
 .contribute__content {
