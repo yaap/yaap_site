@@ -12,6 +12,7 @@
   --color-charcoal-700: rgba(31, 33, 33, 1);
   --color-charcoal-800: rgba(38, 40, 40, 1);
   --color-slate-900: rgba(19, 52, 59, 1);
+  --color-teal-200: rgba(138, 121, 226, 1);
   --color-teal-300: rgba(138, 43, 226, 1);
   --color-teal-400: rgba(117, 33, 175, 1);
   --color-teal-500: rgba(102, 31, 153, 1);
@@ -807,7 +808,7 @@ html {
 }
 
 .nav__link:hover {
-  color: var(--color-teal-300);
+  color: var(--color-teal-200);
 }
 
 .nav__toggle {
