@@ -380,6 +380,10 @@ a:hover {
   color: var(--color-primary-hover);
 }
 
+main a {
+  color: #1e90ff;
+}
+
 code,
 pre {
   font-family: var(--font-family-mono);
