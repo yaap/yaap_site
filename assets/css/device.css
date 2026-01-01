@@ -1,119 +1,289 @@
 .device-page {
-    max-width: 1100px;
-    margin: 2rem auto;
-    padding: 0 1rem;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 120px var(--space-24) var(--space-64);
+    min-height: 80vh;
 }
-.device-card {
-    display: flex;
-    gap: 2rem;
-    margin-top: 50px;
-    align-items: center;
-    background: var(--color-surface);
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-    padding: 1.5rem;
+
+.device-header {
+    margin-bottom: var(--space-64);
+    text-align: center;
+    position: relative;
+    z-index: 1;
 }
-.device-card img {
-    width: 260px;
-    border-radius: 8px;
-    object-fit: contain;
-    background: var(--color-surface);
-    padding: 0.5rem;
+
+.device-header::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(138, 43, 226, 0.15) 0%, transparent 70%);
+    z-index: -1;
+    filter: blur(40px);
 }
-.device-info {
-    flex: 1;
+
+.device-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    margin-bottom: var(--space-16);
+    background: var(--gradient-text-main);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 800;
 }
-.device-info h2 {
-    margin: 0;
-    font-size: 1.6rem;
-}
-.device-meta {
-    color: #666;
-    font-size: 0.95rem;
-    margin: 0.3rem 0 1rem;
-}
-.download-btn {
+
+.device-codename {
+    font-family: 'Berkeley Mono', monospace;
+    font-size: 1.2rem;
+    color: var(--color-teal-300);
+    background: rgba(138, 43, 226, 0.1);
+    padding: 8px 16px;
+    border-radius: var(--radius-full);
+    border: 1px solid rgba(138, 43, 226, 0.2);
     display: inline-block;
-    padding: 0.6rem 1.2rem;
-    background: var(--color-primary);
-    color: var(--color-btn-primary-text);
-    border-radius: 6px;
-    text-decoration: none;
+}
+
+.device-grid {
+    display: flex;
+    justify-content: center;
+    margin-bottom: var(--space-48);
+}
+
+/* Ensure the info card has a max-width when centered */
+.device-grid .info-card {
+    width: 100%;
+    max-width: 500px;
+}
+
+/* Device Image */
+.device-image {
+    width: 60%;
+    max-width: 250px;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto var(--space-32);
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+    transition: transform 0.3s ease;
+}
+
+.device-image:hover {
+    transform: scale(1.05) rotate(-2deg);
+}
+
+/* Info Card */
+.info-card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border-glass);
+    border-radius: var(--radius-lg);
+    padding: var(--space-32);
+    backdrop-filter: blur(20px);
+    box-shadow: var(--shadow-card);
+    display: flex;
+    flex-direction: column;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: var(--space-24);
+    margin-bottom: var(--space-32);
+    padding-top: var(--space-16);
+    border-top: 1px solid var(--color-border-glass);
+}
+
+/* ... existing button styles ... */
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.info-label {
+    font-size: 0.75rem;
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+}
+
+.info-value {
+    font-size: 1rem;
     font-weight: 500;
+    color: var(--color-text-primary);
 }
-.download-btn:hover {
-    background: var(--color-primary-hover);
-    color: var(--color-btn-primary-text);
+
+.action-buttons {
+    display: flex;
+    gap: var(--space-16);
+    flex-wrap: wrap;
+    margin-top: auto;
 }
-.changelog-card {
-    background: var(--color-surface);
-    padding: 1rem;
-    margin-top: 2rem;
-    border-radius: 8px;
-    font-family: monospace;
+
+/* Button Styles */
+.btn-primary {
+    flex: 1;
+    background: var(--gradient-primary);
+    color: white;
+    padding: 16px 24px;
+    border-radius: var(--radius-md);
+    text-align: center;
+    font-weight: 600;
+    transition: all 0.3s;
+    box-shadow: 0 4px 15px rgba(138, 43, 226, 0.3);
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(138, 43, 226, 0.5);
+    color: white;
+}
+
+.btn-secondary {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--color-border-glass);
+    color: var(--color-text-primary);
+    padding: 16px 24px;
+    border-radius: var(--radius-md);
+    text-align: center;
+    font-weight: 500;
+    transition: all 0.3s;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--color-text-primary);
+}
+
+/* Changelog Section */
+.changelog-section {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border-glass);
+    border-radius: var(--radius-lg);
+    padding: var(--space-32);
+    margin-top: var(--space-32);
+    position: relative;
+    overflow: hidden;
+}
+
+.changelog-title {
+    font-size: 1.5rem;
+    margin-bottom: var(--space-24);
+    color: var(--color-text-primary);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Changelog Content */
+.changelog-content {
+    max-height: 500px;
+    overflow-y: auto;
+    padding-right: var(--space-16);
+    /* Restore text-like formatting */
+    font-family: 'Berkeley Mono', monospace;
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
     white-space: pre-wrap;
-    overflow-x: auto;
-    border: 1px solid var(--color-surface);
+    /* Maintains text layout */
 }
 
-@media(max-width: 768px) {
-    .devices {
-        padding: 40px 0;
-    }
-    .devices__grid {
+.changelog-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.changelog-content::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+}
+
+/* Markdown Content Styling */
+.markdown-content {
+    color: var(--color-text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* Reset these as we might be inheriting weird things */
+.markdown-content h1,
+.markdown-content h2,
+.markdown-content h3,
+.markdown-content h4 {
+    color: var(--color-text-primary);
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+    font-weight: 600;
+    line-height: 1.3;
+    font-family: 'Inter', sans-serif;
+}
+
+.markdown-content h1 {
+    font-size: 1.3rem;
+}
+
+.markdown-content h2 {
+    font-size: 1.2rem;
+    border-bottom: 1px solid var(--color-border-glass);
+    padding-bottom: 4px;
+}
+
+.markdown-content h3 {
+    font-size: 1.1rem;
+    color: var(--color-teal-300);
+}
+
+.markdown-content h4 {
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.markdown-content p {
+    margin-bottom: 0.8em;
+}
+
+.markdown-content ul,
+.markdown-content ol {
+    padding-left: 1.5em;
+    margin-bottom: 1em;
+}
+
+.markdown-content li {
+    margin-bottom: 0.2em;
+}
+
+.markdown-content code {
+    background: rgba(138, 43, 226, 0.15);
+    color: var(--color-teal-200);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: 'Berkeley Mono', monospace;
+    font-size: 0.9em;
+}
+
+.markdown-content a {
+    color: var(--color-teal-300);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: all 0.2s;
+}
+
+.markdown-content a:hover {
+    color: var(--color-teal-200);
+    border-bottom-color: var(--color-teal-200);
+}
+
+@media (max-width: 800px) {
+    .device-grid {
         grid-template-columns: 1fr;
-        gap: var(--space-16);
-    }
-    .device-brand {
-        padding: var(--space-12);
-    }
-}
-@media(max-width: 480px) {
-    .devices {
-        padding: 20px 0;
-    }
-    .devices__grid {
-        gap: var(--space-8);
-    }
-    .device-brand {
-        padding: var(--space-8);
-    }
-}
-
-@media(max-width: 768px) {
-    .device-filters {
-        overflow-x: auto;
-        flex-wrap: nowrap;
-        gap: var(--space-8);
-        margin-bottom: var(--space-16);
-        padding-bottom: var(--space-8);
-    }
-    .filter-btn {
-        white-space: nowrap;
-        flex-shrink: 0;
-        font-size: var(--font-size-sm);
-        padding: var(--space-4) var(--space-8);
-    }
-}
-
-@media(max-width: 480px) {
-    .device-brand {
-        padding: var(--space-8);
-        font-size: var(--font-size-md);
-    }
-    .device-card {
-        padding: var(--space-8);
-        flex-direction: column;
-        gap: var(--space-4);
-    }
-    .device-card__name {
-        font-size: var(--font-size-base);
-    }
-}
-
-@media(max-width: 480px) {
-    .device-card .btn {
-        font-size: var(--font-size-xs);
-        padding: var(--space-4) var(--space-8);
     }
 }

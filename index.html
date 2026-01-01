@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <script src="/assets/js/index.js"></script>
     <meta charset="UTF-8">
@@ -10,25 +11,48 @@
     <link rel="stylesheet" href="/assets/css/index.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <header class="header">
         <nav class="nav container">
             <div class="nav__brand">
-                <h2 class="nav__logo">
-                    <a href="/"><img src="/assets/yaaplogo.svg" alt="YAAP" class="logo-yaap" width="220" height="auto"></a>
-                </h2>
+                <a href="/" class="nav__logo">
+                    <img src="/assets/yaaplogo.svg" alt="YAAP" width="120" height="auto">
+                </a>
             </div>
+
             <div class="nav__menu" id="nav-menu">
                 <a href="/#home" class="nav__link">Home</a>
-                <a href="/team.html" class="nav__link">Our team</a>
+                <a href="/team.html" class="nav__link">Our Team</a>
                 <a href="/#screenshots" class="nav__link">Screenshots</a>
                 <a href="/#downloads" class="nav__link">Download</a>
                 <a href="/#community" class="nav__link">Community</a>
                 <a href="/#contribute" class="nav__link">Contribute</a>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                    <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
             </div>
-            <button class="nav__toggle" id="nav-toggle">
+
+            <button class="nav__toggle" id="nav-toggle" aria-label="Toggle navigation">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -38,242 +62,146 @@
 
     <main>
         <section id="home" class="hero">
-            <div class="hero__content container">
-                <div class="hero__text">
-                    <h1 class="hero__title">
-                        <center>
-                            <img src="/assets/yaaplogo.svg" alt="YAAP" width="280px" class="header-yaap" height="auto">
-                        </center>
-                    </h1>
-                    <h2 class="hero__subtitle">Yet Another AOSP Project</h2>
-                    <div class="hero__buttons">
-                        <a href="/#downloads" class="btn btn--primary btn--lg">Download Now</a>
-                    </div>
+            <div class="hero__content container fade-in">
+                <div class="hero__logo-wrapper">
+                    <img src="/assets/yaaplogo.svg" alt="YAAP Logo" width="300">
                 </div>
+                <h1 class="hero__title">Yet Another AOSP Project</h1>
+                <h2 class="hero__subtitle">Experience Android in its purest, most aesthetic form.</h2>
+                <div class="hero__buttons">
+                    <a href="/#downloads" class="btn btn--primary btn--lg">Get Started</a>
                 </div>
+            </div>
         </section>
 
         <section class="screenshots" id="screenshots">
-                <div class="container">
-            <center><h2 class="section-title">Screenshots</h2></center>
-            <div class="screenshot-carousel">
-                <button class="carousel-arrow left" aria-label="Previous Screenshot">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                        <path class="carousel-arrow svg" d="M12 5L7 10L12 15" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </button>
-                <div class="screenshot-track">
-                    <div class="screenshot-slide active">
-                        <img src="ss/about.webp">
-                    </div>
-                    <div class="screenshot-slide active">
-                        <img src="ss/updater_1.webp">
-                    </div>
-                    <div class="screenshot-slide active">
-                        <img src="ss/updater_2.webp">
-                    </div>
-                    <div class="screenshot-slide active">
-                        <img src="ss/updater_3.webp">
-                    </div>
-                    <div class="screenshot-slide active">
-                        <img src="ss/updater_settings.webp">
-                    </div>
-                    <div class="screenshot-slide active">
-                        <img src="ss/about_phone_1.webp">
-                    </div>
-                    <div class="screenshot-slide active">
-                        <img src="ss/about_phone_2.webp">
-                    </div>
-                    <div class="screenshot-slide active">
-                        <img src="ss/about_phone_3.webp">
-                    </div>
-                    <div class="screenshot-slide active">
-                        <img src="ss/0.webp">
-                    </div>
-                    <div class="screenshot-slide active">
-                        <img src="ss/1.webp">
-                    </div>
-                    <div class="screenshot-slide">
-                        <img src="ss/2.webp">
-                    </div>
-                    <div class="screenshot-slide">
-                        <img src="ss/3.webp">
-                    </div>
-                    <div class="screenshot-slide">
-                        <img src="ss/4.webp">
-                    </div>
-                    <div class="screenshot-slide">
-                        <img src="ss/4-1.webp">
-                    </div>
-                    <div class="screenshot-slide">
-                        <img src="ss/5.webp">
-                    </div>
-                    <div class="screenshot-slide">
-                        <img src="ss/6.webp">
-                    </div>
-                    <div class="screenshot-slide">
-                        <img src="ss/7.webp">
-                    </div>
-                    <div class="screenshot-slide">
-                        <img src="ss/8.webp">
-                    </div>
-                    <div class="screenshot-slide">
-                        <img src="ss/9.webp">
-                    </div>
-                    <div class="screenshot-slide">
-                        <img src="ss/9-1.webp">
-                    </div>
-                    <div class="screenshot-slide">
-                        <img src="ss/10.webp">
-                    </div>
-                    <div class="screenshot-slide">
-                        <img src="ss/11.webp">
-                    </div>
-                    <div class="screenshot-slide">
-                        <img src="ss/12.webp">
-                    </div>
-                    <div class="screenshot-slide">
-                        <img src="ss/13.webp">
-                    </div>
-                    <div class="screenshot-slide">
-                        <img src="ss/14.webp">
-                    </div>
-                    <div class="screenshot-slide">
-                        <img src="ss/15.webp">
-                    </div>
-                    <div class="screenshot-slide">
-                        <img src="ss/16.webp">
-                    </div>
-                    <div class="screenshot-slide">
-                        <img src="ss/17.webp">
-                    </div>
-                    <div class="screenshot-slide">
-                        <img src="ss/18.webp">
-                    </div>
-                    <div class="screenshot-slide">
-                        <img src="ss/19.webp">
-                    </div>
-                    <div class="screenshot-slide">
-                        <img src="ss/20.webp">
-                    </div>
-                    <div class="screenshot-slide">
-                        <img src="ss/21.webp">
-                    </div>
-                    <div class="screenshot-slide">
-                        <img src="ss/22.webp">
-                    </div>
-                    <div class="screenshot-slide">
-                        <img src="ss/nav_1.webp">
-                    </div>
-                    <div class="screenshot-slide">
-                        <img src="ss/nav_2.webp">
-                    </div>
-                    <div class="screenshot-slide">
-                        <img src="ss/23.webp">
-                    </div>
-                    <div class="screenshot-slide">
-                        <img src="ss/23-1.webp">
-                    </div>
-                    <div class="screenshot-slide">
-                        <img src="ss/24.webp">
-                    </div>
-                    <div class="screenshot-slide">
-                        <img src="ss/25.webp">
-                    </div>
-                    <div class="screenshot-slide">
-                        <img src="ss/26.webp">
-                    </div>
-                    <div class="screenshot-slide">
-                        <img src="ss/27.webp">
-                    </div>
-                    <div class="screenshot-slide">
-                        <img src="ss/28.webp">
-                    </div>
-                    <div class="screenshot-slide">
-                        <img src="ss/29.webp">
-                    </div>
-                    <div class="screenshot-slide">
-                        <img src="ss/30.webp">
-                    </div>
-                    <div class="screenshot-slide">
-                        <img src="ss/31.webp">
-                    </div>
-                    <div class="screenshot-slide">
-                        <img src="ss/32.webp">
-                    </div>
-                    <div class="screenshot-slide">
-                        <img src="ss/33.webp">
-                    </div>
-                    <div class="screenshot-slide">
-                        <img src="ss/34.webp">
-                    </div>
-                    <div class="screenshot-slide">
-                        <img src="ss/35.webp">
-                    </div>
-                    <div class="screenshot-slide">
-                        <img src="ss/36.webp">
-                    </div>
-                    <div class="screenshot-slide">
-                        <img src="ss/37.webp">
-                    </div>
-                    <div class="screenshot-slide">
-                        <img src="ss/38.webp">
-                    </div>
-                    <div class="screenshot-slide">
-                        <img src="ss/39.webp">
-                    </div>
-                    <div class="screenshot-slide">
-                        <img src="ss/40.webp">
-                    </div>
-                    <div class="screenshot-slide">
-                        <img src="ss/41.webp">
-                    </div>
-                </div>
-                <button class="carousel-arrow right" aria-label="Next Screenshot">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                        <path class="carousel-arrow svg" d="M8 5L13 10L8 15" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </button>
+            <div class="container">
+                <h2 class="section-title">Screenshots</h2>
+                <div class="screenshot-carousel">
+                    <button class="carousel-arrow left" aria-label="Previous Screenshot">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
 
-            </div>
+                    <div class="screenshot-track">
+                        <div class="screenshot-slide active"><img src="ss/about.webp" alt="About"></div>
+                        <div class="screenshot-slide"><img src="ss/updater_1.webp" alt="Updater"></div>
+                        <div class="screenshot-slide"><img src="ss/updater_2.webp" alt="Updater"></div>
+                        <div class="screenshot-slide"><img src="ss/updater_3.webp" alt="Updater"></div>
+                        <div class="screenshot-slide"><img src="ss/updater_settings.webp" alt="Settings"></div>
+                        <div class="screenshot-slide"><img src="ss/about_phone_1.webp" alt="About Phone"></div>
+                        <div class="screenshot-slide"><img src="ss/about_phone_2.webp" alt="About Phone"></div>
+                        <div class="screenshot-slide"><img src="ss/about_phone_3.webp" alt="About Phone"></div>
+                        <div class="screenshot-slide"><img src="ss/0.webp" alt="Screenshot"></div>
+                        <div class="screenshot-slide"><img src="ss/1.webp" alt="Screenshot"></div>
+                        <div class="screenshot-slide"><img src="ss/2.webp" alt="Screenshot"></div>
+                        <div class="screenshot-slide"><img src="ss/3.webp" alt="Screenshot"></div>
+                        <div class="screenshot-slide"><img src="ss/4.webp" alt="Screenshot"></div>
+                        <div class="screenshot-slide"><img src="ss/4-1.webp" alt="Screenshot"></div>
+                        <div class="screenshot-slide"><img src="ss/5.webp" alt="Screenshot"></div>
+                        <div class="screenshot-slide"><img src="ss/6.webp" alt="Screenshot"></div>
+                        <div class="screenshot-slide"><img src="ss/7.webp" alt="Screenshot"></div>
+                        <div class="screenshot-slide"><img src="ss/8.webp" alt="Screenshot"></div>
+                        <div class="screenshot-slide"><img src="ss/9.webp" alt="Screenshot"></div>
+                        <div class="screenshot-slide"><img src="ss/9-1.webp" alt="Screenshot"></div>
+                        <div class="screenshot-slide"><img src="ss/10.webp" alt="Screenshot"></div>
+                        <div class="screenshot-slide"><img src="ss/11.webp" alt="Screenshot"></div>
+                        <div class="screenshot-slide"><img src="ss/12.webp" alt="Screenshot"></div>
+                        <div class="screenshot-slide"><img src="ss/13.webp" alt="Screenshot"></div>
+                        <div class="screenshot-slide"><img src="ss/14.webp" alt="Screenshot"></div>
+                        <div class="screenshot-slide"><img src="ss/15.webp" alt="Screenshot"></div>
+                        <div class="screenshot-slide"><img src="ss/16.webp" alt="Screenshot"></div>
+                        <div class="screenshot-slide"><img src="ss/17.webp" alt="Screenshot"></div>
+                        <div class="screenshot-slide"><img src="ss/18.webp" alt="Screenshot"></div>
+                        <div class="screenshot-slide"><img src="ss/19.webp" alt="Screenshot"></div>
+                        <div class="screenshot-slide"><img src="ss/20.webp" alt="Screenshot"></div>
+                        <div class="screenshot-slide"><img src="ss/21.webp" alt="Screenshot"></div>
+                        <div class="screenshot-slide"><img src="ss/22.webp" alt="Screenshot"></div>
+                        <div class="screenshot-slide"><img src="ss/nav_1.webp" alt="Navigation"></div>
+                        <div class="screenshot-slide"><img src="ss/nav_2.webp" alt="Navigation"></div>
+                        <div class="screenshot-slide"><img src="ss/23.webp" alt="Screenshot"></div>
+                        <div class="screenshot-slide"><img src="ss/23-1.webp" alt="Screenshot"></div>
+                        <div class="screenshot-slide"><img src="ss/24.webp" alt="Screenshot"></div>
+                        <div class="screenshot-slide"><img src="ss/25.webp" alt="Screenshot"></div>
+                        <div class="screenshot-slide"><img src="ss/26.webp" alt="Screenshot"></div>
+                        <div class="screenshot-slide"><img src="ss/27.webp" alt="Screenshot"></div>
+                        <div class="screenshot-slide"><img src="ss/28.webp" alt="Screenshot"></div>
+                        <div class="screenshot-slide"><img src="ss/29.webp" alt="Screenshot"></div>
+                        <div class="screenshot-slide"><img src="ss/30.webp" alt="Screenshot"></div>
+                        <div class="screenshot-slide"><img src="ss/31.webp" alt="Screenshot"></div>
+                        <div class="screenshot-slide"><img src="ss/32.webp" alt="Screenshot"></div>
+                        <div class="screenshot-slide"><img src="ss/33.webp" alt="Screenshot"></div>
+                        <div class="screenshot-slide"><img src="ss/34.webp" alt="Screenshot"></div>
+                        <div class="screenshot-slide"><img src="ss/35.webp" alt="Screenshot"></div>
+                        <div class="screenshot-slide"><img src="ss/36.webp" alt="Screenshot"></div>
+                        <div class="screenshot-slide"><img src="ss/37.webp" alt="Screenshot"></div>
+                        <div class="screenshot-slide"><img src="ss/38.webp" alt="Screenshot"></div>
+                        <div class="screenshot-slide"><img src="ss/39.webp" alt="Screenshot"></div>
+                        <div class="screenshot-slide"><img src="ss/40.webp" alt="Screenshot"></div>
+                        <div class="screenshot-slide"><img src="ss/41.webp" alt="Screenshot"></div>
+                    </div>
+
+                    <button class="carousel-arrow right" aria-label="Next Screenshot">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                </div>
             </div>
         </section>
 
         <section id="downloads" class="downloads">
             <div class="container">
-                <center><h2 class="section-title">Supported Devices</h2></center>
+                <h2 class="section-title">Supported Devices</h2>
+                <div class="search-container">
+                    <input type="text" id="device-search" placeholder="Search devices..." aria-label="Search devices">
+                    <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </div>
                 <div class="device-filters"></div>
-                <div class="devices__grid"></div>
+                <div class="devices__grid">
+                    <!-- Devices populated by JS -->
+                </div>
             </div>
         </section>
 
         <section id="community" class="community">
             <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Join Our Community</h2>
-                    <p class="section-subtitle">Connect with fellow YAAP users and contributors</p>
-                </div>
-
-                <div class="community-card">
-                        <div class="community-card__icon">💬</div>
-                        <h3 class="community-card__title">Telegram Channel</h3>
-                        <p class="community-card__description">Get notifications about new releases.</p>
-                        <a href="https://t.me/yaapupdates" target="_blank" class="btn btn--primary">Join Channel</a>
-                    </div>
+                <h2 class="section-title">Join Our Community</h2>
+                <p class="hero__subtitle" style="text-align: center; margin-bottom: 4rem;">Select your preferred
+                    platform to connect with us</p>
 
                 <div class="community__grid">
                     <div class="community-card">
+                        <div class="community-card__icon">📢</div>
+                        <h3 class="community-card__title">Telegram Channel</h3>
+                        <p class="community-card__description">Stay updated with the latest releases and announcements.
+                        </p>
+                        <a href="https://t.me/yaapupdates" target="_blank" class="btn btn--primary btn--sm">Join
+                            Channel</a>
+                    </div>
+
+                    <div class="community-card">
                         <div class="community-card__icon">💬</div>
                         <h3 class="community-card__title">Telegram Group</h3>
-                        <p class="community-card__description">Get support and discuss about YAAP with users and devs.</p>
-                        <a href="https://t.me/yaapcommon" target="_blank" class="btn btn--primary">Join Chat</a>
+                        <p class="community-card__description">Get support, report bugs, and chat with the community.
+                        </p>
+                        <a href="https://t.me/yaapcommon" target="_blank" class="btn btn--primary btn--sm">Join Chat</a>
                     </div>
 
                     <div class="community-card">
                         <div class="community-card__icon">💻</div>
                         <h3 class="community-card__title">GitHub</h3>
-                        <p class="community-card__description">Contribute to development and access source code</p>
-                        <a href="https://github.com/YAAP" target="_blank" class="btn btn--primary">View Repository</a>
+                        <p class="community-card__description">Explore the source code and contribute to development.
+                        </p>
+                        <a href="https://github.com/YAAP" target="_blank" class="btn btn--primary btn--sm">View Repo</a>
                     </div>
                 </div>
             </div>
@@ -281,41 +209,34 @@
 
         <section id="contribute" class="contribute">
             <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Contribute to YAAP</h2>
-                    <p class="section-subtitle">Help us make YAAP better for everyone</p>
+                <h2 class="section-title">Contribute</h2>
+                <div class="contribute-ways">
+                    <div class="contribute-card">
+                        <h3 class="contribute-card__title">👨‍💻 Development</h3>
+                        <p class="contribute-card__description">Submit patches, fix bugs, or help improve features.</p>
+                    </div>
+
+                    <div class="contribute-card">
+                        <h3 class="contribute-card__title">🧪 Testing</h3>
+                        <p class="contribute-card__description">Test builds on your device and report issues.</p>
+                    </div>
+
+                    <div class="contribute-card">
+                        <h3 class="contribute-card__title">📱 Translate</h3>
+                        <p class="contribute-card__description">Help translate YAAP to your native language.</p>
+                    </div>
+
+                    <div class="contribute-card">
+                        <h3 class="contribute-card__title">💵 Donate</h3>
+                        <p class="contribute-card__description">Optional support if you appreciate our work.</p>
+                        <a href="https://github.com/sponsors/yaap" target="_blank" class="btn btn--primary btn--sm"
+                            style="margin-top: 10px;">Sponsor</a>
+                    </div>
                 </div>
 
-                <div class="contribute__content">
-                    <div class="contribute-ways">
-                        <div class="contribute-card">
-                            <h3 class="contribute-card__title">👨‍💻 Development</h3>
-                            <p class="contribute-card__description">Submit patches, fix bugs or help improve our things further</p>
-                        </div>
-
-                        <div class="contribute-card">
-                            <h3 class="contribute-card__title">🧪 Testing</h3>
-                            <p class="contribute-card__description">Test builds on your device and report issues to help us improve stability</p>
-                        </div>
-
-                        <div class="contribute-card">
-                            <h3 class="contribute-card__title">📱 Translate</h3>
-                            <p class="contribute-card__description">Help translate YAAP to your native language</p>
-                        </div>
-                        <div class="contribute-card">
-                            <a href="https://github.com/sponsors/yaap" target="_blank" rel="noopener noreferrer">
-                                <h3 class="contribute-card__title">💵 Donate</h3>
-                                <p class="contribute-card__description">We do not require nor ask for it. Only do if you feel like it</p>
-                            </a>
-                        </div>
-                        </a>
-                    </div>
-
-                    <div class="contribute-cta">
-                        <h3>Ready to contribute?</h3>
-                        <p>Visit our GitHub organization to get started</p>
-                        <a href="https://github.com/YAAP" target="_blank" class="btn btn--primary btn--lg">Start Contributing</a>
-                    </div>
+                <div style="text-align: center; margin-top: 4rem;">
+                    <a href="https://github.com/YAAP" target="_blank" class="btn btn--primary btn--lg">Start
+                        Contributing</a>
                 </div>
             </div>
         </section>
@@ -323,14 +244,15 @@
 
     <footer class="footer">
         <div class="container">
-            <div class="footer__bottom">
-                <p>&copy; 2025 YAAP Team. All rights reserved.</p>
-                <p>YAAP is not affiliated with Google or Android.</p>
-                <a href="https://github.com/yaap/yaap_site">Site source code</a>
-            </div>
+            <p>&copy; 2025 YAAP Team. All rights reserved.</p>
+            <p style="opacity: 0.6; font-size: 0.8em; margin-top: 10px;">YAAP is not affiliated with Google or Android.
+            </p>
+            <p style="margin-top: 20px;"><a href="https://github.com/yaap/yaap_site">Source Code</a></p>
         </div>
     </footer>
+
     <script src="/assets/js/app.js"></script>
     <script src="/assets/js/load_devices.js"></script>
 </body>
+
 </html>
