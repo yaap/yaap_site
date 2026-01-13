@@ -6,7 +6,10 @@ document.addEventListener('DOMContentLoaded', function () {
     let current = 0;
 
     function showSlide(idx) {
-        slides.forEach((slide, i) => slide.classList.toggle('active', i === idx));
+        slides.forEach(slide => slide.classList.remove('active', 'prev', 'next'));
+        slides[idx].classList.add('active');
+        slides[(idx - 1 + slides.length) % slides.length].classList.add('prev');
+        slides[(idx + 1) % slides.length].classList.add('next');
     }
     showSlide(current);
 
