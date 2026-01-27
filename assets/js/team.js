@@ -38,7 +38,7 @@ const websiteTeam = [
 const designTeam = [
   {
     github: 'Lacentix',
-    telegram: '',
+    telegram: 'yourbe',
     role: 'UI/UX Designer',
     fallbackBio: ''
   }
