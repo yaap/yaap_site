@@ -11,7 +11,7 @@
     width: 100%;
     max-width: 1200px;
     margin: 20px auto 0;
-    height: 520px;
+    height: min(70vh, 520px);
     perspective: 1000px;
     display: flex;
     align-items: center;
@@ -29,7 +29,8 @@
 
 .screenshot-slide {
     position: absolute;
-    width: 260px;
+    width: min(45vw, 260px);
+    max-width: 260px;
     height: 100%;
     transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
     opacity: 0;
@@ -127,10 +128,13 @@
 
 @media(max-width: 768px) {
     .screenshot-carousel {
-        height: 450px;
+        height: 65vh;
+        max-height: 380px;
+        overflow: hidden;
     }
     .screenshot-slide {
-        width: 200px;
+        width: 38vw;
+        max-width: 180px;
     }
     .carousel-arrow {
         width: 44px;
