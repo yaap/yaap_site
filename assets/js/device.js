@@ -48,7 +48,7 @@ async function loadDevice() {
                     <p class="device-meta">Maintainer: ${
                             deviceInfo.maintainer || "Unknown"
                         } | Last Updated: ${lastUpdated}</p>
-                    <a class="download-btn" href="https://mirror.codebucket.de/yaap/${codename}/">Download</a>
+			<a class="download-btn" href="https://mirror.codebucket.de/yaap/${codename}" target="_blank" rel="noopener noreferrer">Download</a>
                     <a class="download-btn" href="${
                             deviceInfo.group
                         }">Support Group</a>
