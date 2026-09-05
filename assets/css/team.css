@@ -2,12 +2,13 @@
 .maintainers {
     padding: 60px 0;
     text-align: center;
+    background: var(--color-background);
 }
 .team__title,
 .maintainers__title {
-    font-size: 2.5rem;
+    font-size: 2rem;
     margin-bottom: 40px;
-    color: var(--color-primary);
+    color: var(--color-text);
 }
 .team__grid,
 .maintainers__grid {
@@ -20,49 +21,18 @@
 }
 .team-card,
 .maintainer-card {
-    background: #F1F3F4;
-    border-radius: 24px;
-    border: 1px solid rgba(31, 27, 24, 0.12);
-    box-shadow: 0 2px 4px rgba(31, 27, 24, 0.12);
+    background: var(--color-surface);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border);
     padding: 24px;
-    transition: all 200ms cubic-bezier(0.4,0,0.2,1);
+    transition: all var(--duration-normal) var(--ease-standard);
 }
 .team-card:hover,
 .maintainer-card:hover {
-    background: #E0E0E0;
-    box-shadow: 0 4px 8px rgba(31, 27, 24, 0.16);
-    transform: translateY(-4px);
+    border-color: var(--color-primary);
+    background-color: rgba(90, 31, 106, 0.4);
 }
 
-/* Dark mode cards */
-@media(prefers-color-scheme: dark) {
-    .team-card,
-    .maintainer-card {
-        background: var(--color-charcoal-800, #262829);
-        border-color: rgba(255, 255, 255, 0.12);
-    }
-    .team-card:hover,
-    .maintainer-card:hover {
-        background: var(--color-charcoal-700, #1f2123);
-    }
-    .team-card__name,
-    .maintainer-card__name {
-        color: var(--color-gray-200, #f5f5f5) !important;
-    }
-    .team-card__bio,
-    .maintainer-card__bio {
-        color: rgba(245, 245, 245, 0.7) !important;
-    }
-}
-
-.team-card:hover .team-card__name,
-.team-card:hover .team-card__role,
-.team-card:hover .team-card__bio,
-.maintainer-card:hover .maintainer-card__name,
-.maintainer-card:hover .maintainer-card__role,
-.maintainer-card:hover .maintainer-card__bio {
-    color: inherit;
-}
 .team-card__photo,
 .maintainer-card__photo {
     width: 100px;
@@ -70,14 +40,14 @@
     border-radius: 50%;
     object-fit: cover;
     margin-bottom: 16px;
-    box-shadow: 0 1px 3px rgba(31, 27, 24, 0.08);
+    border: 2px solid var(--color-border);
 }
 .team-card__name,
 .maintainer-card__name {
     font-size: 1.125rem;
     font-weight: 600;
     margin-bottom: 4px;
-    color: #1F1B18;
+    color: var(--color-text);
 }
 .team-card__role,
 .maintainer-card__role {
@@ -91,7 +61,7 @@
     font-size: 0.875rem;
     line-height: 1.5;
     margin-bottom: 16px;
-    color: rgba(31, 27, 24, 0.7);
+    color: var(--color-text-secondary);
 }
 .team-card__links,
 .maintainer-card__links {
@@ -106,21 +76,20 @@
 }
 .device-badge {
     display: inline-block;
-    background: var(--color-primary);
-    color: white;
-    padding: 4px 8px;
-    border-radius: 12px;
+    background: rgba(138, 43, 226, 0.1);
+    color: var(--color-primary);
+    border: 1px solid rgba(138, 43, 226, 0.2);
+    padding: 4px 10px;
+    border-radius: var(--radius-full);
     font-size: 0.75rem;
     margin: 2px;
-    border: 1px solid transparent;
-    transition: all 0.2s ease;
+    transition: all var(--duration-fast) var(--ease-standard);
 }
 
 .device-badge:hover {
-    background-color: var(--color-surface);
-    color: var(--color-primary);
+    background-color: var(--color-primary);
+    color: var(--color-btn-primary-text);
     border-color: var(--color-primary);
-    transform: scale(1.1);
 }
 
 .device-count {
