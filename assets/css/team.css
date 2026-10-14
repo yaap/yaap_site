@@ -1,242 +1,208 @@
 .team,
 .maintainers {
-    padding: 60px 0;
-    text-align: center;
-    background: var(--color-background);
+  padding: var(--space-48) 0;
+  text-align: left;
 }
+
 .team__title,
 .maintainers__title {
-    font-size: 2rem;
-    margin-bottom: 40px;
-    color: var(--color-text);
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 800;
+  color: var(--color-text);
+  letter-spacing: -0.01em;
+  margin: 0 0 var(--space-32) 0;
+  position: relative;
+  padding-bottom: var(--space-16);
 }
+
+.team__title::after,
+.maintainers__title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 40px;
+  height: 3px;
+  background: var(--color-accent);
+}
+
 .team__grid,
 .maintainers__grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 32px;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-24);
 }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: 0;
+}
+
 .team-card,
 .maintainer-card {
-    background: var(--color-surface);
-    border-radius: var(--radius-md);
-    border: 1px solid var(--color-border);
-    padding: 24px;
-    transition: all var(--duration-normal) var(--ease-standard);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 0;
+  padding: var(--space-32);
+  transition: border-color var(--duration-normal) var(--ease-standard);
 }
+
 .team-card:hover,
 .maintainer-card:hover {
-    border-color: var(--color-primary);
-    background-color: rgba(90, 31, 106, 0.4);
+  border-color: var(--color-border-strong);
 }
 
 .team-card__photo,
 .maintainer-card__photo {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 16px;
-    border: 2px solid var(--color-border);
-}
-.team-card__name,
-.maintainer-card__name {
-    font-size: 1.125rem;
-    font-weight: 600;
-    margin-bottom: 4px;
-    color: var(--color-text);
-}
-.team-card__role,
-.maintainer-card__role {
-    font-size: 0.875rem;
-    font-weight: 500;
-    margin-bottom: 12px;
-    color: var(--color-primary);
-}
-.team-card__bio,
-.maintainer-card__bio {
-    font-size: 0.875rem;
-    line-height: 1.5;
-    margin-bottom: 16px;
-    color: var(--color-text-secondary);
-}
-.team-card__links,
-.maintainer-card__links {
-    display: flex;
-    gap: 12px;
-    justify-content: center;
+  width: 72px;
+  height: 72px;
+  border-radius: var(--radius-full);
+  object-fit: cover;
+  margin-bottom: var(--space-16);
+  border: 1px solid var(--color-border);
 }
 
-/* Device info styling for maintainer cards */
-.maintainer-card__devices {
-    margin-bottom: 16px;
+.team-card__name,
+.maintainer-card__name {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: var(--space-4);
+  color: var(--color-text);
 }
+
+.team-card__role,
+.maintainer-card__role {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: var(--space-12);
+  color: var(--color-accent);
+}
+
+.team-card__bio,
+.maintainer-card__bio {
+  font-size: 0.86rem;
+  line-height: 1.5;
+  margin-bottom: var(--space-16);
+  color: var(--color-text-secondary);
+}
+
+.team-card__links,
+.maintainer-card__links {
+  display: flex;
+  gap: var(--space-12);
+}
+
+.maintainer-card__devices { margin-bottom: var(--space-16); }
+
 .device-badge {
-    display: inline-block;
-    background: rgba(138, 43, 226, 0.1);
-    color: var(--color-primary);
-    border: 1px solid rgba(138, 43, 226, 0.2);
-    padding: 4px 10px;
-    border-radius: var(--radius-full);
-    font-size: 0.75rem;
-    margin: 2px;
-    transition: all var(--duration-fast) var(--ease-standard);
+  display: inline-block;
+  background: transparent;
+  color: var(--color-accent);
+  border: 1px solid var(--color-accent-border);
+  padding: var(--space-4) var(--space-8);
+  border-radius: var(--radius-full);
+  font-size: 0.72rem;
+  margin: 2px;
+  transition: all var(--duration-fast) var(--ease-standard);
 }
 
 .device-badge:hover {
-    background-color: var(--color-primary);
-    color: var(--color-btn-primary-text);
-    border-color: var(--color-primary);
+  background: var(--color-accent);
+  color: #fff;
 }
 
-.device-count {
-    font-size: 0.875rem;
-    color: var(--color-primary);
-    font-weight: 500;
-}
-
-/* Original brand colors for social links */
 .social-link {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    color: white;
-    text-decoration: none;
-    transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  color: var(--color-text);
+  background: transparent;
+  border: 1px solid var(--color-border);
+  transition: all var(--duration-fast) var(--ease-standard);
 }
 
-.social-link.github {
-    background: #333;
-}
-.social-link.github:hover {
-    background: #24292e;
-    transform: scale(1.1);
-}
-
-.social-link.telegram {
-    background: #0088cc;
-}
-.social-link.telegram:hover {
-    background: #006ba6;
-    transform: scale(1.1);
-}
-
-@media(prefers-color-scheme: dark) {
-    .social-link.github {
-        background: #f5f5f5;
-        color: #333;
-    }
-    .social-link.github:hover {
-        background: #e0e0e0;
-        color: #24292e;
-    }
-    .social-link.github svg {
-        fill: #333;
-    }
+.social-link:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
 }
 
 .social-link svg {
-    width: 20px;
-    height: 20px;
-    fill: currentColor;
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
 }
 
 /* Loading state */
 .team-card.loading,
 .maintainer-card.loading {
-    opacity: 0.7;
-    position: relative;
-}
-.team-card.loading::after,
-.maintainer-card.loading::after {
-    content: "Loading...";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 0.875rem;
-    color: var(--color-primary);
+  opacity: 0.6;
+  position: relative;
+  min-height: 160px;
 }
 
-@media(max-width: 480px) {
-    .team-card,
-    .maintainer-card {
-        padding: 16px;
-    }
-    .team-card__photo,
-    .maintainer-card__photo {
-        width: 80px;
-        height: 80px;
-    }
+.team-card.loading::after,
+.maintainer-card.loading::after {
+  content: "Loading...";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
 }
 
 .hidden-devices {
   display: flex;
   flex-wrap: wrap;
-  gap: 2px;
-  align-items: center;
-  justify-content: center;
-  margin-top: 8px;
+  gap: 4px;
+  margin-top: var(--space-8);
 }
 
 .device-toggle-btn {
   background: transparent;
-  border: 1px solid var(--color-primary);
-  color: var(--color-primary);
-  padding: 4px 12px;
-  border-radius: 12px;
-  font-size: 0.75rem;
+  border: 1px solid var(--color-border-strong);
+  color: var(--color-text-secondary);
+  padding: var(--space-4) var(--space-12);
+  border-radius: var(--radius-full);
+  font-size: 0.72rem;
   cursor: pointer;
-  margin-top: 8px;
-  font-weight: 500;
-  transition: all 0.2s ease;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  margin-top: var(--space-8);
+  font-weight: 600;
+  transition: all var(--duration-fast) var(--ease-standard);
 }
 
-.device-toggle-btn:hover {
-  background: var(--color-primary);
-  color: white;
-}
-
+.device-toggle-btn:hover,
 .device-toggle-btn.expanded {
-  background: transparent;
-  color: var(--color-primary);
+  border-color: var(--color-accent);
+  color: var(--color-accent);
 }
 
-.device-toggle-btn:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
-}
-
-/* Error message styling */
 .error-message {
   grid-column: 1 / -1;
   text-align: center;
-  padding: 40px 20px;
-  color: var(--color-red-400);
+  padding: var(--space-32) var(--space-16);
+  color: var(--color-danger);
   font-style: italic;
 }
 
-/* Responsive adjustments for toggle */
-@media(max-width: 480px) {
-  .device-toggle-btn {
-    font-size: 0.7rem;
-    padding: 3px 8px;
-    margin-top: 6px;
+@media (max-width: 480px) {
+  .team-card,
+  .maintainer-card {
+    padding: var(--space-16);
   }
-  
-  .hidden-devices {
-    margin-top: 6px;
-    gap: 1px;
-    align-items: center;
-    justify-content: center;
+  .team-card__photo,
+  .maintainer-card__photo {
+    width: 60px;
+    height: 60px;
+  }
+  .device-toggle-btn {
+    font-size: 0.68rem;
+    padding: 3px var(--space-8);
   }
 }

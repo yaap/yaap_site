@@ -1,178 +1,148 @@
 .screenshots {
-    padding: 80px 0;
-    background: var(--color-surface);
-    border-bottom: 1px solid var(--color-border);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
+.screenshots .container { width: 100%; }
+
 .screenshot-carousel {
-    position: relative;
-    width: 100%;
-    max-width: 1200px;
-    margin: 20px auto 0;
-    height: min(70vh, 520px);
-    perspective: 1000px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  position: relative;
+  width: 100%;
+  max-width: 1100px;
+  margin: var(--space-32) auto 0;
+  height: min(70vh, 480px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .screenshot-track {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  position: relative;
 }
 
 .screenshot-slide {
-    position: absolute;
-    width: min(45vw, 260px);
-    max-width: 260px;
-    height: 100%;
-    transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-    opacity: 0;
-    transform: translateX(0) scale(0.8);
-    z-index: 0;
-    pointer-events: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  position: absolute;
+  width: min(45vw, 240px);
+  max-width: 240px;
+  height: 100%;
+  transition: opacity var(--duration-normal) var(--ease-standard),
+    transform var(--duration-normal) var(--ease-standard);
+  opacity: 0;
+  transform: scale(0.88);
+  z-index: 0;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .screenshot-slide.active {
-    opacity: 1;
-    transform: translateX(0) scale(1.05);
-    z-index: 10;
-    pointer-events: auto;
+  opacity: 1;
+  transform: scale(1);
+  z-index: 10;
+  pointer-events: auto;
 }
 
 .screenshot-slide.prev {
-    opacity: 0.5;
-    transform: translateX(-110%) scale(0.85);
-    z-index: 5;
-    display: block;
+  opacity: 0.65;
+  transform: translateX(-105%) scale(0.88);
+  z-index: 5;
 }
 
 .screenshot-slide.next {
-    opacity: 0.5;
-    transform: translateX(110%) scale(0.85);
-    z-index: 5;
-    display: block;
+  opacity: 0.65;
+  transform: translateX(105%) scale(0.88);
+  z-index: 5;
 }
 
 .screenshot-slide img {
-    width: auto;
-    height: auto;
-    max-width: 100%;
-    max-height: 95%;
-    border-radius: var(--radius-md);
-    border: 1px solid var(--color-border);
-    box-shadow: var(--shadow-md);
-    display: block;
-    object-fit: contain;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 95%;
+  border-radius: 0;
+  border: 1px solid var(--color-border-strong);
+  background: var(--color-surface);
+  box-shadow: none;
+  display: block;
+  object-fit: contain;
 }
 
 .carousel-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 52px;
-    height: 52px;
-    border-radius: 50%;
-    background: rgba(20, 20, 20, 0.4);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 20;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-    color: white;
-    overflow: hidden;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 0;
+  background: #000;
+  border: 1px solid var(--color-border-strong);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 20;
+  color: var(--color-text);
+  transition: all var(--duration-fast) var(--ease-standard);
 }
 
 .carousel-arrow:hover {
-    background: var(--color-primary);
-    border-color: transparent;
-    transform: translateY(-50%) scale(1.1);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: #fff;
 }
 
-.carousel-arrow:active {
-    transform: translateY(-50%) scale(0.95);
-}
-
-.carousel-arrow.left {
-    left: 24px;
-}
-
-.carousel-arrow.right {
-    right: 24px;
-}
+.carousel-arrow.left { left: var(--space-16); }
+.carousel-arrow.right { right: var(--space-16); }
 
 .carousel-arrow svg {
-    width: 28px;
-    height: 28px;
-    stroke: currentColor;
-    stroke-width: 2.5px;
-    fill: none;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    display: block;
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  stroke-width: 2px;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
-@media(max-width: 768px) {
-    .screenshot-carousel {
-        height: 65vh;
-        max-height: 380px;
-        overflow: hidden;
-    }
-    .screenshot-slide {
-        width: 38vw;
-        max-width: 180px;
-    }
-    .carousel-arrow {
-        width: 44px;
-        height: 44px;
-        background: rgba(0, 0, 0, 0.6);
-    }
-    .carousel-arrow svg {
-        width: 24px;
-        height: 24px;
-    }
-    .carousel-arrow.left { left: 12px; }
-    .carousel-arrow.right { right: 12px; }
+@media (max-width: 768px) {
+  .screenshot-carousel { height: 60vh; max-height: 360px; }
+  .screenshot-slide { width: 42vw; max-width: 200px; }
+  .carousel-arrow { width: 36px; height: 36px; }
+  .carousel-arrow svg { width: 16px; height: 16px; }
+  .carousel-arrow.left { left: var(--space-8); }
+  .carousel-arrow.right { right: var(--space-8); }
 }
 
 /* Zoom overlay */
 .zoom-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.95);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    animation: fadeIn 0.3s ease forwards;
-    backdrop-filter: blur(5px);
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.96);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation: fadeIn var(--duration-normal) ease forwards;
 }
 
 .zoom-image {
-    max-width: 95%;
-    max-height: 95%;
-    object-fit: contain;
-    transition: transform 0.1s linear;
-    will-change: transform;
+  max-width: 95%;
+  max-height: 95%;
+  object-fit: contain;
+  border: 1px solid var(--color-border-strong);
+  transition: transform 0.1s linear;
+  will-change: transform;
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to   { opacity: 1; }
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }

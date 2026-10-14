@@ -30,8 +30,10 @@ async function loadDevice() {
 
         const changelog = await fetch(`https://raw.githubusercontent.com/yaap/ota-info/${otaBranch}/${codename}/Changelog.txt`).then(r => r.text());
 
+        document.title = `YAAP for ${deviceInfo.name}`;
+
         deviceContainer.innerHTML = `
-            <div class="device-card" style="padding-top: 30px;">
+            <div class="device-card">
             <img src="${
                     deviceInfo.image || 'placeholder.jpg'
                 }" alt="${
@@ -41,22 +43,18 @@ async function loadDevice() {
                     <h2>${
                             deviceInfo.name
                         } (${codename})</h2>
-                    <title>YAAP for ${
-                            deviceInfo.name
-                        }</title>
-                        <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
                     <p class="device-meta">Maintainer: ${
                             deviceInfo.maintainer || "Unknown"
                         } | Last Updated: ${lastUpdated}</p>
-                    <a class="download-btn" href="https://downloads.yaaprom.org/${codename}/">Download</a>
-                    <a class="download-btn" href="${
+                    <a class="download-btn download-btn--primary" href="https://downloads.yaaprom.org/${codename}/">Download</a>
+                    <a class="download-btn download-btn--outline" href="${
                             deviceInfo.group
                         }">Support Group</a>
                 </div>
             </div>
             <div class="changelog-card">
             <h4>Latest Changelog</h4>
-${changelog}
+${changelog.trim()}
 
 Latest GApps build: <code>${latestGapps}</code>
 Latest Vanilla build: <code>${latestVanilla}</code>
