@@ -65,11 +65,17 @@ document.addEventListener('DOMContentLoaded', function () { // Mobile Navigation
     });
 
     // Smooth Scrolling for Navigation Links
-    const navigationLinks = document.querySelectorAll('a[href^="#"]');
+    const navigationLinks = document.querySelectorAll('a[href*="#"]');
     navigationLinks.forEach(link => {
         link.addEventListener('click', function (e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
+            const href = this.getAttribute('href');
+            const hashIndex = href.indexOf('#');
+            if (hashIndex === -1) return;
+            const path = href.slice(0, hashIndex);
+            // only intercept links to this same page's sections, not other pages
+            if (path && path !== '/' && path !== window.location.pathname) return;
+
+            const targetId = href.slice(hashIndex);
             let targetSection;
 
             // Handle home link specifically
@@ -80,6 +86,7 @@ document.addEventListener('DOMContentLoaded', function () { // Mobile Navigation
             }
 
             if (targetSection) {
+                e.preventDefault();
                 const headerHeight = document.querySelector('.header').offsetHeight;
                 let targetPosition;
 
@@ -95,31 +102,15 @@ document.addEventListener('DOMContentLoaded', function () { // Mobile Navigation
         });
     });
 
-    // Header Background on Scroll
+    // Header background once the page has scrolled past the hero
     const header = document.querySelector('.header');
-    let lastScrollTop = 0;
 
     window.addEventListener('scroll', function () {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-        // Add/remove background opacity based on scroll
-        if (scrollTop > 50) {
-            header.style.background = 'rgba(19, 52, 59, 0.98)';
-            header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
-        } else {
-            header.style.background = 'rgba(19, 52, 59, 0.95)';
-            header.style.boxShadow = 'none';
-        }
-
-        // Hide/show header on scroll (optional enhancement)
-        if (scrollTop > lastScrollTop && scrollTop > 100) {
-            header.style.transform = 'translateY(-100%)';
-        } else {
-            header.style.transform = 'translateY(0)';
-        } lastScrollTop = scrollTop;
+        header.classList.toggle('header--scrolled', scrollTop > 50);
     });
 
-    // Animate elements on scroll
+    // Fade in grid items as they enter the viewport
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
@@ -128,152 +119,36 @@ document.addEventListener('DOMContentLoaded', function () { // Mobile Navigation
     const observer = new IntersectionObserver(function (entries) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-
-                // Add staggered animation for grid items
-                if (entry.target.classList.contains('feature-card') || entry.target.classList.contains('device-brand') || entry.target.classList.contains('community-card')) {
-                    const delay = Array.from(entry.target.parentNode.children).indexOf(entry.target) * 100;
-                    entry.target.style.transitionDelay = delay + 'ms';
-                }
+                const delay = Array.from(entry.target.parentNode.children).indexOf(entry.target) * 80;
+                entry.target.style.transitionDelay = delay + 'ms';
+                entry.target.classList.add('in-view');
+                observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
 
-    // Observe elements for animation
-    const animateElements = document.querySelectorAll('.feature-card, .device-brand, .community-card, .contribute-card, .stat-card');
-    animateElements.forEach(element => {
-        element.style.opacity = '0';
-        element.style.transform = 'translateY(30px)';
-        element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    document.querySelectorAll('.community-card, .contribute-card').forEach(element => {
         observer.observe(element);
     });
 
-    // Button ripple effect
-    const buttons = document.querySelectorAll('.btn');
-    buttons.forEach(button => {
-        button.addEventListener('click', function (e) { // Create ripple element
-            const ripple = document.createElement('span');
-            const rect = this.getBoundingClientRect();
-            const size = Math.max(rect.width, rect.height);
-            const x = e.clientX - rect.left - size / 2;
-            const y = e.clientY - rect.top - size / 2;
-
-            ripple.style.cssText = `
-position: absolute;
-width: ${size}px;
-height: ${size}px;
-left: ${x}px;
-top: ${y}px;
-background: rgba(255, 255, 255, 0.3);
-border-radius: 50%;
-transform: scale(0);
-animation: ripple 0.6s ease-out;
-pointer-events: none;
-`;
-
-            // Add ripple to button
-            this.style.position = 'relative';
-            this.style.overflow = 'hidden';
-            this.appendChild(ripple);
-
-            // Remove ripple after animation
-            setTimeout(() => {
-                if (ripple.parentNode) {
-                    ripple.parentNode.removeChild(ripple);
-                }
-            }, 600);
-        });
-    });
-
-    // Add ripple animation keyframes
-    const style = document.createElement('style');
-    style.textContent = `
-@keyframes ripple {
-to {
-transform: scale(2);
-opacity: 0;
-}
-}
-`;
-    document.head.appendChild(style);
-
-    // Hero stats counter animation - Fixed to handle K+ format
-    const statNumbers = document.querySelectorAll('.stat-card__number');
-
-    const animateCounter = (element, targetText, duration = 2000) => {
-        let targetNumber;
-        let suffix = '';
-
-        // Parse different formats
-        if (targetText.includes('K+')) {
-            targetNumber = parseInt(targetText.replace(/\D/g, '')) * 1000;
-            suffix = 'K+';
-        } else if (targetText.includes('+')) {
-            targetNumber = parseInt(targetText.replace(/\D/g, ''));
-            suffix = '+';
-        } else {
-            targetNumber = parseInt(targetText.replace(/\D/g, ''));
-        }
-
-        // If we couldn't parse a number, just set the original text
-        if (isNaN(targetNumber)) {
-            element.textContent = targetText;
-            return;
-        }
-
-        const start = 0;
-        const increment = targetNumber / (duration / 16);
-        let current = start;
-
-        const timer = setInterval(() => {
-            current += increment;
-            if (current >= targetNumber) { // Set final value based on format
-                if (suffix === 'K+') {
-                    element.textContent = Math.floor(targetNumber / 1000) + 'K+';
-                } else {
-                    element.textContent = targetNumber + suffix;
-                }
-                clearInterval(timer);
-            } else { // Update current value based on format
-                if (suffix === 'K+') {
-                    const displayNumber = Math.floor(current / 1000);
-                    element.textContent = displayNumber + 'K+';
-                } else {
-                    element.textContent = Math.floor(current) + suffix;
-                }
-            }
-        }, 16);
-    };
-
-    // Trigger counter animation when hero section is visible
-    const heroObserver = new IntersectionObserver(function (entries) {
+    // Fade in each section as a whole while scrolling down the page.
+    // Targets the static section wrapper, not content that fills in
+    // later from an API fetch (device list, team cards) - that content
+    // doesn't exist yet when this runs, so observing it directly would
+    // never fire.
+    const sectionObserver = new IntersectionObserver(function (entries) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                statNumbers.forEach(stat => {
-                    const targetText = stat.textContent;
-                    // Set initial value based on format
-                    if (targetText.includes('K+')) {
-                        stat.textContent = '0K+';
-                    } else if (targetText.includes('+')) {
-                        stat.textContent = '0+';
-                    } else {
-                        stat.textContent = '0';
-                    }
-
-                    setTimeout(() => {
-                        animateCounter(stat, targetText, 1500);
-                    }, 500);
-                });
-                heroObserver.unobserve(entry.target);
+                entry.target.classList.add('in-view');
+                sectionObserver.unobserve(entry.target);
             }
         });
-    }, {threshold: 0.5});
+    }, observerOptions);
 
-    const heroSection = document.querySelector('.hero');
-    if (heroSection) {
-        heroObserver.observe(heroSection);
-    }
+    document.querySelectorAll('section:not(.hero), .device-page').forEach(element => {
+        element.classList.add('fade-in-section');
+        sectionObserver.observe(element);
+    });
 
     // Add loading animation for external links
     const externalLinks = document.querySelectorAll('a[target="_blank"]');
