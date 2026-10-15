@@ -96,7 +96,7 @@ async function buildMaintainerDeviceMap({useCache = true, cacheTTLms = 1000 * 60
       }
     }
 
-    const treeUrl = `https://api.github.com/repos/${owner}/${repo}/git/trees/${branch}?recursive=1`;
+    const treeUrl = `https://yaaprom-device-info.idoybh2.workers.dev/repos/${owner}/${repo}/git/trees/${branch}?recursive=1`;
     let treeResp;
     try {
       treeResp = await fetch(treeUrl);

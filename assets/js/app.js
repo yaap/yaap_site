@@ -361,7 +361,7 @@ opacity: 0;
     // if (githubStarsElement) { // Show loading state
     //     githubStarsElement.textContent = '...';
 
-    //     fetch('https://api.github.com/repos/yaap/manifest').then(response => response.json()).then(data => {
+    //     fetch('https://yaaprom-device-info.idoybh2.workers.dev.com/repos/yaap/manifest').then(response => response.json()).then(data => {
     //         if (data && data.stargazers_count !== undefined) {
     //             githubStarsElement.textContent = data.stargazers_count;
     //         } else {
